@@ -61,12 +61,40 @@ Here are a few of the most popular CSS preprocessors:
 # Debuggers 
 Writing CSS is so much easier when you have access to a debugger or a CSS validator. Some tools allow you to identify and fix anything that might be wrong with your code. 
 
-Firefox ⇾ Firebug ⇾ Firefox Developer Tools
-Opera ⇾ DragonFly
-IE and EDGE ⇾ F12
-Safary ⇾ Web Inspector
-Chrome ⇾ Developer Tools
-Mobile ⇾ Weinr
-Mobile ⇾ Remote debugging by IP
-Mobile ⇾ Tethered debugging 
+* Firefox ⇾ Firebug ⇾ Firefox Developer Tools
+* Opera ⇾ DragonFly
+* IE and EDGE ⇾ F12
+* Safary ⇾ Web Inspector
+* Chrome ⇾ Developer Tools
+* Mobile ⇾ Weinr
+* Mobile ⇾ Remote debugging by IP
+* Mobile ⇾ Tethered debugging 
 
+# Basic Selector & CSS Levels
+
+There are 3 basic selectors:
+
+id (#myid)
+class (.myclass)
+element (tag name)
+
+Any time you have an ID you can target it with html, css and javascript. Concerning specificity, always do it as broad as possible. 
+
+Example:
+
+```
+<ul>
+<li id="myId" class="myClass">Item 1</li>
+<li class="myClass>Item 2</ly>
+<li>Item 3</li>
+</ul>
+```
+
+```
+ul{font-weight:bold;}
+li{color:yellow;}
+.myClass{color:red;}
+#myId{color:blue;
+font-size: 5em;}
+```
+![my image name](./coloredItems.png)
