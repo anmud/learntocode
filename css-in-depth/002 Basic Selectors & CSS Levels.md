@@ -87,6 +87,7 @@ E:not(selector)
 E:target
 ```
 In UI specification we have:
+
 ```
 E:enabled
 E:disabled
@@ -102,6 +103,7 @@ E:read-only
 E:read-write
 ```
 CSS level 4:
+
 ```
 :blank
 :indeterminate
@@ -130,6 +132,7 @@ F || E
 :nth-last-column(n)
 ```
 There are much more:
+
 ```
 ::selection
 :scope-context()
