@@ -8,14 +8,14 @@ In CSS you can target anything and style it the way you  want. Fex. here we styl
 
 Here are the examples of selectors structure:
 
-̀selectorA{
+--selectorA{
     property1:value1;
     property2:value2;
-}̀
+}--
 
-̀selectorB{
+--selectorB{
     property1:value3;
     property2:value4;
- }̀
+ }--
 
 
