@@ -38,6 +38,8 @@ div ~ p
 
 **In JavaScript**
 
+Selectors API
+
 ```js
 var chil = $('#bar .foo');
 ```
