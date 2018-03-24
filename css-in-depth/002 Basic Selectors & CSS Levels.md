@@ -10,7 +10,7 @@ Any time you have an ID you can target it with html, css and javascript. Concern
 
 Example:
 
-```
+```html
 <ul>
 <li id="myId" class="myClass">Item 1</li>
 <li class="myClass>Item 2</ly>
@@ -18,7 +18,7 @@ Example:
 </ul>
 ```
 
-```
+```css
 ul{font-weight:bold;}
 li{color:yellow;}
 .myClass{color:red;}
@@ -29,7 +29,7 @@ font-size: 5em;}
 
 In CSS Level 1 they declare 6 different ways to target elements:
 
-```
+```css
 E
 E F
 .class
@@ -39,7 +39,7 @@ E F
 ```
 
 In level 2 we have two more combinators:
-```
+```css
 *
 E > F
 E + F
@@ -59,7 +59,7 @@ E[attribute|=value]
 ```
 In CSS 3 we have more:
 
-```
+```css
 ::before
 ::after
 ::first-letter
@@ -88,7 +88,7 @@ E:target
 ```
 In UI specification we have:
 
-```
+```css
 E:enabled
 E:disabled
 E:checked
@@ -104,7 +104,7 @@ E:read-write
 ```
 CSS level 4:
 
-```
+```css
 :blank
 :indeterminate
 :placeholder-shown
@@ -133,7 +133,7 @@ F || E
 ```
 There are much more:
 
-```
+```css
 ::selection
 :scope-context()
 :current(s)
@@ -156,5 +156,7 @@ There are much more:
 
 And some of them’ve been removed. 
 All selectors are [here.](https://estelle.github.io/cssmastery/selectors/selectors.html)
+
+
 
 

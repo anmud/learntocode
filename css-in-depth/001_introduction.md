@@ -3,7 +3,7 @@
 In CSS you can target anything and style it the way you  want. 
 Fex. here we style every 3-rd list item, using selectors.
 
-``` 
+```css
 li: nth-last-of-type(3n){
 color:#E2007A
 }
@@ -13,7 +13,7 @@ color:#E2007A
 
 Here are the examples of selectors structure:
 
-```
+```css
  selectorB{
     property1:value1;
     property2:value2;
@@ -21,20 +21,20 @@ Here are the examples of selectors structure:
 ```
 
 
-```
+```css
 selectorB{
     property1:value3;
     property2:value4;
  }
  ```
 
-```
+```css
 selector: pseudo-class::pseudo-element{
     -vendor-property: value;  
 }
 ```
 
-```
+```css
 selector[attribute],
 selector ~ relation{
     property: -vendor-value;
@@ -47,6 +47,7 @@ Some of this will be prefixed. Generally you don’t use prefix properties. But 
 If you use webkit border radius or webkit border gradient the only device that needs this is an old android device. 
 
 # Preprocessors
+
 A CSS preprocessor is a program that lets you generate CSS from the preprocessor's own unique syntax. There are many CSS preprocessors to choose from, however most CSS preprocessors will add some features that don't exist in pure CSS, such as mixin, nesting selector, inheritance selector, and so on. These features make the CSS structure more readable and easier to maintain.
 
 To use a CSS preprocessor, you must install a CSS compiler on your web server.
