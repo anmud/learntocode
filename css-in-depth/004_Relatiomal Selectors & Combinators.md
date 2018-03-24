@@ -28,3 +28,29 @@ Sibling elements must have the same parent element, and "adjacent" means "immedi
 li.hasaclass + li
 ```
 ![adjacentSiblingSelector](./adjacentSiblingSelector.png)
+
+4. **General Sibling** - selects all elements that are siblings of a specified element.
+
+```css
+div ~ p 
+```
+![generalSiblingSelector](./generalSiblingSelector.png)
+
+**In JavaScript**
+
+```java
+var chil = $('#bar .foo');
+```
+ 
+Natively
+
+```java
+var el   = document.querySelector('#bar');
+
+var chil = el.querySelectorAll('.foo');
+```
+or
+
+```java
+chil = document.querySelectorAll('#bar .foo');
+```
