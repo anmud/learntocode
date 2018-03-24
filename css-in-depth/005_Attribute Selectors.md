@@ -4,7 +4,7 @@
 * The `[attribute]` selector is used to select elements with a specified attribute.
 The following example selects all `<a>` elements with a target attribute:
 
-**CSS Snippet**
+
 ```css
 a [target] {
 	background-color: yellow;
@@ -14,7 +14,7 @@ a [target] {
 * The `[attribute="value"]` selector is used to select elements with a specified attribute and value.
 The following example selects all `<a>` elements with a `target="_blank"` attribute:
 
-**CSS Snippet**
+
 
 ```css
 a[target="_blank"] { 
@@ -24,7 +24,7 @@ a[target="_blank"] {
 
 * The `E[attr|=val]` selector is uded to selects elements whose attribute has a value or begins with val- ("val" plus "-").
 
-**CSS Snippet**
+
 
 ```css
 p[lang|="en"]{
@@ -35,7 +35,7 @@ p[lang|="en"]{
 * The `[attribute~="value"]` selector is used to select elements with an attribute value containing a specified word.
 The following example selects all elements with a title attribute that contains a space-separated list of words, one of which is "flower":
 
-**CSS Snippet**
+
 
 ```css
 [title~="flower"] {
@@ -46,7 +46,7 @@ The following example selects all elements with a title attribute that contains 
 
 * `The E[attr^=val]` selector is used to select elements whose attribute starts with the value.
 
-**CSS Snippet**
+
 
 ```css
 a[href^=mailto] {
@@ -60,7 +60,7 @@ a[href^=http]:after {
 ```
 * The `E[attr$=val]` selector is used to select elements whose attribute ends in value. 
 
-**CSS Snippet**
+
 
 ```css
 a[href$=pdf] {
@@ -80,8 +80,6 @@ a[href$=pdf]:after {
 The attribute selectors can be useful for styling forms without class or ID:
 
 Example:
-
-**CSS Snippet**
 
 ```css
 input[type="text"] {
