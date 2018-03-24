@@ -28,3 +28,28 @@ input[type=checkbox]:checked + label {
 }
 ```
 ![checked](./checked.png)
+
+And because i was thinking about accessibility and included a label i would actually have to check on a checkbox  - and i can check on a label and it will toggle on and off. That's toggling the checkbox which is activating the CSS. 
+
+CSS updates immediately, we just update the UI feature. 
+
+The UI features that we have:
+
+:default
+
+:valid
+
+:invalid
+
+:required
+:optional
+
+:in-range
+:out-of-range
+
+:read-only
+:read-write
+
+:placeholder-shown
+
+:user-error or :user-invalid
