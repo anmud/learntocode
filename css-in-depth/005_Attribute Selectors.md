@@ -75,6 +75,39 @@ a[href$=pdf]:after {
 
 * The `E[attr*=val]` selector is used to select elements with the val that’s anywhere in the content.
 
+* The `E:[att*=VAL i]` selector 
+
+By default, case-sensitivity of attribute names and values in selectors depends on the document language. That's why an additional modifier (i) for CSS attribute selectors has been added to allow an author to match an attribute's value case-insensitively within the ASCII range.
+
+CSS Snippet
+```css
+/* All list items which have an id attribute with the ending `case`. */
+li[id$="case" i] {
+  color: green;
+}
+/* All list items which have an id attribute with the exact ending `case` but
+ * not the value endings `CASE` or `Case`. */
+li[id$="case"] {
+  font-weight: bold;
+}
+```
+foo
+snake_case
+camelCase
+PascalCase
+bar
+
+HTML Snippet
+```html
+<ul>
+  <li id="foo">foo</li>
+  <li id="snake_case">snake_case</li>
+  <li id="camelCase">camelCase</li>
+  <li id="PascalCase">PascalCase</li>
+  <li id="bar">bar</li>
+</ul>
+```
+
 **For Styling Forms**
 
 The attribute selectors can be useful for styling forms without class or ID:
