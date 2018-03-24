@@ -26,3 +26,34 @@ li{color:yellow;}
 font-size: 5em;}
 ```
 ![my image name](./coloredItems.png)
+
+In CSS Level 1 they declare 6 different ways to target elements:
+
+```
+E
+E F
+.class
+#id
+:link
+:active
+```
+
+In level 2 we have two more combinators:
+```
+*
+E > F
+E + F
+E[attribute]
+E[attribute=value]
+E[attribute~=value]
+E[attribute|=value]
+:first-child
+:lang(en)
+:focus
+:hover
+:visited
+:before
+:after
+:first-letter
+:first-line
+```
