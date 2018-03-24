@@ -3,6 +3,7 @@
 In CSS you can target anything and style it the way you  want. 
 Fex. here we style every 3-rd list item, using selectors.
 
+**CSS Snippet**
 ```css
 li: nth-last-of-type(3n){
 color:#E2007A
@@ -13,6 +14,7 @@ color:#E2007A
 
 Here are the examples of selectors structure:
 
+**CSS Snippet**
 ```css
  selectorA{
     property1:value1;
@@ -20,7 +22,7 @@ Here are the examples of selectors structure:
 }
 ```
 
-
+**CSS Snippet**
 ```css
 selectorB{
     property1:value3;
