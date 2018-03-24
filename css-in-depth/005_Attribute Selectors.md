@@ -42,7 +42,7 @@ The following example selects all elements with a title attribute that contains 
 	border: 5px solid yellow;
 }
 ```
-# Level 3 Attribute Selectors
+## Level 3 Attribute Selectors
 
 * `The E[attr^=val]` selector is used to select elements whose attribute starts with the value.
 
