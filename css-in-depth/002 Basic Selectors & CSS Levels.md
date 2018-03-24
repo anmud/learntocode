@@ -154,6 +154,7 @@ E /foo/ F
 ~~E! > F~~
 ~~:local-link~~
 ~~:nth-match()~~
+~~This was mistaken text~~
 ```
 
 ~~This was mistaken text~~
