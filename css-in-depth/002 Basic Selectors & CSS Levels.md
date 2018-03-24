@@ -154,4 +154,7 @@ There are much more:
 <del>:nth-match()</del>
 </pre></code>
 
+And some of them’ve been removed. 
+All selectors are here [Link to outside page](https://estelle.github.io/cssmastery/selectors/selectors.html)
+
 
