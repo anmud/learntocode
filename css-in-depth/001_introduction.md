@@ -14,7 +14,7 @@ color:#E2007A
 Here are the examples of selectors structure:
 
 ```css
- selectorB{
+ selectorA{
     property1:value1;
     property2:value2;
 }
