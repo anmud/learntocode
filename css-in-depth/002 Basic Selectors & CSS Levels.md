@@ -148,7 +148,9 @@ There are much more:
 ::content
 ~ ~:column(selector) ~ ~
 
-~ ~E /foo/ F~ ~
+~~
+E /foo/ F
+~~
 ~~E! > F~~
 ~~:local-link~~
 ~~:nth-match()~~
