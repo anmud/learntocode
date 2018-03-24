@@ -5,7 +5,7 @@
 * adjacent sibling selector (+)
 * general sibling selector (~)
 
-**Descendant selector** - matches only list items inside of unordered list (nested `<li>`s):
+1. **Descendant selector** - matches only list items inside of unordered list (nested `<li>`s):
 
 ```css
 ul li,
@@ -14,14 +14,14 @@ ol li
 ![descendantSelector](./descendantSelector.png)
 
 
-**Child selector** - only matches `<li>` items inside ordered list:
+2. **Child selector** - only matches `<li>` items inside ordered list:
 
 ```css
 ol>li
 ```
 ![childSelector](./childSelector.png)
 
-**Adjacent sibling** - selects all elements that are the adjacent siblings of a specified element.
+3. **Adjacent sibling** - selects all elements that are the adjacent siblings of a specified element.
 Sibling elements must have the same parent element, and "adjacent" means "immediately following".
 
 ```css
