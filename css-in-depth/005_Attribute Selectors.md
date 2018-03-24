@@ -22,6 +22,7 @@ a[target="_blank"] {
 ```
 
 * The `E[attr|=val]` selector is uded to selects elements whose attribute has a value or begins with val- ("val" plus "-").
+
 **CSS Snippet**
 ```css
 p[lang|="en"]{
@@ -40,6 +41,7 @@ The following example selects all elements with a title attribute that contains 
 **Level 3 Attribute Selectors**
 
 * `The E[attr^=val]` selector is used to select elements whose attribute starts with the value.
+
 **CSS Snippet**
 ```css
 a[href^=mailto] {
@@ -52,6 +54,7 @@ a[href^=http]:after {
 	}
 	```
 * The `E[attr$=val]` selector is used to select elements whose attribute ends in value. 
+
 **CSS Snippet**
 ```css
 a[href$=pdf] {
@@ -71,6 +74,7 @@ a[href$=pdf]:after {
 The attribute selectors can be useful for styling forms without class or ID:
 
 Example:
+
 **CSS Snippet**
 ```css
 input[type="text"] {
