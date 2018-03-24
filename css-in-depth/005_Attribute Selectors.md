@@ -107,6 +107,9 @@ li[id$="case"] {
 </ul>
 ```
 
+In html5 attribute values are not case sensitive and attributes themselves are not case sensitive. But the are some that are case sensitive - those that we create ourselves are case sensitive. 
+
+
 **For Styling Forms**
 
 The attribute selectors can be useful for styling forms without class or ID:
