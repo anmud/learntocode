@@ -10,22 +10,22 @@ In CSS you can target anything and style it the way you  want. Fex. here we styl
 
 Here are the examples of selectors structure:
 
-1. ` ` selectorB{
+ ` ` selectorB{
     property1:value1;
     property2:value2;
 }` ` 
 
 
-2. ` `  selectorB{
+` `  selectorB{
     property1:value3;
     property2:value4;
  }` ` 
 
-3. ` ` selector: pseudo-class::pseudo-element{
+ ` ` selector: pseudo-class::pseudo-element{
     -vendor-property: value;  
 }` `
 
-4. selector[attribute],
+ selector[attribute],
 selector  ̰ relation{
     property: -vendor-value;
     -vendor-property: -vendor-value;
