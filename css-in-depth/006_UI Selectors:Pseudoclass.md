@@ -1,4 +1,4 @@
-##A pseudo-class is used to define a special state of an element.
+## A pseudo-class is used to define a special state of an element.
 
 For example, it can be used to:
 
@@ -8,7 +8,7 @@ For example, it can be used to:
 
 In `html` you can have elements that are enable or disabled, you can have elements that are checked or not checked. 
 
-##Based on current state of UI
+## Based on current state of UI
 
   `:enabled`
 
@@ -18,7 +18,7 @@ In `html` you can have elements that are enable or disabled, you can have elemen
 
   `:indeterminate` (Level 4)
 
-###Example:
+### Example:
 
 Any label (+  means immediately following) that comes immediately after the checked input of type checkbox should have red color. 
 
@@ -33,7 +33,7 @@ And because i was thinking about accessibility and included a label i would actu
 
 CSS updates immediately, we just update the UI feature. 
 
-##Form related pseudoclasses:
+## Form related pseudoclasses:
 
 `:default`
 
@@ -57,7 +57,7 @@ CSS updates immediately, we just update the UI feature.
 
 `:user-error or :user-invalid`
 
-###Examples
+### Examples
 
 If it’s valid - a border is 1px solid green. If it’s invalid - a border is 1px solid red. 
 
