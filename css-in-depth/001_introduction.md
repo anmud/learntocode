@@ -56,6 +56,17 @@ Here are a few of the most popular CSS preprocessors:
 * SASS
 * LESS
 * Stylus
-* PostCSS
+* PostCSS 
 
+# Debuggers 
+Writing CSS is so much easier when you have access to a debugger or a CSS validator. Some tools allow you to identify and fix anything that might be wrong with your code. 
+
+Firefox ⇾ Firebug ⇾ Firefox Developer Tools
+Opera ⇾ DragonFly
+IE and EDGE ⇾ F12
+Safary ⇾ Web Inspector
+Chrome ⇾ Developer Tools
+Mobile ⇾ Weinr
+Mobile ⇾ Remote debugging by IP
+Mobile ⇾ Tethered debugging 
 
