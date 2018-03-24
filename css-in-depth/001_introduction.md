@@ -53,9 +53,9 @@ To use a CSS preprocessor, you must install a CSS compiler on your web server.
 
 Here are a few of the most popular CSS preprocessors:
 
-*SASS
-*LESS
-*Stylus
-*PostCSS
+.*SASS
+.*LESS
+.*Stylus
+.*PostCSS
 
 
