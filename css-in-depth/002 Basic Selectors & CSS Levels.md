@@ -57,3 +57,102 @@ E[attribute|=value]
 :first-letter
 :first-line
 ```
+In CSS 3 we have more:
+
+```
+::before
+::after
+::first-letter
+::first-line
+
+E[attribute^=value]
+E[attribute$=value]
+E[attribute*=value]
+
+E ~ F
+:root
+E:last-child
+E:only-child
+E:nth-child(n)
+E:nth-last-child(n)
+
+E:first-of-type
+E:last-of-type
+E:only-of-type
+E:nth-of-type(n)
+E:nth-last-of-type(n)
+
+E:empty
+E:not(selector)
+E:target
+```
+In UI specification we have:
+```
+E:enabled
+E:disabled
+E:checked
+E:default
+E:valid
+E:invalid
+E:in-range
+E:out-of-range
+E:required
+E:optional
+E:read-only
+E:read-write
+```
+CSS level 4:
+```
+:blank
+:indeterminate
+:placeholder-shown
+:not(s1, s2)
+:matches(s1, s2)
+
+:has(rs1, rs2)
+[foo="bar" i]
+:dir(ltr)
+:lang(zh, *-hant)
+:any-link
+:scope
+
+:current
+:focus-ring
+:drop
+:drop(active)
+:drop(valid)
+:drop(invalid)
+
+:user-error
+E >> F
+F || E
+:nth-column(n)
+:nth-last-column(n)
+```
+There are much more:
+```
+::selection
+:scope-context()
+:current(s)
+:past
+
+:future
+:host
+:host()
+:host-context()
+
+::shadow
+::content
+~~:column(selector)~~
+
+~~E /foo/ F~~
+~~E! > F~~
+~~:local-link~~
+~~:nth-match()~~
+```
+
+
+
+
+
+
