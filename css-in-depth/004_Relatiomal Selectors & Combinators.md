@@ -27,4 +27,4 @@ Sibling elements must have the same parent element, and "adjacent" means "immedi
 ```css
 li.hasaclass + li
 ```
-![adjacentSiblingSelector](./adjacentSiblingSelector)
+![adjacentSiblingSelector](./adjacentSiblingSelector.png)
