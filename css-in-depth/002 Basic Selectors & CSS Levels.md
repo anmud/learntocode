@@ -146,9 +146,9 @@ There are much more:
 
 ::shadow
 ::content
-~~:column(selector)~~
+~ ~:column(selector) ~ ~
 
-~~E /foo/ F~~
+~ ~E /foo/ F~ ~
 ~~E! > F~~
 ~~:local-link~~
 ~~:nth-match()~~
