@@ -12,27 +12,35 @@ color:#E2007A
 
 Here are the examples of selectors structure:
 
-` ` selectorB{
+```
+ selectorB{
     property1:value1;
     property2:value2;
-}` ` 
+}
+```
 
 
-` `  selectorB{
+```
+selectorB{
     property1:value3;
     property2:value4;
- }` ` 
+ }
+ ```
 
-` ` selector: pseudo-class::pseudo-element{
+```
+selector: pseudo-class::pseudo-element{
     -vendor-property: value;  
-}` `
+}
+```
 
-` ` selector[attribute],
-selector ˜ relation{
+```
+selector[attribute],
+selector ~ relation{
     property: -vendor-value;
     -vendor-property: -vendor-value;
     -vendor-property: weirdsyntax;
-}` ` 
+}
+```
 
 Some of this will be prefixed. Generally you don’t use prefix properties. But remove the most border radius and remove a webkit, and your gradient from your code. The reason a lot of CSS properties stay prefixed used to be because of the performance. 
 If you use webkit border radius or webkit border gradient the only device that needs this is an old android device. 
