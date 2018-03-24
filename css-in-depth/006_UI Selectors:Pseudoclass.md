@@ -85,17 +85,17 @@ If we put 4, it’s not valid, and out of range.
 
 If we put 5 - it’s valid, because it is in range. 
 
-![validExample](./validExampple.png)
+![validExample](./validExample.png)
 
 In the second example, if we put -3, it’s not valid 
 
-![invalidSecondExample](./invalidSecondExample)
+![invalidSecondExample](./invalidSecondExample.png)
 
 If we put 3.1 - valid
 
-![validSecondExample](./validSecondExample)
+![validSecondExample](./validSecondExample.png)
 
 If we put 3.15 - invalid 
 
-![invalidThirdExample](./invalidThirdExample)
+![invalidThirdExample](./invalidThirdExample.png)
 
