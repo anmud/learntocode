@@ -2,16 +2,19 @@
 
 In CSS you can target anything and style it the way you  want. Fex. here we style every 3-rd list item, using selectors.
 
-̀li: nth-last-of-type(3n){color:#E2007A}̀
+` sdfsfs `
 
 ![my image name](./listItemsStyle.png)
 
 Here are the examples of selectors structure:
 
---selectorA{
+```css
+{
     property1:value1;
     property2:value2;
-}--
+}
+```
+
 
 --selectorB{
     property1:value3;
