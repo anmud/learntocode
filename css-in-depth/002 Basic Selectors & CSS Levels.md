@@ -13,7 +13,7 @@ Example:
 ```html
 <ul>
 <li id="myId" class="myClass">Item 1</li>
-<li class="myClass>Item 2</ly>
+<li class="myClass">Item 2</li>
 <li>Item 3</li>
 </ul>
 ```
