@@ -155,6 +155,6 @@ There are much more:
 </pre></code>
 
 And some of them’ve been removed. 
-All selectors are [here](https://estelle.github.io/cssmastery/selectors/selectors.html)
+All selectors are [here.](https://estelle.github.io/cssmastery/selectors/selectors.html)
 
 
