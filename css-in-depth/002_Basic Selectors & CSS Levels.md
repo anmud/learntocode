@@ -8,7 +8,7 @@ There are 3 basic selectors:
 
 Any time you have an ID you can target it with html, css and javascript. Concerning specificity, always do it as broad as possible. 
 
-###Example:
+### Example:
 
 **HTML Snippet**
 ```html
