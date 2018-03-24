@@ -1,4 +1,4 @@
-**A pseudo-class is used to define a special state of an element.**
+##A pseudo-class is used to define a special state of an element.
 
 For example, it can be used to:
 
@@ -8,17 +8,14 @@ For example, it can be used to:
 
 In `html` you can have elements that are enable or disabled, you can have elements that are checked or not checked. 
 
-Based on current state of UI
+##Based on current state of UI
 
   `:enabled`
-
   `:disabled`
-
   `:checked`
-
   `:indeterminate` (Level 4)
 
-Example:
+###Example:
 
 Any label (+  means immediately following) that comes immediately after the checked input of type checkbox should have red color. 
 
@@ -33,23 +30,43 @@ And because i was thinking about accessibility and included a label i would actu
 
 CSS updates immediately, we just update the UI feature. 
 
-The UI features that we have:
+##Form related pseudoclasses:
 
-:default
+`:default`
+`:valid`
+`:invalid`
+`:required`
+`:optional`
+`:in-range`
+`:out-of-range`
+`:read-only`
+`:read-write`
+`:placeholder-shown`
+`:user-error or :user-invalid`
 
-:valid
+###Examples
 
-:invalid
+If it’s valid - a border is 1px solid green. If it’s invalid - a border is 1px solid red. 
 
-:required
-:optional
+If required and “true” - a border is 5px
 
-:in-range
-:out-of-range
+If optional (not required) - 10px
 
-:read-only
-:read-write
+If out-of-range (за пределами указанных в коде чисел, а именно от 5 до 7; не может быть к примеру 5.2)- background color is pink. Because in html when you have a range you have “min” and “max” - here the step attribute is not included. If the step attribute (like in example with 0-10) is not included - the default value is 1. 
 
-:placeholder-shown
+If in-range - background color is lightgreen 
 
-:user-error or :user-invalid
+```css
+input:valid { border: 1px solid green;}
+input:invalid { border: 1px solid red;}
+input:required,
+input[aria-required="true"] {border-width: 5px;}
+input:optional {border-width: 10px;}
+input:out-of-range { background-color: pink;}
+input:in-range { background-color:lightgreen;}
+```
+
+If we put 4, it’s not valid, and out of range. 
+![invalidExample](./invalidExample.png)
+
+

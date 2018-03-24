@@ -1,4 +1,4 @@
-**There are four different combinators in CSS:**
+#There are four different combinators in CSS:
 
 * descendant selector (space)
 * child selector (>)
@@ -36,7 +36,7 @@ div ~ p
 ```
 ![generalSiblingSelector](./generalSiblingSelector.png)
 
-**In JavaScript**
+##In JavaScript
 
 Selectors API
 

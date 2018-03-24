@@ -1,4 +1,4 @@
-Specificity is all about the value. 
+**Specificity is all about the value.**
 
 
 * 1-0-0: ID selector

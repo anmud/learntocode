@@ -42,7 +42,7 @@ The following example selects all elements with a title attribute that contains 
 	border: 5px solid yellow;
 }
 ```
-**Level 3 Attribute Selectors**
+##Level 3 Attribute Selectors
 
 * `The E[attr^=val]` selector is used to select elements whose attribute starts with the value.
 
@@ -59,7 +59,6 @@ a[href^=http]:after {
 	}
 ```
 * The `E[attr$=val]` selector is used to select elements whose attribute ends in value. 
-
 
 
 ```css
@@ -110,11 +109,11 @@ li[id$="case"] {
 In html5 attribute values are not case sensitive and attributes themselves are not case sensitive. But the are some that are case sensitive - those that we create ourselves are case sensitive. 
 
 
-**For Styling Forms**
+##For Styling Forms
 
 The attribute selectors can be useful for styling forms without class or ID:
 
-Example:
+###Example:
 
 ```css
 input[type="text"] {
@@ -132,7 +131,6 @@ input[type="button"] {
 	display: block;
 }
 ```
-**Case Insensitivity**
 
 
 
