@@ -38,19 +38,19 @@ div ~ p
 
 **In JavaScript**
 
-```java
+```js
 var chil = $('#bar .foo');
 ```
  
 Natively
 
-```java
+```js
 var el   = document.querySelector('#bar');
 
 var chil = el.querySelectorAll('.foo');
 ```
 or
 
-```java
+```js
 chil = document.querySelectorAll('#bar .foo');
 ```
