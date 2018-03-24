@@ -2,9 +2,11 @@
 
 In CSS you can target anything and style it the way you  want. Fex. here we style every 3-rd list item, using selectors.
 
-` `  li: nth-last-of-type(3n){
-    color:#E2007A
-    }` ` 
+``` 
+li: nth-last-of-type(3n){
+color:#E2007A
+}
+``` 
 
 ![my image name](./listItemsStyle.png)
 
@@ -26,7 +28,7 @@ Here are the examples of selectors structure:
 }` `
 
 ` ` selector[attribute],
-selector  ̰ relation{
+selector ˜ relation{
     property: -vendor-value;
     -vendor-property: -vendor-value;
     -vendor-property: weirdsyntax;
@@ -36,5 +38,6 @@ Some of this will be prefixed. Generally you don’t use prefix properties. But 
 If you use webkit border radius or webkit border gradient the only device that needs this is an old android device. 
 
 # Preprocessors
+
 
 
