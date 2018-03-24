@@ -1,7 +1,7 @@
 
 **Every `html` element can have a number of attributes. Some of them are valid, some of them are invalid.**
 
-* The `[attribute]` selector is used to select elements with a specified attribute.
+## The `[attribute]` selector is used to select elements with a specified attribute.
 The following example selects all `<a>` elements with a target attribute:
 
 
@@ -11,7 +11,7 @@ a [target] {
 }
 ```
 
-* The `[attribute="value"]` selector is used to select elements with a specified attribute and value.
+## The `[attribute="value"]` selector is used to select elements with a specified attribute and value.
 The following example selects all `<a>` elements with a `target="_blank"` attribute:
 
 
@@ -22,7 +22,7 @@ a[target="_blank"] {
 }
 ```
 
-* The `E[attr|=val]` selector is uded to selects elements whose attribute has a value or begins with val- ("val" plus "-").
+## The `E[attr|=val]` selector is uded to selects elements whose attribute has a value or begins with val- ("val" plus "-").
 
 
 
@@ -32,7 +32,7 @@ p[lang|="en"]{
 	}
 ```
 
-* The `[attribute~="value"]` selector is used to select elements with an attribute value containing a specified word.
+## The `[attribute~="value"]` selector is used to select elements with an attribute value containing a specified word.
 The following example selects all elements with a title attribute that contains a space-separated list of words, one of which is "flower":
 
 
@@ -42,9 +42,9 @@ The following example selects all elements with a title attribute that contains 
 	border: 5px solid yellow;
 }
 ```
-##Level 3 Attribute Selectors
+# Level 3 Attribute Selectors
 
-* `The E[attr^=val]` selector is used to select elements whose attribute starts with the value.
+## `The E[attr^=val]` selector is used to select elements whose attribute starts with the value.
 
 
 
@@ -58,7 +58,7 @@ a[href^=http]:after {
 	content: " (" attr(href) ")";
 	}
 ```
-* The `E[attr$=val]` selector is used to select elements whose attribute ends in value. 
+## The `E[attr$=val]` selector is used to select elements whose attribute ends in value. 
 
 
 ```css
@@ -72,9 +72,9 @@ a[href$=pdf]:after {
 	}
 ```
 
-* The `E[attr*=val]` selector is used to select elements with the val that’s anywhere in the content.
+## The `E[attr*=val]` selector is used to select elements with the val that’s anywhere in the content.
 
-* The `E:[att*=VAL i]` selector 
+## The `E:[att*=VAL i]` selector 
 
 By default, case-sensitivity of attribute names and values in selectors depends on the document language. That's why an additional modifier (i) for CSS attribute selectors has been added to allow an author to match an attribute's value case-insensitively within the ASCII range.
 
