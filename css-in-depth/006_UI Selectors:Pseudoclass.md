@@ -11,8 +11,11 @@ In `html` you can have elements that are enable or disabled, you can have elemen
 ##Based on current state of UI
 
   `:enabled`
+
   `:disabled`
+
   `:checked`
+
   `:indeterminate` (Level 4)
 
 ###Example:
@@ -33,15 +36,25 @@ CSS updates immediately, we just update the UI feature.
 ##Form related pseudoclasses:
 
 `:default`
+
 `:valid`
+
 `:invalid`
+
 `:required`
+
 `:optional`
+
 `:in-range`
+
 `:out-of-range`
+
 `:read-only`
+
 `:read-write`
+
 `:placeholder-shown`
+
 `:user-error or :user-invalid`
 
 ###Examples
