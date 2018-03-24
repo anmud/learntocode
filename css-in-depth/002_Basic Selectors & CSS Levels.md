@@ -10,6 +10,7 @@ Any time you have an ID you can target it with html, css and javascript. Concern
 
 Example:
 
+**HTML Snippet**
 ```html
 <ul>
 <li id="myId" class="myClass">Item 1</li>
@@ -17,7 +18,7 @@ Example:
 <li>Item 3</li>
 </ul>
 ```
-
+**CSS Snippet**
 ```css
 ul{font-weight:bold;}
 li{color:yellow;}

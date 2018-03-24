@@ -22,7 +22,6 @@ Here are the examples of selectors structure:
 }
 ```
 
-**CSS Snippet**
 ```css
 selectorB{
     property1:value3;
