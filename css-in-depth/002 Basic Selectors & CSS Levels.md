@@ -146,19 +146,12 @@ There are much more:
 
 ::shadow
 ::content
-
+```
 <pre><code><del>:column(selector)</del>
 <del>E /foo/ F</del>
 <del>E! > F</del>
 <del>:local-link</del>
 <del>:nth-match()</del>
-</pre></code>
-```
-
-
-
-<pre><code><del>some stricken code</del>
-<del>A second line of stricken code</del>
 </pre></code>
 
 
