@@ -34,3 +34,10 @@ Structural Selectors are the following:
 
 ### Example
 
+```css
+* { color: hsl(205, 87%, 50%); text-decoration: underline;}
+```
+![StructuralSelecrors1](./StructuralSelectors1.png)
+![StructuralSelecrors2](./StructuralSelectors2.png)
+![StructuralSelecrors3](./StructuralSelectors3.png)
+![StructuralSelecrors4](./StructuralSelectors4.png)
