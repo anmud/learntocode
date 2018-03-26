@@ -71,8 +71,27 @@ body :last-child { color: hsl(205, 87%, 50%); text-decoration: underline;}
 ```
 ![StructuralSelecrors8](./StructuralSelectors8.png)
 
-* If we do `:last-of-type` for the body, it'll match the elements in each div, which are last of ther's type in the div.
+* If we do `:last-of-type` for the body, it'll match the elements in each div, which are last of ther's type within that div.
 ```css
 body :last-of-type { color: hsl(205, 87%, 50%); text-decoration: underline;}
 ```
 ![StructuralSelecrors9](./StructuralSelectors9.png)
+
+* if we do `:last-child`, it'll match the last child in each div.
+
+![StructuralSelecrors10](./StructuralSelectors10.png)
+
+The difference between `:last-child` and `:last-of-type`: it doesn't matter how many elemants there are in the div - `:last-of-type` selector will match every element that is last of ot's type. The `:last-child` selector will match only one last element of the div, and it doesn't matter of what type it is. The thing is, this doesn't match classes. 
+
+If we do  
+```css
+li.foo :last-child 
+```
+This way - if a last element doesn't have a class of `.foo`, it won't match. 
+
+If we do  
+```css
+li.foo :last-of-type
+```
+This way - it will be any element with the class of `.foo` based on it's type. 
+
