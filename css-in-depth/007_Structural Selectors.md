@@ -28,7 +28,7 @@ Structural Selectors are the following:
 
 :only-of-type
 ```
-* These strucrural selectors target elements on the page based on their relationships to other elements in the DOM.
+* These strucrural pseudo classes target elements on the page based on their relationships to other elements in the DOM.
 * Updates dynamically if page updates.
 * Reduced need for extra markup, classes and IDs  * CSS2 / IE8
 
@@ -44,7 +44,7 @@ Now all the text in each div is blue and underlined
 ![StructuralSelectors3](./StructuralSelectors3.png)
 ![StructuralSelectors4](./StructuralSelectors4.png)
 
-* If we use a selector: `:first-of-type`, everything just turn blue (all the text in all the divs).
+* If we use a pseudo class `:first-of-type`, everything just turn blue (all the text in all the divs).
 
 ```css
 :first-of-type {color: hsl(205, 87%, 50%); text-decoration: underline;}
@@ -53,13 +53,13 @@ Now all the text in each div is blue and underlined
 
 It's happened because we've selected the first of everything. And the first of everything is the body. 
 
-* If we use `:first-child` selector for the div of the body, we'll have only the first div blue.
+* If we use `:first-child` pseudo class for the div of the body, we'll have only the first div blue.
 ```css 
 body div:first-child { color: hsl(205, 87%, 50%); text-decoration: underline;}
 ```
  ![StructuralSelectors6](./StructuralSelectors6.png)
 
-* If we use the same selector `:first-child` without mentioning a div in the code, we'll have the blue text of the first child of every div. 
+* If we use the same pseudo class selector `:first-child` without mentioning a div in the code, we'll have the blue text of the first child of every div. 
 ```css
 body :first-child { color: hsl(205, 87%, 50%); text-decoration: underline;}
 ```
@@ -81,7 +81,7 @@ body :last-of-type { color: hsl(205, 87%, 50%); text-decoration: underline;}
 
 ![StructuralSelectors10](./StructuralSelectors10.png)
 
-The difference between `:last-child` and `:last-of-type`: it doesn't matter how many elements there are in the div - `:last-of-type` selector will match every element that is last of it's type. The `:last-child` selector will match only one last element of the div, and it doesn't matter of what type it is. The thing is, this doesn't match classes. 
+The difference between `:last-child` and `:last-of-type`: it doesn't matter how many elements there are in the div - `:last-of-type` pseudo class will match every element that is last of it's type. The `:last-child` selector will match only one last element of the div, and it doesn't matter of what type it is. The thing is, this doesn't match classes. 
 
 If we do  
 ```css
@@ -93,12 +93,63 @@ If we do
 ```css
 li.foo :last-of-type
 ```
-This way - it will be any element with the class of `.foo` based on it's type. 
+This way - it will be any element with the class of `.foo` based on it's type in a div.  
 
 * If we do `:only-of-type`, it'll mach only one of that type. 
 
 ```css
 body :only-of-type { color: hsl(205, 87%, 50%); text-decoration: underline;}
 ```
-![StructuralSelectors10](./StructuralSelectors11.png)
-![StructuralSelectors10](./StructuralSelectors12.png)
+![StructuralSelectors11](./StructuralSelectors11.png)
+![StructuralSelectors12](./StructuralSelectors12.png)
+
+* If we do `:only-child`, it'll match only the last div, cos it have only the child
+
+```css
+body :only-child { color: hsl(205, 87%, 50%); text-decoration: underline;}
+```
+![StructuralSelectors13](./StructuralSelectors13.png)
+
+## There are several nth pseudo-classes.
+
+It will help you to be more specific. nth pseud-classe target element or elements based on argument passed to the selector. 
+
+```css
+:nth-child(3n)
+
+:nth-last-child(odd)
+
+:nth-of-type(5)
+
+:nth-last-of-type(3n+1) 
+```
+n - is an interval
+
+### Example
+
+```css
+li:first-child,
+li:last-child {
+  font-weight: bold;
+}
+li:first-of-type,
+li:last-of-type{
+  text-decoration:line-through;
+}
+li:nth-child(even) {
+  background-color: #CCC;
+}
+li:nth-child(3) {
+  color: #CCC;
+}
+li:nth-of-type(odd) {
+  background-color: #FFF;
+}
+li:nth-of-type(4n) {
+  color: hsl(205, 87%, 50%);
+}
+li:nth-of-type(3n-1) {
+    text-align:right;
+}
+    ```
+![nthpseudoclass](./nthpseudoclass.png)
