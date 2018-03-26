@@ -125,7 +125,7 @@ It will help you to be more specific. nth pseudo-classes target element or eleme
 ```
 n - is an interval
 
-### Example
+### Example 1
 
 ```css
 li:first-child,
@@ -155,3 +155,14 @@ li:nth-of-type(3n-1) {
 ```
 
 ![nthpseudoclass](./nthpseudoclass.png)
+
+### Example 2
+
+```css
+tr:nth-of-type(even) td:nth-of-type(even),
+tr:nth-of-type(odd) td:nth-of-type(odd) {
+	background-color: #900; color: #fff;
+}
+``` 
+![nth-of-type][nth-of-type.png]
+
