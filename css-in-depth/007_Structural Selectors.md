@@ -164,5 +164,5 @@ tr:nth-of-type(odd) td:nth-of-type(odd) {
 	background-color: #900; color: #fff;
 }
 ``` 
-![nth-of-type][nth-of-type.png]
+![nth-of-type][./nth-of-type.png]
 
