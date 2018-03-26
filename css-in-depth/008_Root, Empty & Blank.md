@@ -48,6 +48,6 @@ If an element has just a white space it is blank.
 ```
 But `:blank` is not supported by the browsers yet. it is supported as `:-moz-whitespace-only`. 
 
-*We could actually use `:-moz-whitespace0only` or `:blank` when we are going to do content management, cos it often happens when there are extra spaces at the bottom  accidently and we want to remove all the paragraphs with not bracking space inside.*
+*We could actually use `:-moz-whitespace-only` or `:blank` when we are going to do content management, cos it often happens when there are extra spaces at the bottom  accidently and we want to remove all the paragraphs with not bracking space inside.*
 
  
