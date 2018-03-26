@@ -44,7 +44,7 @@ Now all the text in each div is blue and underlined
 ![StructuralSelecrors3](./StructuralSelectors3.png)
 ![StructuralSelecrors4](./StructuralSelectors4.png)
 
-* If we use a selector: `:first-of-type`, everything just turn blue.
+* If we use a selector: `:first-of-type`, everything just turn blue (all the text in all the divs).
 
 ```css
 :first-of-type {color: hsl(205, 87%, 50%); text-decoration: underline;}
@@ -59,8 +59,20 @@ body div:first-child { color: hsl(205, 87%, 50%); text-decoration: underline;}
 ```
  ![StructuralSelecrors6](./StructuralSelectors6.png)
 
-* If we use the same selector `:first-child` without mentioning a div in the code, we'll have the blue text of the first child in every div. 
+* If we use the same selector `:first-child` without mentioning a div in the code, we'll have the blue text of the first child of every div. 
 ```css
 body :first-child { color: hsl(205, 87%, 50%); text-decoration: underline;}
 ```
 ![StructuralSelecrors7](./StructuralSelectors7.png)
+
+* If we do `:last-child`, it matches the last child of every div.
+```css
+body :last-child { color: hsl(205, 87%, 50%); text-decoration: underline;}
+```
+![StructuralSelecrors8](./StructuralSelectors8.png)
+
+* If we do `:last-of-type` for the body, it'll match the elements in each div, which are last of ther's type in the div.
+```css
+body :last-of-type { color: hsl(205, 87%, 50%); text-decoration: underline;}
+```
+![StructuralSelecrors9](./StructuralSelectors9.png)
