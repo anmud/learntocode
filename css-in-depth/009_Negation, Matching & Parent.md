@@ -45,7 +45,7 @@ li:not(:first-child) {
 E:matches(s1, s2)
 li:matches([title], [role]) a {}
 
-<!-- the same as -->   
+/* the same as */  
 
 css 
 li[title] a, 
