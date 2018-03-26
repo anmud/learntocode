@@ -93,7 +93,7 @@ nav a:not(:-webkit-any(.foo, .bar, .bam)),
 nav a:not(:-moz-any(.foo, .bar, .bam)),
 nav a:not(.foo, .bar, .bam) {
 }
-nav a:not(.foo):not(.bar).not(.bam){
+nav a:not(.foo):not(.bar):not(.bam){
 }
 Removed
 ```
@@ -101,6 +101,35 @@ Removed
 
 Reference combinator
 
-<pre><code><del>
-E /attr/ F</del>
+<pre><code><del>E /attr/ F</del>
 <del>label /for/ input</del></pre></code>
+
+# Parent Selector
+
+Originally it was going to be:
+
+<pre><code><del>E! > F</del></pre></code>
+
+Now it's ging to be: 
+`:has`
+
+For example:
+
+Contains a header
+
+```
+header:has(h1, h2, h3, h4, h5, h6)
+```
+
+Contains no headers
+
+```
+header:not(:has(h1, h2, h3, h4, h5, h6))
+```
+
+Contains something that is not a header
+
+```
+header:has(:not(h1, h2, h3, h4, h5, h6))
+```
+*The `:parent` selector is not supported yet!*
