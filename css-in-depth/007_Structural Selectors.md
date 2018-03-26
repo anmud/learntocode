@@ -112,7 +112,7 @@ body :only-child { color: hsl(205, 87%, 50%); text-decoration: underline;}
 
 ## There are several nth pseudo-classes.
 
-It will help you to be more specific. nth pseud-classe target element or elements based on argument passed to the selector. 
+It will help you to be more specific. nth pseudo-classes target element or elements based on argument passed to the selector. 
 
 ```css
 :nth-child(3n)
@@ -151,5 +151,7 @@ li:nth-of-type(4n) {
 li:nth-of-type(3n-1) {
     text-align:right;
 }
-    ```
+
+```
+
 ![nthpseudoclass](./nthpseudoclass.png)
