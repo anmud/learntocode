@@ -39,17 +39,17 @@ Structural Selectors are the following:
 ```
 Now all the text in each div is blue and underlined
 
-![StructuralSelecrors1](./StructuralSelectors1.png)
-![StructuralSelecrors2](./StructuralSelectors2.png)
-![StructuralSelecrors3](./StructuralSelectors3.png)
-![StructuralSelecrors4](./StructuralSelectors4.png)
+![StructuralSelectors1](./StructuralSelectors1.png)
+![StructuralSelectors2](./StructuralSelectors2.png)
+![StructuralSelectors3](./StructuralSelectors3.png)
+![StructuralSelectors4](./StructuralSelectors4.png)
 
 * If we use a selector: `:first-of-type`, everything just turn blue (all the text in all the divs).
 
 ```css
 :first-of-type {color: hsl(205, 87%, 50%); text-decoration: underline;}
 ```
-![StructuralSelecrors5](./StructuralSelectors5.png)
+![StructuralSelectors5](./StructuralSelectors5.png)
 
 It's happened because we've selected the first of everything. And the first of everything is the body. 
 
@@ -57,31 +57,31 @@ It's happened because we've selected the first of everything. And the first of e
 ```css 
 body div:first-child { color: hsl(205, 87%, 50%); text-decoration: underline;}
 ```
- ![StructuralSelecrors6](./StructuralSelectors6.png)
+ ![StructuralSelectors6](./StructuralSelectors6.png)
 
 * If we use the same selector `:first-child` without mentioning a div in the code, we'll have the blue text of the first child of every div. 
 ```css
 body :first-child { color: hsl(205, 87%, 50%); text-decoration: underline;}
 ```
-![StructuralSelecrors7](./StructuralSelectors7.png)
+![StructuralSelectors7](./StructuralSelectors7.png)
 
 * If we do `:last-child`, it matches the last child of every div.
 ```css
 body :last-child { color: hsl(205, 87%, 50%); text-decoration: underline;}
 ```
-![StructuralSelecrors8](./StructuralSelectors8.png)
+![StructuralSelectors8](./StructuralSelectors8.png)
 
 * If we do `:last-of-type` for the body, it'll match the elements in each div, which are last of ther's type within that div.
 ```css
 body :last-of-type { color: hsl(205, 87%, 50%); text-decoration: underline;}
 ```
-![StructuralSelecrors9](./StructuralSelectors9.png)
+![StructuralSelectors9](./StructuralSelectors9.png)
 
 * if we do `:last-child`, it'll match the last child in each div.
 
-![StructuralSelecrors10](./StructuralSelectors10.png)
+![StructuralSelectors10](./StructuralSelectors10.png)
 
-The difference between `:last-child` and `:last-of-type`: it doesn't matter how many elemants there are in the div - `:last-of-type` selector will match every element that is last of ot's type. The `:last-child` selector will match only one last element of the div, and it doesn't matter of what type it is. The thing is, this doesn't match classes. 
+The difference between `:last-child` and `:last-of-type`: it doesn't matter how many elements there are in the div - `:last-of-type` selector will match every element that is last of it's type. The `:last-child` selector will match only one last element of the div, and it doesn't matter of what type it is. The thing is, this doesn't match classes. 
 
 If we do  
 ```css
@@ -95,3 +95,10 @@ li.foo :last-of-type
 ```
 This way - it will be any element with the class of `.foo` based on it's type. 
 
+* If we do `:only-of-type`, it'll mach only one of that type. 
+
+```css
+body :only-of-type { color: hsl(205, 87%, 50%); text-decoration: underline;}
+```
+![StructuralSelectors10](./StructuralSelectors11.png)
+![StructuralSelectors10](./StructuralSelectors12.png)
