@@ -13,7 +13,7 @@ You can target an element that has no child elements but please notice that whit
 
 ### Example
 
-**HTML***
+**HTML**
 ```html
 <div class=”box”>
  <span>Not empty</span>
@@ -43,6 +43,11 @@ Please notice that the HTML comments aren’t considered child.
 # `:blank` pseudoclass / E:blank 
 
 If an element has just a white space it is blank. 
+```html
 <E>   <!-- has white space -->   </E>
-But :blank is not supported by the browsers yet. it is supported as `:-moz-whitespace-only`. 
+```
+But `:blank` is not supported by the browsers yet. it is supported as `:-moz-whitespace-only`. 
 
+*We could actually use `:-moz-whitespace0only` or `:blank` when we are going to do content management, cos it often happens when there are extra spaces at the bottom  accidently and we want to remove all the paragraphs with not bracking space inside.*
+
+ 
