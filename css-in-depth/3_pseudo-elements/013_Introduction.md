@@ -78,5 +78,5 @@ The following CSS properties can be applied to ::selection: color, background, c
 </html>
 ```
 
-![selectionPseudoElement](./selectionPseudoelement.png)
+![selectionPseudoElement](./selectionPseudoElement.png)
 
