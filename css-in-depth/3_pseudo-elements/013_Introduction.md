@@ -33,7 +33,7 @@ p:first-of-type::first-letter {
 }
 ```
 
-![firstletterPseudoElement](./firstletterPseudoElement.png)
+![firstletterPseudoElement](../firstletterPseudoElement.png)
 
 * `::selection` pseudo-element
 
@@ -78,6 +78,6 @@ The following CSS properties can be applied to ::selection: color, background, c
 </html>
 ```
 
-![selectionPseudoElement](./selectionPseudoElement.png)
+![selectionPseudoElement](../selectionPseudoElement.png)
 
 
