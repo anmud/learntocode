@@ -83,3 +83,22 @@ Hack in case of emergency
 
 `a:not(#idDoesNotExist#idDoesNotExist#idDoesNotExist)`
 
+Worst case scenario how to override `!important`
+
+```
+li { 
+  color: white !important;
+}
+```
+
+```
+li {
+  animation: color forwards;
+  }
+@keyframes color {
+  100% { color: #f50; }
+}
+```
+* id="foo" class="li"
+* id="bar" class="li"
+* id="baz"
