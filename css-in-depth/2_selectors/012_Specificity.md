@@ -99,6 +99,4 @@ li {
   100% { color: #f50; }
 }
 ```
-* id="foo" class="li"
-* id="bar" class="li"
-* id="baz"
+![overrideimportant](./overrideimportant.png)
