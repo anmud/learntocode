@@ -80,3 +80,4 @@ The following CSS properties can be applied to ::selection: color, background, c
 
 ![selectionPseudoElement](./selectionPseudoElement.png)
 
+
