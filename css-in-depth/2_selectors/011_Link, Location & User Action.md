@@ -116,5 +116,43 @@ p:target i {
   color: red;
 }
 ```
+![targetPseudoClass](./targetPseudoClass.png)
+
+**`:scope` pseudoclass**
+
+This pseudo-class is called scope pseudo-class and represents any element that is in the contextual reference element set and if the contextual reference element set is empty `:scope` is equivalent to `:root`.
+
+# Grid-stuctural selectors
+
+**Column combinator** 
+
+`E || F`
+
+```css
+col.selected || td {
+  /* matches all cells within the column's scope*/
+}
+```
+
+```
+:nth-column(An+B)
+:nth-last-column(An+B)
+```
+## Time dimensional
+
+```
+:current
+:future
+:past
+```
+## Video & Audio
+
+```
+:playing
+:paused
+```
+
+
+
 
 
