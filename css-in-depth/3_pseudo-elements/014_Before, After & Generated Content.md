@@ -16,7 +16,7 @@ p:after{
  <p>the content</p>
  ```
 
-![beforeafterPseudoElement](./beforeafterPseudoElement.png)
+![beforeafterPseudoElement](../beforeafterPseudoElement.png)
 
 
  
