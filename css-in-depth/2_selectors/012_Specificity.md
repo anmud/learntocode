@@ -10,7 +10,7 @@
 
 `:not()` negation-selector has no value, argument increases it's specificity 
 
-Calculating exact specificity values seems tricky at first. You need to:
+**Calculating exact specificity values seems tricky at first. You need to:**
 
 * count the number of ID selectors in the selector (= A)
 
@@ -46,6 +46,40 @@ a.external {
 ```
 If we applied this CSS, every link would be slate blue except for those with class="external" applied. Those links would be orange instead.
 
-[Here you can find CSS Specificity with icons](http://cssspecificity.com/)
+[Here you can find CSS Specificity with icons](http://cssspecificity.com/)[and here](http://specifishity.com/specifishity.pdf)
 
 [Here you can find the CSS calculator](https://specificity.keegan.st/)
+
+**N.B. Avoid `!important`**
+
+There are few ways to avid important
+
+Hacking specificity
+
+```
+.disabled {cursor: default !important;}
+p.btn {cursor: pointer;}
+```
+
+v.
+
+```.disabled.disabled.disabled {cursor: default;}
+p.btn {cursor: pointer;}
+```
+
+Hacking specificity with IDs
+
+```#TheirWidget {background-color: blue !important;}
+#3rdPartyWidget {background-color: white;}
+```
+
+v. (use several IDs)
+```
+#TheirWidget#TheirWidget {background-color: blue ;}
+#3rdPartyWidget {background-color: white;}
+```
+
+Hack in case of emergency
+
+`a:not(#idDoesNotExist#idDoesNotExist#idDoesNotExist)`
+
