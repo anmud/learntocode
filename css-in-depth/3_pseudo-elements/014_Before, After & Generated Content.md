@@ -15,6 +15,13 @@ p:after{
  ```html
  <p>the content</p>
  ```
+```html
+<p>
+    <before>before content - </before>
+        the content
+    <after> - after content</after>
+</p>
+```
 
 ![beforeafterPseudoElement](../beforeafterPseudoElement.png)
 
