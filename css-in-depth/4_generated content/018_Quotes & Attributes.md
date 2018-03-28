@@ -79,4 +79,4 @@ a[href^=http]:hover:after {
    line-height:1;
 } 
 ```
-![generated-content_attributes](../generated-content_attributes)
+![generated-content_attributes](../generated-content_attributes.png)
