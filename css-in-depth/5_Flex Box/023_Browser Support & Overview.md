@@ -2,7 +2,7 @@
 
 CSS Flexible Box Layout Module Level 1
 
-<dev.w3.org/csswg/css-flexbox/>
+[dev.w3.org/csswg/css-flexbox/]
 
 
 [Browser support](https://caniuse.com/#feat=flexbox)
