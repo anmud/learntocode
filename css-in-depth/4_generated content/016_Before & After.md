@@ -1,4 +1,8 @@
-# Syntax
+# Generated Content
+
+CSS generated content is a technique that allows content (HTML and/or images) to be inserted into the DOM without actually being included in the HTML.
+
+## Syntax
 
 ```css
 element::before {
