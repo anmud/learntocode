@@ -50,3 +50,23 @@ paragraph 3:JavaScript Tutorial
 
 **Note:** IE8 supports these properties only if a !DOCTYPE is specified.
 
+## attr() support, or lack thereof
+Html elements can have any number of attributes. and when we do attributhe with the attribute name on an element, it will print the value. If it prints the value of the string, it will not interpolate the value of that string. 
+If we put the image, it will give us just the url of the image, not actually put the image. 
+
+Supported
+
+`attr( attrName )`
+
+Not yet
+
+* `attr( attrName unit? [ , fallback ]? )`
+* any use outside of content:
+`string` `color` `url` `integer` `number` `length`, `angle`, `time or frequency` `length or unit token`
+
+in the future we'll have: 
+
+```<p data-count="5">Hi</p>
+
+width: attr(data-count em, auto);
+```
