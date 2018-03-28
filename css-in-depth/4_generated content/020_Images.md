@@ -22,6 +22,7 @@ Content is not parsed, so url(attr()) does not work.
 ![hover-button](../hover-button.png)
 
 When we hover we see:
+
 ![hover-button-image](../hover-button-image.png)
 
 ### Example 2
@@ -38,3 +39,4 @@ a:before {
 }
 ```
 ![generated-content-image](../generated-content-image.png)
+
