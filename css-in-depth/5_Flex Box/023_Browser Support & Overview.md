@@ -39,4 +39,26 @@ ul > li {
 ```
 ![nav-items2](../nav-items2.png)
 
+# Holy Grail Layout
+
+![holy-grail-layout](..//holy-grail-layout.png)
+
+```css
+
+body {
+  display: flex;
+  flex-flow: column;
+}
+main {
+  display: flex;
+  flex: 1;
+}
+article {
+  flex: 1;
+}
+nav {
+  order: -1;
+}
+```
+
 
