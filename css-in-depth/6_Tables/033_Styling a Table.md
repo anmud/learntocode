@@ -16,3 +16,7 @@ Syntax
 <thead>....
 ```
 ![table-columns](../table-columns.png)
+
+or 
+
+![styling-a-table](../styling-a-table.png)
