@@ -11,7 +11,7 @@
 
 The power of flex box is - when you cange language the axis changes (e.g. from left-to-right to right-to-left / from top-to-bottom to bottom-to-top). 
 
-## Flex wrap property 
+## Flex-wrap property 
 
 * nowrap (default)
 * wrap
