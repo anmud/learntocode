@@ -9,7 +9,7 @@
 * space-around
 * space-evenly
 
- aligns flex items along the main axis
+ Aligns flex items along the main axis
 
 ## Align-items property
 
@@ -19,9 +19,11 @@
 * baseline
 * stretch
 
-aligns flex items along the cross axis
+Aligns flex items along the cross axis
 
 ## Align-content property
+
+The align-content property modifies the behavior of the flex-wrap property. It is similar to align-items, but instead of aligning flex items, it aligns flex lines.
 
 * flex-start
 * flex-end
