@@ -45,4 +45,4 @@ Flex: 2 1 auto - here the growth factor - is 2
 If the flex basis is auto   - this element's basis width, or it's main size - is the size of it's content. 
 extra space is devided into 6 parts and then give each one of the flex items 1/6 - if the growth factor is 1; 2/6 if the growth factor is 2 and 50% of the available space when the growth factor is 3. 
 
-If the flex basis is 0 - it means by default the width of the element is 0. 
+If the flex basis is 0 - it means by default the width of the element is 0. So a 100% of the width of the container is the available space to be devided with the growth factors. 
