@@ -9,7 +9,7 @@ grid-row-start / grid-column-start / grid-row-end / grid-column-end
 grid-column-end was omitted 
 d = named grid-column-start || auto
 
-![one-column-wide](../one-column--wide.png)
+![one-column-wide](../one-column-wide.png)
 
 `grid-area: a / b; `
 
