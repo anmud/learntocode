@@ -44,6 +44,15 @@ grid-template-columns:
 
 We can have the same with rows
 
+```
+grid-template-rows: 
+  150px 150px 150px;
+  repeat(3, 150px);
+  275px repeat(2, 150px);
+  100px 1fr 2fr;
+  ```
+### Example 
+
 ```css
 ol { 
   display: grid;
@@ -53,14 +62,6 @@ grid-template-rows: 50px 1fr 2fr;
 }
 ```
 ![grid-rows](../grid-rows.png)
-
-```
-grid-template-rows: 
-  150px 150px 150px;
-  repeat(3, 150px);
-  275px repeat(2, 150px);
-  100px 1fr 2fr;
-  ```
 
 Mix units!!!
 That's the power of grid! Or,at least one of the powers.
