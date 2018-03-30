@@ -20,3 +20,4 @@ Syntax
 or 
 
 ![styling-a-table](../styling-a-table.png)
+
