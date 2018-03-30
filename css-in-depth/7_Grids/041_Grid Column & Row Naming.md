@@ -39,7 +39,7 @@ ol {
 
   ![grid-naming](../grid-naming.png)
 
-  or the same result 
+  or 
 
   ```css
   ol { 
