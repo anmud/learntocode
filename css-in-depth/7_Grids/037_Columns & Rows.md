@@ -66,3 +66,14 @@ grid-template-rows: 50px 1fr 2fr;
 Mix units!!!
 That's the power of grid! Or,at least one of the powers.
 
+## Naming Grid Lines
+
+You can name grid lines:
+
+```css
+grid-template-columns: 
+  [start] 150px 150px 150px [end];
+  ```
+
+* You can name none, some or all of the lines
+* To name, put brackets around the ident
