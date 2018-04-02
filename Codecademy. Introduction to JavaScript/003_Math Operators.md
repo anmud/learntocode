@@ -19,6 +19,5 @@ console.log(9 / 3); // Equals 3
 ```
 In the example above, each line uses a different mathematical operator to log a value to the console.
 
-### Examples
 
-![built-in-methods](./built-in-methods.png)
+
