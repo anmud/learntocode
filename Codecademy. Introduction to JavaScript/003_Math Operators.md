@@ -4,10 +4,11 @@ Don't worry! Math doesn't need to be your strong-suit to learn JavaScript. Howev
 
 JavaScript supports the following math operators:
 
-Add: +
-Subtract: -
-Multiply: *
-Divide: /
+* Add: +
+* Subtract: -
+* Multiply: *
+* Divide: /
+
 These all work how you might guess:
 
 ```js
@@ -17,3 +18,7 @@ console.log(4 * 2); // Equals 8
 console.log(9 / 3); // Equals 3
 ```
 In the example above, each line uses a different mathematical operator to log a value to the console.
+
+### Examples
+
+![built-in-methods](./built-in-methods.png)
