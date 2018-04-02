@@ -18,4 +18,4 @@ You can find a list of built-in string methods in the [JavaScript documentation]
 
 ### Examples
 
-![built-in-methods](./built-in-methods.png)
+![built-in-methods](../built-in-methods.png)

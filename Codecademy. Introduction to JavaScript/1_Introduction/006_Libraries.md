@@ -32,11 +32,11 @@ In this case:
 
 ### Example
 
-![math-floor](./math-floor.png)
+![math-floor](../math-floor.png)
 
-![math-ceil](./math-ceil.png)
+![math-ceil](../math-ceil.png)
 
-![math-integer](./math-integer.png)
+![math-integer](../math-integer.png)
 
 Here is JavaScript [Math Library](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math); [Number Library](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
 

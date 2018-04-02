@@ -26,4 +26,4 @@ Single line comments are great for adding context to your code. Multi-line comme
 
 ### Example
 
-![comments-example](./comments-example.pmg)
+![comments-example](../comments-example.pmg)
