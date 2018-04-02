@@ -29,3 +29,4 @@ In the example above, on line 1 the `myAge` variable is set to 11. Below that, `
 ### Example
 
 ![const-variable](../const-variable.png)
+
