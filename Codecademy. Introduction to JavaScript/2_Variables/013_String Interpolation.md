@@ -44,3 +44,7 @@ In the example above, the backticks (`) wrap the entire string. The variable (my
 
 ![string-interpolation2](../string-interpolation2.png)
 
+
+### Project Example
+
+![project-example](../project-example.png)
