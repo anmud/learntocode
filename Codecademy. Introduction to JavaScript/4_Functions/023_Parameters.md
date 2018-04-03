@@ -12,8 +12,8 @@ multiplyByThirteen(9);
 ```
 Let's explore how this function works:
 
-1. We add inputNumber within the parentheses `() =>` of the ``multiplyByThirteen` function. `inputNumber` is a parameter.
-2. Inside the ``multiplyByThirteen()` function, we use `console.log` to print the inputNumber multiplied by 13.
+1. We add `inputNumber` within the parentheses `() =>` of the `multiplyByThirteen` function. `inputNumber` is a parameter.
+2. Inside the `multiplyByThirteen()` function, we use `console.log` to print the `inputNumber` multiplied by 13.
 3. When we call the `multiplyByThirteen()` function on the last line, we set the `inputNumber` parameter. Here, we set it to 9. Then, inside the function block, 9 is multiplied by 13, resulting in 117 printing to the console.
 4. Note on terminology: `inputNumber` is a parameter, but when we call `multiplyByThirteen(9)`, the 9 is called an argument. In other words, arguments are provided when you call a function, and parameters receive arguments as their value. When we set the value 9 as the argument, we pass a value to the function.
 
