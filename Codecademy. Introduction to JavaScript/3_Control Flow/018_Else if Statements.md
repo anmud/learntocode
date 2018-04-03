@@ -26,3 +26,4 @@ if (stopLight === 'red') {
 ### Example
 
 ![else-if-statements](../else-if-statements.png)
+
