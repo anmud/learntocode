@@ -52,3 +52,41 @@ Finally, between the curly braces `{}` is the function body, or the JavaScript s
 
 ![functions-example](../functions-example.png)
 
+## Flow of a function
+
+Functions can be hard for beginners to understand. To make sure you understand functions completely, let’s go through what happens when you declare and use a function again. This time, we’ll take things one step at a time.
+
+Here’s the code we’re dissecting:
+
+```js
+function add2 (num) {
+  return num + 2
+}
+
+const number = add2(8)
+console.log(number) // 10
+```
+First of all, you need to declare a function before you can use it. In the first line, JavaScript sees the function keyword and knows the function is called `add2`.
+
+It skips over the code in the function at this point because the function is not used yet.
+
+![function-flow1](../function-flow1.png)
+
+Next, JavaScript sees you’re declaring a variable called `number`, and assigning it as the result of `add2(8)`.
+
+Since the right hand side (RHS) is a function call (an expression), JavaScript needs to evaluate the value of `add2(8)` before it can assign it to the `number` variable. Here, it sets the parameter `num` to `8`, since you passed in 8 as the argument when you call `add2(8)`.
+
+![function-flow2](../function-flow2.png)
+
+In the `add2` function, JavaScript sees a return statement that says `num + 2`. This is an expression, so it needs to evaluate it before moving on. Since `num` is `8`, `num + 2` must be `10`.
+
+![function-flow3](../function-flow3.png)
+
+Once `num + 2` is evaluated, JavaScript returns the value to the function call. It replaces the function call with the returned value. So, `add2(8)` becomes `10`.
+
+![function-flow4](../function-flow4.png)
+
+Finally, once the RHS is evaluated, JavaScript creates the variable, number and assigns the value 10 to it.
+
+That’s how you read the flow of a function.
+
