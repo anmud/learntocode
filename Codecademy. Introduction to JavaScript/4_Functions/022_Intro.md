@@ -86,7 +86,7 @@ Once `num + 2` is evaluated, JavaScript returns the value to the function call. 
 
 ![function-flow4](../function-flow4.png)
 
-Finally, once the RHS is evaluated, JavaScript creates the variable, number and assigns the value 10 to it.
+Finally, once the RHS (right hand side) is evaluated, JavaScript creates the variable, `number` and assigns the value `10` to it.
 
 That’s how you read the flow of a function.
 
