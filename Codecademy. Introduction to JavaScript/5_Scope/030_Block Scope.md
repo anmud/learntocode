@@ -91,7 +91,7 @@ We can call `starCount()` function, from outside of the function.
 
 We can't log the value of `i` to the console from outside of the function. It returns a Reference Error! The value of `i` is contained in the block scope.
 
-![block-scope-loop-error2](../block-scope-loop-error2.png)
+![block-scope-error2](../block-scope-error2.png)
 
 
 
