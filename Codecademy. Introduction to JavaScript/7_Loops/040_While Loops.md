@@ -18,3 +18,7 @@ Inside the code block, we can write any code we'd like to loop.
 ### Example
 
 ![while-loop](../while-loop.png)
+
+The code `currentCard = cards[Math.floor(Math.random() * 4)];` will generate a random number between `0` and `3`, the range of indices of the cards array, and reassign `currentCard` to a new card from that array. Because the `while` loop only runs if the card is NOT a Spade, the value of `currentCard` will only be logged to the console if it is not `'Spade'`.
+If we run the code a few times to see the output changing. You can see the `while` loop guessing a card, then seeing if it is a Spade, over and over, until it finds one.
+
