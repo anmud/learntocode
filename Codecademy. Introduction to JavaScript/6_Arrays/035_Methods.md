@@ -35,3 +35,14 @@ In the example above, calling `.pop()` on the `newYearsResolutions` array remove
 
 # More Array methods
 You can read about all of the array methods that exist on the [Mozilla Developer Network (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) documentation.
+
+`.pop()` and `.push()` modify the array on which they're called. However, there are some array methods that don't modify the array. Be sure to check MDN to understand the behavior of the method you are using.
+
+Some methods that JavaScript developers use frequently are `.join()`, `.slice()`, `.splice()`, `.shift()`, `.unshift()`, and `.concat()` amongst many others.
+
+Below, we will explore some methods that we have not learned yet. We will use these methods to edit a grocery list. As you complete the steps, you can consult the MDN documentation to learn what each method does!`
+
+### Example
+
+![array-methods](../array-methods.png)
+
