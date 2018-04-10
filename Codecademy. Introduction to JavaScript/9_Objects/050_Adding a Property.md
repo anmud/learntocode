@@ -29,3 +29,4 @@ Since `appetizers` and `desserts` don't exist in the restaurant object, these li
 We add a 'hobbies' array to the object 
 
 ![add-property](../add-property.png)
+
