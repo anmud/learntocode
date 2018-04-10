@@ -8,7 +8,7 @@ Take a look at the code in this exercise. This code turns the calculator on if i
 
 See if you can figure out how this code works. In the next exercise, we'll walk through it line by line.
 
-![functions-intro](./functions-intro.png)
+![functions-intro](.../functions-intro.png)
 
 ## How does this code work?
 
