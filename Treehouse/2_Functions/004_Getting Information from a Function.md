@@ -142,8 +142,9 @@ function good(){
 ```js
 function noGood(){
     var message = 'Hello';
+    return 
 ```
-<pre><code><del>return 1</del> <del>message</del> <del>'a string'</del></pre></code>   
+<pre><code><del> 1 </del> <del> message</del> <del> 'a string'</del></pre></code>   
 ```js
 }
 ```
