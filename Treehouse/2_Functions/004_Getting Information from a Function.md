@@ -128,10 +128,10 @@ function good(){
 ```
 
 * A `return` statement can only return a single value. You can only return one thing:
-- a string
-- a number
-- a boolean value
-- or the contents of a variable 
+- - a string
+- - a number
+- - a boolean value
+- - or the contents of a variable 
 
 ```js
 function good(){
@@ -144,8 +144,10 @@ function noGood(){
     var message = 'Hello';
 ```
 
-<pre><code><del>return 1</del>
-<del>message</del>
-<del>'a string'</del>
-</pre></code>    //you can't return multiple thing at once
+<pre><code><del>return 1</del><del>message</del><del>'a string'</del></pre></code>   
+```js
+}
+```
+
+**N.B.** You can't return multiple thing at once!
 
