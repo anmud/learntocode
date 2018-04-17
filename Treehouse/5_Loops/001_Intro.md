@@ -72,11 +72,29 @@ while ( counter < 10 ){
 
   ![interpreter-work1](../interpreter-work1.png)
 
-  * it then looks at the `while` loop, it test the condition. At this point the counter `variable` holds the `value` of `0`. The `loop` condition asks if `counter` is `less than ten`. Yes `0` is less than ten, so the JavaScript Interpreter enters the code block and does several things. 
+  * it then looks at the `while` loop, it test the condition. At this point the counter `variable` holds the `value` of `0`. The `loop` condition asks if `counter` is `less than ten`. 
+  
+   ![interpreter-work2](../interpreter-work2.png)
+  
+  Yes `0` is less than ten, so the JavaScript Interpreter enters the code block and does several things. 
   - - first it generates a new random number from `1` to `6`
+
+  ![interpreter-work3](../interpreter-work3.png)
+
   - - it writes that `random number` and a `space character` to the page
+
+   ![interpreter-work4](../interpreter-work4.png)
+
   - - it adds `1` to the counter `variable`, now the counter `variable` has the `value` of `1`
+
+   ![interpreter-work5](../interpreter-work5.png)
+
   * the `loop` goes back to the while condition and checks it again: is `1` less than `10`? Yes, it it! So, the `loop` runs again and again and again untill the `loop` condition is no longer tue  - when the counter is equal to `10` the condition is no longer true. 
+   
+    ![interpreter-work6](../interpreter-work6.png)
+    ![interpreter-work7](../interpreter-work7.png)
+    ![interpreter-work8](../interpreter-work8.png)
+
   * the `loop` end and the program continues 
 
 
