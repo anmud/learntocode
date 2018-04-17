@@ -39,7 +39,7 @@ console.log( getRectangularPrismVolume( 4.5, 12.5, 17.4 ) );
 
 ```js
 function getCircleArea(radius){
-  return  Math.PI * ( radius * radius ); 
+  return  Math.PI * ( radius * radius ); // or Math.PI * Math.pow( radius, 2 )
 }
 
 console.log( getCircleArea( 7.2 ) );
@@ -53,7 +53,7 @@ console.log( getCircleArea( 7.2 ) );
 
 ```js
 function getSphereVolume (radius){
-  return 4/3 * Math.PI * ( radius * radius * radius ); 
+  return (4/3) * Math.PI * ( radius * radius * radius ); // or ( 4/3 ) * Math.PI * Math.pow( radius, 3 )
 }
 
 console.log ( getSphereVolume (7.2) ); 
