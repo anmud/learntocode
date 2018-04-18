@@ -52,7 +52,7 @@ document.write("<p>It took the computer " + attempts + " attempts to get it righ
 
 ![while-loop-condition](../while-loop-condition.png)
 
-* you always need a way to break iut of the `loop`. In orther words something has to change inside the `loop` to stop it from running. The most common way - is to change some `variable` inside the `loop` that causes the test condition to evaluate to `false`. If the test `condition` is always true - the `loop` runs forever. 
+* you always need a way to break out of the `loop`. In orther words something has to change inside the `loop` to stop it from running. The most common way - is to change some `variable` inside the `loop` that causes the test condition to evaluate to `false`. If the test `condition` is always true - the `loop` runs forever. 
 
 ![endless-loop](../endless-loop.png)
 
