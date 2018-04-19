@@ -72,7 +72,7 @@ html += '<div style="background-color:' + rgbColor + '"></div>';
 document.write(html);
 ```
 
-### The Solution 1
+###  Solution 1
 
 ```js
 var html = '';
@@ -96,4 +96,36 @@ for( codeRun = 1; codeRun <= 10; codeRun ++ ){
 
 document.write(html);
 ```
+### Solution 2
+
+```js
+var html = '';
+
+var rgbColor;
+var codeRun = 1; 
+
+function getRandomColor( ){
+return Math.floor(Math.random() * 256 );
+}
+
+function randomColor (){
+  var color = 'rgb(';
+  color += getRandomColor() + ',';
+  color += getRandomColor() + ',';
+  color += getRandomColor() + ')'; 
+  return color
+}
+
+function print(message){
+  document.write(message);
+}
+
+for( codeRun = 1; codeRun <= 10; codeRun ++ ){
+  rgbColor = randomColor();
+ html += '<div style="background-color:' + rgbColor + '"></div>';
+}
+
+print(html);
+```
+
 
