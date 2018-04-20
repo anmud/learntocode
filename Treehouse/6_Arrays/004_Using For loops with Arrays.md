@@ -87,7 +87,7 @@ function print(message) {
 
 function printList(list){
   var listHTML = '<ol>';
-  for(i = 0; i < list.length; i+=1){
+  for(var i = 0; i < list.length; i+=1){
     
   }
 }
@@ -111,7 +111,7 @@ function print(message) {
 
 function printList(list){
   var listHTML = '<ol>';
-  for(i = 0; i < list.length; i+=1){
+  for(var i = 0; i < list.length; i+=1){
     listHTML+= '<li>' + list[i] + '</li>';
   }
 }
