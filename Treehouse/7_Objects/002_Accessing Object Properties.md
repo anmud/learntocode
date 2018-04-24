@@ -125,6 +125,6 @@ message += '<p>I have ' + person.skills.length + ' skills: ';
 message += pesron.skills.join(', ') + '<p>'; //use join method
 print(message); 
 ```
-![object-example5](../object-example5.png)
+![object-example5](../oblect-example5.png)
 
 
