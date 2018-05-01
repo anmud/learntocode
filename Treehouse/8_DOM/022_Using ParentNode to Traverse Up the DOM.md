@@ -3,13 +3,13 @@
 `Traversal` is similar to selection. It's the way to move from one part of the DOM to another and select an element based on its relationships to another element. 
 
 ```js
-let paragraph = document.getElementById('myParagraph);
+let paragraph = document.getElementById('myParagraph');
 `parent`.removeChild('paragraph');
 ```
 To get a reference to an element's `parent Node`, you can use the `parentNode` property. Frist you get the paragraph's parent node and assign it to a variable `parent`. Then use the `parent` to remove the paragraph.  
 
 ```js
-let paragraph = document.getElementById('myParagraph);
+let paragraph = document.getElementById('myParagraph');
 let parent = paragraph.parentNode; // get the paragraph's parent node
 `parent`.removeChild('paragraph');
 ```
