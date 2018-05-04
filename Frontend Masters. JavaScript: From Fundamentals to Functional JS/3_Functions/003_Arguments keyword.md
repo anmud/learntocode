@@ -1,4 +1,5 @@
 # Arguments Keyword
+
 `Arguments` keyword is a special keyword in JS that lives inside `functions` and gets the `value` of the `arguments` you pass in, and in a form like - `an-array-like object`. 
 
 ```js
