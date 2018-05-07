@@ -22,9 +22,26 @@ var box = {};
 box['innerBox'] = {}; 
 box['innerBox'].full = true;
 ```
+What if we assign `box` and `innerBox` to a `variable`?
 
+```js
+var box = {};
+box['innerBox'] = {}; 
+box['innerBox'].full = true;
+var myInnerBox = box.innerBox;
+myInnerBox; //{full : true} will be the result
+```
+What if we have triple nested `box`?
 
-
+```js
+var box = {};
+box.innerBox = {}; 
+box.innerBox.babyBox = {};
+box.innerBox['babyBox']; // {}
+box.innerBox['babyBox'].says = "What's up?" 
+box.innerBox['babyBox']; // says : "What's up?" 
+```
+[nesting-objects3](../nesting-objects3.png) 
 
 
 
