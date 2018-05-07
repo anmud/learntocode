@@ -41,7 +41,7 @@ box.innerBox['babyBox']; // {}
 box.innerBox['babyBox'].says = "What's up?" 
 box.innerBox['babyBox']; // says : "What's up?" 
 ```
-[nesting-objects3](../nesting-objects3.png) 
+![nesting-objects3](../nesting-objects3.png) 
 
 
 
