@@ -35,7 +35,7 @@ data : {
 })
 ```
 
-In `html` we should add a special syntax to let `vuejs` recognise the thing we wanna do - this are double curly braces `{{}}`. Vuejs will automatically log into this `data` object : "*Look at this `object`, find the `title` property an oputput it here*". 
+In `html` we should add a special syntax to let `vuejs` recognise the thing we wanna do - this are double curly braces `{{}}` - which is called `interpolation` or `string interpolation`. Vuejs will automatically log into this `data` object : "*Look at this `object`, find the `title` property an oputput it here*". 
 
 **HTML**
 
