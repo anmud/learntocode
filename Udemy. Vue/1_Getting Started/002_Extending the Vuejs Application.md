@@ -33,7 +33,7 @@ methods : {
 
 ![vue-instance3](../vue-instance3.png)
 
-Now we wanna assign the `value` entered into the `input`. Thankfully, as in Vanilla JS there is an `event` object being created automatically for us. This is nothing to do with Vuejs, this is just the Vanilla JS and how the DOM works. We get this `event` object which also stores the target of the `event`, which of course will be our `input` field. So, this `event` object whic was created automatically by JS, is passed to this `method` automatically by Vuejs. This `event` object has a `target` property, and we know that that `target` will be the `input` field holding the `value` the user entered - `this.title = event.target.vlue`. 
+Now we wanna assign the `value` entered into the `input`. Thankfully, as in Vanilla JS there is an `event` object being created automatically for us. This is nothing to do with Vuejs, this is just the Vanilla JS and how the DOM works. We get this `event` object which also stores the target of the `event`, which of course will be our `input` field. So, this `event` object whic was created automatically by JS, is passed to this `method` automatically by Vuejs. This `event` object has a `target` property, and we know that that `target` will be the `input` field holding the `value` the user entered - `this.title = event.target.value`. 
 
 **JS**
 
@@ -45,7 +45,7 @@ data : {
 }
 methods : {
     changeTitle: function (event){
-        this.title = event.target.vlue; 
+        this.title = event.target.value; 
     }
 }
 })
