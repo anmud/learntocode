@@ -43,7 +43,7 @@ new Vue({
 });
 ```
 
-BUT we can do this easier than that. We can remove the `dummy` function. We can still execute nothing in our `event` for the `span` using so called `event modyfier`. It allows us to **modify the behavior of the `event` whenever it comes from**. We add this modyfier by adding a dot (`.`) after the name of the `event` (which we pass as an `argument` to `v-on`). And the modyfier we wanna use here is `stop`, which stops propagation. And we don't need even to execute a `function` here. There are also other modifiers, the probably most important second one would be `prevent`- for running prevent default. We can also chain modifiers `<span v-on:mousemove.stop.prevent="">DEAD SPOT</span>.
+BUT we can do this easier than that. We can remove the `dummy` function. We can still execute nothing in our `event` for the `span` using so called `event modyfier`. It allows us to **modify the behavior of the `event` whenever it comes from**. We add this modyfier by adding a dot (`.`) after the name of the `event` (which we pass as an `argument` to `v-on`). And the modyfier we wanna use here is `stop`, which stops propagation. And we don't need even to execute a `function` here. There are also other modifiers, the probably most important second one would be `prevent`- for running prevent default. We can also chain modifiers `<span v-on:mousemove.stop.prevent="">DEAD SPOT</span>`.
 
 **HTML** 
 
