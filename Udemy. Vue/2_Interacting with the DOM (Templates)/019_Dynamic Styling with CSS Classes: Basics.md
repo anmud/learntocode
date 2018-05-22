@@ -37,7 +37,7 @@ new Vue ({
 ```
 Note, no VueJS code involved here al all. 
 
-![vue-with-css-classes](..vue-with-css-classes.png)
+![vue-with-css-classes](../vue-with-css-classes.png)
 
 
 It's interesting to see how we can attach `classes` to these `divs`. Let's create three more `classes`. 
@@ -104,4 +104,4 @@ Now in order to conditionally attach a `css class` we need to bind the the `clas
 
 Now, when we click we attach our red block. We can turn on and off our class now with the click. 
 
-![vue-with-css-classes2](..vue-with-css-classes2.png)
+![vue-with-css-classes2](../vue-with-css-classes2.png)
