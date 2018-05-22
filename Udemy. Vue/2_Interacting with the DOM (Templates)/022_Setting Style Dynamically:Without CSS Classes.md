@@ -94,6 +94,6 @@ new Vue ({
   <div class="demo"></div>
   <div class="demo"></div> 
   <hr>
-  <input type="text" v-model="color"
+  <input type="text" v-model="color">
 </div>
 ```
