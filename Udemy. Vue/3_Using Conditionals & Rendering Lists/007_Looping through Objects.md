@@ -37,7 +37,7 @@ new Vue({
 </div>
 ``` 
 
-![loop-through-object](../loop-through-object/png)
+![loop-through-object](../loop-through-object.png)
 
 Let's say we don't want to use a default `loop` but instead we wanna `loop` through all the `key value` pairs in that `object`. In this case we can `loop` as simple as extracting the `value` in `person`. 
 
