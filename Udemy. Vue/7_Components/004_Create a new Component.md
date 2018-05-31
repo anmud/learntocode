@@ -75,3 +75,5 @@ new Vue({
 })
 ```
 Now with this setup we can use `app-service-status` as a selector in our whole application, in `App.vue` root file.  
+
+**Note** `One-root-element restriction` applies to every `component`, either registered globally or locally. In the file with your `componenet` a `template` should contain only one `element`, this could be - `div`.
