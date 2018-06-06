@@ -80,6 +80,7 @@ Now in the parent `component` we can listen to that. We can listen to that like 
 
 **User component**
 
+```html
 <template>
     <div class="component">
         <h1>The User Component</h1>
@@ -124,3 +125,4 @@ Now in the parent `component` we can listen to that. We can listen to that like 
         background-color: lightblue;
     }
 </style>
+```

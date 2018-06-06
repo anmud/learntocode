@@ -36,6 +36,7 @@ export default{
 
 We will store the `age` in the parent `component` (User.vue) in our `data object`, and set it as `27` by default. We wanna pass it as a `prop`, and refer to the `age` in our `data property` to the `UserEdit` component. So, in the `UserEdit` component we create a `prop`. Let's say in `UseDetail` we also wanna output the `age`. So, in `User.vue` component we also pass `userAge` reffering to the age in the parent `component`. 
 
+**User.vue**
 
 ```html
 <template>
@@ -87,6 +88,7 @@ We will store the `age` in the parent `component` (User.vue) in our `data object
     }
 </style>
 ```
+
 **UserEdit component**
 
 ```html
@@ -120,6 +122,7 @@ export default{
 And in `Userdetail` we add a new `prop` with a `number` type. And from there we wanna get the update form the `UserEdit` component. In the template let's add a `userAge` prop. 
 
 **UserDetail**
+```html
 <template>
     <div class="component">
         <h3>You may view the User Details here</h3>
@@ -157,6 +160,7 @@ export default {
         background-color: lightcoral;
     }
 </style>
+```
 
 Now we change the `data` only in `UserEdit` component. The reason for thai it the change is only happens in the `UserEdit` component, we are not passing it to our parent component. 
 
@@ -249,6 +253,7 @@ Then in our parent `User` component we can setup in our `<app-user-edit>` compon
     }
 </style>
 ```
+
 Now if we click `edit age` button, the data will be changed in both `child components`. 
 
 ![sibling-conponents2](../sibling-components2.png)
