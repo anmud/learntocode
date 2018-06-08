@@ -21,7 +21,9 @@ Here is our project folder structure.
                 <button class="btn btn-success" @click="selectTemplate='appGreen'" >Load Green Template</button>
                 <button class="btn btn-danger" @click="selectTemplate='appRed'">Load Red Template</button>
                 <hr>
-                <component :is='selectTemplate'></component>
+                <component :is='selectTemplate'>
+                 <p>The Content</p>
+                </component>
             </div>
         </div>
     </div>
@@ -55,13 +57,8 @@ Here is our project folder structure.
 ```html
 <template>
     <div>
-        <slot>
-            <h2>The Headline</h2>          
-        </slot>
-        <hr>
-        <slot>
-            <p>The Content</p>
-        </slot>
+        <slot></slot>
+        
     </div>
 </template>
 
@@ -83,14 +80,7 @@ Here is our project folder structure.
 ```html
 <template>
     <div>
-        <slot>
-            <h2>The Headline</h2>
-                    
-        </slot>
-        <hr>
-        <slot>
-            <p>The Content</p>
-        </slot>
+        <slot></slot>
     </div>
 </template>
 
@@ -113,14 +103,7 @@ Here is our project folder structure.
 ```html
 <template>
     <div>
-        <slot>
-            <h2>The Headline</h2>
-                    
-        </slot>
-        <hr>
-        <slot>
-            <p>The Content</p>
-        </slot>
+        <slot></slot>
     </div>
 </template>
 
@@ -171,3 +154,24 @@ new Vue({
 ![slot-project2](../slot-project2.png)
 ![slot-project3](../slot-project3.png)
 ![slot-project4](../slot-project4.png)
+
+**NOTES**
+
+Sometimes, the concept of `slots` gets confused with the idea behind `props`. Keep in mind: `slots` allow you to directly distribute some content in the `child component's template`. You pass the content between the opening and closing `selector` of that `component`.
+
+*Example:*
+
+```html
+<child-component>
+    <h1>This header will be rendered in the Child Component (if it offers a slot)
+</child-component>
+```
+`Props` on the other hand allow you to pass `data` to a `child component` where it then is available as a `property`. You can output it in the `child component's template` (via `{‌{ }}`  or `v-bind` ) but you can also use it in the `JS code` of the `child component`. That's not (easily) possible with `slots`.
+
+*Example:*
+
+```html
+<child-component :userId="1"></child-component>
+<!-- In child component-->
+props: ['userId'] // => Use as a normal property
+```
