@@ -1,4 +1,4 @@
-# Undersatnding Mixins
+# Understanding Mixins
 
 Let's say we wanna have one more list with fruits, but have it in the separete `component`. Firts we create a new `component` let's name it 'list'. We surely need to import our new `component` to the `App.vue` file. 
 

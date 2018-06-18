@@ -1,0 +1,3 @@
+# Mixins and Scope
+
+Important!!!! Our `fruitMixin` object is not shared, it's not the same place in memory which we then use as a `mixin` in separete `components`, instead it is really **replicated**. So, each `component` which gets it as a `mixin` gets a fresh copy of this object. Tt means that it is safe for us to access the `data` and manipulate it without affecting other places in our app. If we wanna affect other places of our application, we can use something like the `event bus`, where we would use a `vue instance` which we can access throughout our application to call `methods` there or also change `data` there. Or we could of cource use the normal JS `object`, just import it, and use it in our code. 
