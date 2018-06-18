@@ -153,6 +153,55 @@ new Vue({
 
 4. Share the `Computed Property` rebuilding Exercise 2 via a `Mixin`
 
+**reverseMixin**
 
+```js
+export const reverseMixin = {
+    filters:{
+       reverse(value){
+       return value.split('').reverse().join('');
+       }
+    },
+    computed:{
+        reversedTextLength(){
+            return this.newText.split('').reverse().join('') + '(' + this.newText.length + ')';
+        },    
+}
+}
+```
 
+**App.vue**
+
+```html
+<template>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                <h1>Filters & Mixins</h1>
+                <p>{{ text | reverse | countLength}}</p>
+                <p>{{ reversedTextLength }}</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+ import { reverseMixin } from './reverseMixin.js'  
+
+    export default {
+        data: function(){
+        return {
+            text: 'Hello, there!',
+            newText: 'Let\'s transform the new text'
+        }
+    },
+        mixins: [reverseMixin]
+    }
+</script>
+
+<style>
+</style>
+```
+
+![mixin-reversed](../mixin-reversed.png)
 
