@@ -1,0 +1,3 @@
+# Understanding Transitions
+
+Let's say we have an `element` which currently is not attached to the DOM. And we use `v-if` or `v-show` to tirgger this or check some condition whether it should be attached to the DOM. So, the `condition` resolves to `true`, so the `element` should be attaced to the DOM, and right now we used `v-if`/`v-show`, and instantly atteached the `element` or removed it. Well, we could also animate attaching to the DOM. And then it would be also nice if we aanimate the removal from the DOM. We can do this with a specific `element` or a `wrapper` VueJS offers us - `<transition>`. 
