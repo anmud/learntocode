@@ -32,7 +32,7 @@ Well, to animate our `element`, using `transitions`, in our `App.vue` template, 
 </script>
 
 <style>
-.fade-enter{
+.fade-enter{      /*add classes*/
 
 }
 .fade-enter-active{
