@@ -1,6 +1,10 @@
 # Creating an Animation in Java Script
 
-Now it's time to execute some code, so we could actually see animation. The place to animate is `enter` and `leave` functions. Let's say in `enter()` we wanna grow the width of our `div` and upon leaving make it smaller. For this we will setup a `variable` "round" here and then setup the `interval` cos we wanna grow it in steps, let's set the interval in 20 miliseconds, so every 20 miliseconds we will change our `div`. In the `function` inside the interval we execute the code we want to change every 20 miliseconds.  We access the element's width and grow the current width (we need to set it as a new property) with a round `el.style.width  = this.elementWidth (our current width) + round * 10`. As we wanna 100 pixels being the default, we need to set the new `property`, let's name it `elementWidth` and set it to 100, this will be our current width. Then of cource we also need to increase `round` by one, so 
+Now it's time to execute some code, so we could actually see animation. The place to animate is `enter` and `leave` functions. Let's say in `enter()` we wanna grow the width of our `div` and upon leaving make it smaller. For this we will setup a `variable` "round" here and then setup the `interval` cos we wanna grow it in steps, let's set the interval in 20 miliseconds, so every 20 miliseconds we will change our `div`. In the `function` inside the interval we execute the code we want to change every 20 miliseconds.  We access the element's width and grow the current width (we need to set it as a new property) with a round `el.style.width  = this.elementWidth (our current width) + round * 10`. As we wanna 100 pixels being the default, we need to set the new `property`, let's name it `elementWidth` and set it to 100, this will be our current width. Then of course we also need to increase `round` by one. And surely we need to set the `exit condition`: if `round` is greater than 20, if we executwd this 20 times let's say, then we wanna to clear interval with the `clearInterval()` method and call `done` here. We call `done()` here, cos we don't wanna mark that the whole `enter()` code has been executed, because we have asynchronous operation inside (`setInterval()`), then `done()` should be executed once we really done, once we reached our exit condition. 
+
+For now it looks good, but we also need to set the initial width at `beforeEnter` hook, and then set the `element.style.width` to this width, so that we reset it to `100` before we enter it to the DOM, because if we added it before and removed it, this might have been in a different state, especially if we canselled some animation inbetween. 
+
+With this setup we can go to `beforeLeave`,  here we wanna set the `element width` to 300 px. This is where it will be at the end after our `afterEnter` animation, and set the `element.style` width. Well, and for animating out we can simply copy the code from `enter()` and put it to `leave()`, the only thing we should change - decrease the width. Also we should change the width in our `div` in the template also to 300px. 
 
 **App.vue**
 
@@ -47,7 +51,7 @@ Now it's time to execute some code, so we could actually see animation. The plac
                 @after-leave="afterLeave"
                 @leave-cancelled="leave-cancelled"
                 :css="false"> 
-                <div style="width: 100px; height: 100px; background-color: lightgreen" v-if="load"></div>
+                <div style="width: 300px; height: 100px; background-color: lightgreen" v-if="load"></div>
                 </transition>
             </div>
         </div>
@@ -66,7 +70,9 @@ Now it's time to execute some code, so we could actually see animation. The plac
         },
         methods:{         
             beforeEnter(el){
-              console.log('beforeEnter')
+              console.log('beforeEnter');
+              this.elementWidth = 100;     //reset the initial width
+              el.style.width = this.elementWidth + 'px';  
             },
             enter(el, done){
               console.log('enter');
@@ -74,8 +80,11 @@ Now it's time to execute some code, so we could actually see animation. The plac
               const interval = setInterval( ()=> {          //set interval
                el.style.width  = (this.elementWidth + round * 10) + 'px' //count width
                round ++     //increase round 
-              }, 20);
+               if(round > 20){
+                clearInterval(interval);
               done();
+               }
+              }, 20);
             },
             afterEnter(el){
               console.log('afterEnter')
@@ -84,11 +93,21 @@ Now it's time to execute some code, so we could actually see animation. The plac
                 console.log('enterCancelled')
             },
             beforeLeave(el){
-               console.log('beforeLeave')
+               console.log('beforeLeave');
+              this.elementWidth = 300;  //set the final width 
+              el.style.width = this.elementWidth + 'px'
             },
             leave(el, done){
                console.log('leave');
-               done();
+               let round = 1;   
+              const interval = setInterval( ()=> {         
+               el.style.width  = (this.elementWidth - round * 10) + 'px' //decrease the width
+               round ++; 
+               if(round > 20){
+                clearInterval(interval);
+                done();
+               }
+              }, 20);
             },
             afterLeave(el){
               console.log('afterLeave')
@@ -153,3 +172,6 @@ opacity: 0;
 }
 </style>
 ```  
+
+![animation-in-js](../animation-in-js.png)
+![animation-in-js2](../animation-in-js2.png)
