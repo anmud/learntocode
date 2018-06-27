@@ -92,7 +92,7 @@ Now let's setup `methods` and listen to it on the `button`.
         },
         methods:{              //setup methods 
             submit(){
-                console.log(user)
+                console.log(this.user)
             }
         }
     }
