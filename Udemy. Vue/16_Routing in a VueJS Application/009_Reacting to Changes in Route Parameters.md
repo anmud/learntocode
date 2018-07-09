@@ -23,7 +23,7 @@ Therefore we have to watch for these `route.params` to change, and if they chang
 
 **User.vue**
 
-``html
+```html
 <template>
     <div>
         <h1>The User Page</h1>
