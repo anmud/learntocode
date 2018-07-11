@@ -124,4 +124,4 @@ This way calling `methods` in the `template` will automatically work, since this
 
 ![mutations-use](../mutations-use.png)
 
-![map-mutations](../map-mutations.png)
+![map-mutations](../map-mutations.png) 
