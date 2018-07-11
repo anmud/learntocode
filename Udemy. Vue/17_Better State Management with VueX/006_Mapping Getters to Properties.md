@@ -54,7 +54,7 @@ Let's use this new `getter` in the `AnotherResult.vue` component. Here we'll hav
 
 Now it works, though we have a propblem. 
 
-![clicks-number](../clicks-number.png)
+![clicks-number](./clicks-number.png)
 
 The problem is, we have now two `computed properties` to fetch our `state` (to fetch the getters), and if we would add more and more `getters`, we would have to repeat this for every `getter`. it would be more convenient if `VueX` would kind of do this automatically and give us access to all our `getters` so that we could conveniently say "clicks" for example in the `template` and that will automatically execute the right `getter`, without us having set the `computed property` for that. 
 
@@ -104,7 +104,7 @@ This will in the background automatically create `computed properties` and map t
     }
 </script>
 ```
-![map-getters](../map-getters.png)
+![map-getters](./map-getters.png)
 
 It works and we have more beautiful code, but still there is one limitation: what if we want to create our own `computed properties` and mix them with the `getters`? With ES6 we got an easy solution. Let's create a js `object` and put `mapGetters` inside of it. With ES6 we have `spread operator` (`...`). The `...` allow us to tell JS: "pull out all the `properties` and `methods` you have in the `mapGetters object`, pull them all out of there and create separate `key-value pairs` for each of them". This will allow us to add all the `computed properties` into a bigger `object` of `computed properties` and we could still write our own `computed property`. 
 
@@ -129,7 +129,7 @@ It works and we have more beautiful code, but still there is one limitation: wha
 ```
 However, if we look at the application we'll see it's broken. The problem is that `...` is unexpected. So, ES6 compilor we are using doesn't recognose that. If we have a look at the `package.json` file we see that we are using `babel` to compile ES6 to ES5 code, and the presets we loaded here don't cover the `spread operator` syntax. 
 
-![babel-compilor](../babel-compilor.png)
+![babel-compilor](./babel-compilor.png)
 
 Well, we can simply add this package to get this functionality to work. We can install this: `npm install --save-dev babel-preset-stage-2`. With that added we now have to go to the `babelrc` file and there we have to add a new `entry` for this `array of presets`, it is simply called "stage-2". 
 

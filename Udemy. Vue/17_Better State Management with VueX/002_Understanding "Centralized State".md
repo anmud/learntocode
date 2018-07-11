@@ -4,5 +4,5 @@ The `VueX` has the idea of having a central "store", where our `state` is stored
 
 With such a `central state` we could access it from one `child (component)` and change it and then in another `component`, where we want to get our `data`, we can simply access it to get the `data`. 
 
-![central-state](../central-state.png)
+![central-state](./central-state.png)
 

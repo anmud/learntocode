@@ -2,8 +2,8 @@
 
 For the start we have a simple application. 
 
-![state-management-app](../state-management-app.png)
-![state-management-app-folder-structure](../state-management-app-folder-structure.png)
+![state-management-app](./state-management-app.png)
+![state-management-app-folder-structure](./state-management-app-folder-structure.png)
 
 ### Components we have are: 
 
