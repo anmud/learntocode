@@ -122,6 +122,6 @@ As with `getters` we have the same problem - we repeat the code. So, we also can
 
 This way calling `methods` in the `template` will automatically work, since this is the same names. 
 
-![mutations-use](../mutations-use.png)
+![mutations-use](./mutations-use.png)
 
-![map-mutations](../map-mutations.png) 
+![map-mutations](./map-mutations.png) 
