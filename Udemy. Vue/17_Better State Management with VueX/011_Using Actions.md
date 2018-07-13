@@ -1,7 +1,7 @@
 # Using Actions
 
 Let's say in our `counter` app, when we click the `buttons`, we wanna wait before we actually update the counter.
-![counter-app](./counter-app.png)
+![counter-app](../counter-app.png)
 
 For that we can add `actions` to our `store.js` as a property in our `store`. And this `actions` property will hold our `methods` which are our `actions`: let's say `increment`(we can choose any name) and `increment` takes `context` as an `argument` (context will be passed by VueJS automatically), and `context` gives access to `commit()` method, where we then can commit `increment`. This `context` object we actually pass to our `action` has the `commit()` method, cos it has a lot of methods and properties of our `store`. It's not exactly the same as our `store`, we have the access to our `store` all the features it has, but not all features. We also need to add `asyncIncrement` action (for `AnotherCounter.vue`), and it should also get the `commit()` method, and here we wanna set the Timeout and wait for one second, and then in the `callback` of the `timeout()` we wanna call `commit('increment')`. 
 

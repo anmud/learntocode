@@ -104,7 +104,7 @@ In the `App.vue` we wanna add an `input` which should allow us to set `the value
 </script>
 ```
 
-We see it works.  ![v-model-vuex](./v-model-vuex.png)
+We see it works.  ![v-model-vuex](../v-model-vuex.png)
 
 But what issue we got there? Well, let's say we not only want to display the `value` but set it. This way `v-model="value"` will not work, because `value` is a `computed property` not a normal `property`. The `value` will stay the same, because the `state` in our `store` hasn't been touched, because our `computed value` is only a `getter`, we can't set it with two-way binding (v-model). 
 
@@ -159,7 +159,7 @@ Well, here is one way we could fix it: for this we'll setup a `method` which we'
 ```
 Now, if we enter something in the `input` the `state` gets updated as well.
 
-![v-model-vuex2](./v-model-vuex2.png)
+![v-model-vuex2](../v-model-vuex2.png)
 
 But the problem here is we setup our so to say "custom" `two-way-binding`. What if we really want to use the shorter way of `v-model="value"`? We can do this by changing our `computed property`. Actually we can for the `computed propertiies` setup a `getter` and a `setter`. We can turn our `computed property` into an object where we'll have a `get()` and a `set()` methods; the `get` is responsible for getting the `value` and  the `set` gets the `value` as an argument, and we can use the `value`. This way we can use `v-model` for our `input`. Still, keep in mind this is a very rare option, where we can use `get` and `set` in the `computed property`.
 

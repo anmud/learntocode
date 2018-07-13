@@ -2,7 +2,7 @@
 
 Let's have a look at how we can structure our `Vuex` related code, namely the code in `store.js` file, with different files. For this we first need to use so called `modules`. Let's create `modules` folder.  
 
-![improving-folder-structure](./improving-folder-structure.png)
+![improving-folder-structure](../improving-folder-structure.png)
 
 The idea behind `modules` is that in our `store` we may have certain parts which belong to different parts of our application, for example in our case - `the counter`. The counter, getters and actions belong to our `Counter.vue` file, our `Result.vue` file and so on. But the `value` in our example is only used in our `App,vue` file. 
 

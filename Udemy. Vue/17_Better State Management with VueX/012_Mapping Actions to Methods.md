@@ -102,7 +102,7 @@ export const store = new Vuex.Store({
 });     
 ```
 
-![mapping-actions](./mapping-actions.png)
+![mapping-actions](../mapping-actions.png)
 
 This is how we can pass a `payload`. What is we wanna pass more than one `argument`, simply add multiple `arguments` when calling `method` in the template - doesn't work. Let's say in `AnotherCounter` component where we have `asyncIncrement` and `asyncDecrement` actions, we want to set the size by what we want to increase and decrease the counter and as a `second argument` we also want to pass the duration of `asynchronous task`. What we can do here is to pass an `object` as an `argument`, and in this `object` we can add as many `properires` as we want. E.G `by` property to set the step by what we want to increase the counter and the `duration` property, and do the same for decrement. 
 
