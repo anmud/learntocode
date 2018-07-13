@@ -1,7 +1,7 @@
 # Using Separate Files
 Sometimes we can have `state`, `getters` some `actions`,  which don't belong into one module. In the application let's say we have a `users part` and the `blog part` and that would be two great `modules`. But then also we have some `state` which is only displayed in the `header`, which has to be everywhere. Therefore we don't want to put the `header related state` into either of two `modules`. We can leave it in our main `store.js` file, but it could be overloaded as well. To fix this task it would be great to cteate other files: `actions.js`, `getters.js`, `mutations.js` in the `store folder`. 
 
-![separate-files](./separate-files.png)
+![separate-files](../separate-files.png)
 
 Now we can take our `action` from `store.js` file and in the `actions.js` file we'll export a `constant`, name it with the name of the `action` and this is of course a `function`. And if we have more `actions` we simply will add more `export const`. 
 
