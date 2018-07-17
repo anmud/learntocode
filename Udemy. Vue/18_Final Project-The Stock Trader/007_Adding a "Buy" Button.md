@@ -92,7 +92,7 @@ export default{
 </script>
 ```
 
-And now it's time to work for our `input`. For the `input`, we want to bind it with the `data object` which holds the `quantity` initially set to `0` and then bind it with `v-model` to the `input` in the `template`. 
+And now it's time to work for our `input`. For the `input`, we want to bind it with the `data object` which holds the `quantity` property initially set to `0` and then bind it with `v-model` to the `input` in the `template`. **Note** By default, the `v-model directive` binds the `value` as a `String`. If we want to bind `quantity` as a `number`, we can add the `.number` modifier like so: `<input v-model.number="quantity" type="number" ... >`
 
 **Stock.vue/Stocks**
 ```html
@@ -104,7 +104,7 @@ And now it's time to work for our `input`. For the `input`, we want to bind it w
     </div> 
     <div class="panel-body">
       <div class="pull-left">
-           <input type="number" class="form-control" placeholder="Quantity" v-model="quantity"> <!--bind here-->
+           <input type="number" class="form-control" placeholder="Quantity" v-model.number="quantity"> <!--bind here-->
       </div> 
       <div class="pull-right">
            <button class="btn btn-success">Buy</button>
