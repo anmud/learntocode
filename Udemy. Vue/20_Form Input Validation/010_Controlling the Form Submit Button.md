@@ -1,0 +1,3 @@
+# Controlling the Form Submit Button
+
+Maybe instead of showing `error messages` and add `error styling` we wanna disable the `submit button` if we got any `validation errors` in our `form`. The quicker way is to add a `disabled` class to the `button` and access `$v.$error`, cos that simply means that if any of our `validations` failed then the `$error` is set to `true` and the `button` will be disabled - `<button type="submit" :disabled="$v.$error">Submit</button>`. And maybe we even want to use `$invalid` to disable it from the start - `<button type="submit" :disabled="$v.$invalid">Submit</button>`.

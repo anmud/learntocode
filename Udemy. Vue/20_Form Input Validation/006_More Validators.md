@@ -254,7 +254,7 @@ Now let's mark it as `invalid` if it is invalid. We'll do this with binding `div
                   id="age"
                   @blur="$v.age.$touch()"     
                   v-model.number="age">  
-                  <p>You have to be at least {{ $v.age.$params.minVal.min}} years old.</p>  <!--output an error message-->
+                  <p v-if="!$v.age.minVal">You have to be at least {{ $v.age.$params.minVal.min}} years old.</p>  <!--output an error message-->
         </div>
         <div class="input">
           <label for="password">Password</label>
