@@ -96,5 +96,5 @@ Now, with the `getter` in place we need to access the `getter` in the `AnotherRe
 </script>
 ```
 
-![using-getters](./using-getters.png)
+![using-getters](../using-getters.png)
 
