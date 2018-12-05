@@ -6,7 +6,7 @@ Lets add `input` to our html. We wanna allow the user to type something and then
 **HTML**
 
 ```html
-<script src=="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <div id="app">
 <input type="text" v-on:input="changeTitle">
 <p>{{title}}</p>
