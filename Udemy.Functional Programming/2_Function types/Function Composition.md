@@ -50,3 +50,24 @@ const countWords = R.compose(R.split)
 The important fact about the `compose function` - it works from right to left! In other words the `last fucntion` we pass in the `compose function` is the first function called in the chain of function calles. 
 
 ![function-composition](../function-composition.png)
+
+Knowing this fact we need to add `length() function` before the `split() function`. That's all we need to do to compose these two function together. 
+
+```js
+
+const countWords = R.compose(R.length, R.split)
+```
+
+What's returned from the `compose` is a new function, that we can call. This new function will require the parameters the last function requires, in our case the `split function`.
+
+![split-function](../split-function.png)
+
+Then the output of the `split function` is fed as the input for the `length function`. 
+
+![split-lenght-function](../split-length-function.png)
+
+The `value` of calling the `length function` is the `final return value` of the newly created `composed function`. 
+
+
+![composed-function-value](../composed-function-value.png)
+
