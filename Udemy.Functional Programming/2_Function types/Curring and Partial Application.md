@@ -56,5 +56,43 @@ The `ramda functions` are available on the `R.global`. So we can call `const gre
 ```js
 
 const greet = R.curry((greeting, name) => `${greeting} ${name}`);
+
+console.log('Good morning', "James")
+
+const friends = ['Nate', 'Jim', 'Scott', 'Dean'];
+
+const friendsGreetings = friends.map(greet("Good morning"))
+
+console.log(friendsGreetings)
+// output:
+//"Good morning James"
+// ["Good morning Nate", "Good morning Jim", "Good morning Scott", "Good morning Dean"]
+
 ```
+
+OR
+
+```js
+
+const greet = R.curry((greeting, name) => `${greeting} ${name}`);
+
+console.log('Good morning', "James")
+
+const morningGreeting = greet('Top of the morning to ya') // pass other greeting
+
+console.log(morningGreeting('James'))// and call this morningGreeting function with the name
+
+const friends = ['Nate', 'Jim', 'Scott', 'Dean'];
+
+const friendsGreetings = friends.map(greet("Good morning"))
+
+console.log(friendsGreetings)
+// output:
+//"Good morning James"
+// "Top of the morning to ya James"
+// ["Good morning Nate", "Good morning Jim", "Good morning Scott", "Good morning Dean"]
+
+```
+
+
 
