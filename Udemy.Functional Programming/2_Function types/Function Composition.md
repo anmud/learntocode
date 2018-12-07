@@ -71,3 +71,79 @@ The `value` of calling the `length function` is the `final return value` of the 
 
 ![composed-function-value](../composed-function-value.png)
 
+Well, we can call newly composed function passing the parameters the `split` function expects, namely the single space `''` character and the data we wanna act on - 'sentence'. 
+
+```js
+const sentence = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+
+const countWords = R.compose(R.length, R.split)
+
+console.log(countWords('', sentence))
+//output:
+// 19 
+```
+The cool thing here is that we got a new reusable function we can use anywhere we needed.  
+
+Also `currying` and partial application come here in handy. All the `functions` in the `Ramda library` are curryed, so in our newly `composed function` we can pass in some of the `parameters`, in other words we can perform `partial application`. What is returned - is another `function` that expects the remaining `parameters`. 
+
+So, in our case we can pass the single space parameter `(" ")` in the `split function`. And we no longer need to pass in the `pattern parameter` when we call `countWords() function`. 
+
+```js
+const sentence = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+
+const countWords2 = R.compose(R.length, R.split(' ')) //pass here the first parameter
+
+console.log(countWords2(sentence))   //here we pass just the remaining parameter 
+//output:
+// 19 
+```
+
+There is another way to look at `compose function`, reading it from left to right. `Ramda library` has the similar `function` called `pipe()`. `Pipe()` is almost exsactly as the `compose function` except the `functions` are composed from left to right. 
+
+```js
+const sentence = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+
+const countWords3 = R.pipe(R.split(' '), R.length,) //pass here the split() first and the length() second
+
+console.log(countWords3(sentence))   
+//output:
+// 19 
+```
+### Exersise
+
+```js
+// Count how many digits there are in the following 
+// sentence, using functional composition
+
+const sentence = 'PechaKucha is a presentation style in which 20 slides are shown for 20 seconds each (6 minutes and 40 seconds in total).';
+
+const numbersInString = // add function composition here
+
+expect(numbersInString(sentence)).toBe(7); 
+
+console.log('If you see this printed in the console, the test passed!');
+```
+
+There are 4 steps to this compostion, each of them listed below:
+
+1. transform the string into a list of individual characters 
+2. attempt to transform the individual characters into integers 
+3. filter the list to only include integers 
+4. find the length of the list of numbers
+
+### Solution
+
+```js
+const sentence = 'PechaKucha is a presentation style in which 20 slides are shown for 20 seconds each (6 minutes and 40 seconds in total).';
+
+
+const numbersInString = R.pipe(R.split(''), R.map(parseInt),R.filter(Number.isInteger),R.length )
+
+expect(numbersInString(sentence)).toBe(7); 
+
+console.log(numbersInString(sentence))
+
+console.log('If you see this printed in the console, the test passed!');
+```
+
+
