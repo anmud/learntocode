@@ -79,3 +79,67 @@ node.appendChild(view)
 
 ![row-function](../row-function.png)
 
+Let's move to `body` function. The `rows` identifyer we ude in `tbody` function doesn't exist yet and we need to create it. 
+
+```js
+const MEALS = [
+    {description: 'Breakfast', calories: 460},
+    {description: 'Snack', calories: 180},
+    {description: 'Lunch', calories: 600}
+]
+const {td, th, tr, tbody } = tags;   //add body
+
+function cell(tag, className, value){
+      return tag({className}, value);
+}
+
+function mealRow(className, meal){
+      return tr({className}, [
+           cell(td, 'pa2', meals.description)
+           cell(td, 'pa2 tr', meals.calories)
+      ])
+}
+
+function mealsBody(className, meals){
+    return tbody({className}, rows);   //pass css classes and rows that should be part of the body
+}
+
+const node = document.getElementBiId('app');
+
+const view = mealRow('stripe-dark', {description: 'Lunch', calories: 500})
+
+node.appendChild(view)
+```
+To tranform the meals list to the rows, we'll use `map() function`. Set it to the value returned by calling `map() function`. We'll use ramda function. 
+
+```js
+const MEALS = [
+    {description: 'Breakfast', calories: 460},
+    {description: 'Snack', calories: 180},
+    {description: 'Lunch', calories: 600}
+]
+const {td, th, tr, tbody } = tags;  
+
+function cell(tag, className, value){
+      return tag({className}, value);
+}
+
+function mealRow(className, meal){
+      return tr({className}, [
+           cell(td, 'pa2', meals.description)
+           cell(td, 'pa2 tr', meals.calories)
+      ])
+}
+
+function mealsBody(className, meals){
+    const rows = R.map(R.partial(mealRow, ['stripe-dark']), meals)           //create rows identifyer
+    return tbody({className}, rows);   
+}
+
+const node = document.getElementBiId('app');
+
+const view = mealsBody('', MEALS)
+
+node.appendChild(view)
+```
+![body-function](../body-function.png)
