@@ -23,7 +23,7 @@ Well, for our case the plan/functions to create will include:
 
 We'll start from the `cell`. It is responsible for generating `html`, <td> tag in the `body` or <th> tag for cells in the `header`. Tthe cell will need some `CSS classes` to apply and the `actual data` to display in the cell. 
 
-![cell-functions](../cell-functions.png)
+![cell-function](../cell-function.png)
 
 The only way this `function` will know which `tag` to generate is to recieve a `parameter` indicating which one to create. Also we need a parameter for CSS class and the value.  
 ```js
