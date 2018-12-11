@@ -143,3 +143,115 @@ const view = mealsBody('', MEALS)
 node.appendChild(view)
 ```
 ![body-function](../body-function.png)
+
+### Exercise/Solution
+
+Create an html table using functional programming. 
+
+```js
+const MEALS = [
+  { description: 'Breakfast', calories: 460 },
+  { description: 'Snack', calories: 180 },
+  { description: 'Lunch', calories: 600 },
+];
+
+const { td, th, tr, tbody, thead, table } = tags;
+
+function cell(tag, className, value) { 
+  return tag({className}, value);
+}
+
+function mealRow(className, meal) {
+  return tr({ className }, [
+    cell(td, 'pa2', meal.description),
+    cell(td, 'pa2 tr', meal.calories),
+  ]);
+}
+
+const headerRow = tr([
+    cell(th, 'pa2 tl', "Meal"),
+    cell(th, 'pa2 tr', "Calories")
+  ])
+
+const mealHeader = thead(headerRow)
+      
+function totalRow(meals){
+  const total = R.pipe(
+    R.map(meal => meal.calories),
+    R.reduce((acc, calories)=> acc + calories, 0),
+  )(meals);
+  return tr({className: "bt b"}, [
+    cell(td, 'pa2 tr', 'Total:'),
+    cell(td, 'pa2 tr', total )
+  ])
+}
+
+function mealsTable(meals){
+  return table({className: 'mw5 center mw-100 collapse'}, [
+    mealHeader,
+    mealsBody('', meals)
+  ])
+}
+
+
+function mealsBody(className, meals) {
+  const rows = R.map(R.partial(mealRow, ['stripe-dark']), meals);
+  const rowsWithTotal = R.append(totalRow(meals), rows)
+  return tbody({ className }, rowsWithTotal);
+}
+
+const node = document.getElementById('app');
+
+const view = mealsTable(MEALS);
+
+
+node.appendChild(view);
+```
+
+### Result 
+
+![functional-table](../functional-table.png)
+
+### Alternative way 
+
+```js
+const MEALS = [
+  { description: 'Breakfast', calories: 460 },
+  { description: 'Snack', calories: 180 },
+  { description: 'Lunch', calories: 600 },
+];
+
+const { table, thead, tbody, tr, th, td } = tags;
+
+const mealHeader = R.compose(
+  tr,
+  R.map(R.partial(th, [{ className: 'pa2 tl' }])),
+);
+
+const mealRow = R.curry((fields, row) =>
+  R.compose(
+    R.partial(tr, [{ className: 'stripe-dark' }]),
+    R.map(R.partial(td, [{ className: 'pa2' }])),
+    R.map(field => row[field]),
+  )(fields),
+);
+
+const mealsBody = R.curry((fields, rows) =>
+  R.compose(tbody, R.map(mealRow(fields)))(rows),
+);
+
+const mealsTable = R.curry((columns, fields, rows) =>
+  R.compose(
+    R.partial(table, [{ className: 'mw5 center w-100 collapse' }]),
+    R.append(R.__, [mealHeader(columns)]),
+    mealsBody(fields),
+  )(rows),
+);
+
+const node = document.getElementById('app');
+
+node.appendChild(
+  mealsTable(['Meal', 'Calories'], ['description', 'calories'], MEALS),
+);
+
+```
