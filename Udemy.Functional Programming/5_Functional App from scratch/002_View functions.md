@@ -117,3 +117,52 @@ Here is the result:
 
 ![count-result](../count-result.png)
 
+Let's add some `tachyons css classes` to make it look more nice. 
+
+First we'll add an `object literal` as the first `parameter` for the `div function` that has the `count`, set the `margin vertical` to the second step. On both buttons let's add some `padding vertical` first step amd make `horisontal padding` a bit wider, by adding the class for `padding horisontal` second step. And lastly lets add `margin right` step 2 on the first button, so we have the space between two buttons.  
+
+```js
+import h from 'hyperscript';
+import hh from 'hyperscript-helpers'; 
+
+const { div, button } = hh(h); 
+
+const initModel = 0
+
+function view(model){
+    return div([
+        div({className: 'mv2'},`Count: ${model}`),
+        button({className: 'pv1 ph2 mr2'},'+'),
+        button({className: 'pv1 ph2'},'-')
+    ])
+  }
+
+  const rootNode = document.getElementById('app');
+  rootNode.appendChild(view(initModel))
+  ```
+![count-result2](../count-result2.png)
+  Clicking on either these buttond doesn't actually do anything yet. Let's do this. In the `buttons attribute object` where we are passing the `className` property, we'll add another attribute named `onclick`. Then for the `onclick` property's `value` we'll add a lambda function and simply console.log "+ clicked!". 
+
+  ```js
+  import h from 'hyperscript';
+import hh from 'hyperscript-helpers'; 
+
+const { div, button } = hh(h); 
+
+const initModel = 0
+
+function view(model){
+    return div([
+        div({className: 'mv2'},`Count: ${model}`),
+        button({className: 'pv1 ph2 mr2', onclick: () => console.log('+ clicked!')},'+'),    //onclick property plus value 
+        button({className: 'pv1 ph2', onclick: () => console.log('- clicked!')},'-')
+    ])
+  }
+
+  const rootNode = document.getElementById('app');
+  rootNode.appendChild(view(initModel))
+  ```
+
+  ![button-onclick](../button-onclick.png)
+
+  What's exactly is this `onclick property`? Adding this `onclick property` allows us to tell the `DOM` that we are interested in knowing when someone clicks on the button. The way we tell the `DOM` that we'd like to know when the button is clicked - is by passing the `onclick property` a `function` that can be called when it's clicked. In the `function` we provide the `DOM` we just do whatever needs to be done to properly respond to the `button click`. 
