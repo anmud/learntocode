@@ -243,7 +243,7 @@ function view(model){
      node.appendChild(currentView);
 
      model = update(msg,model);    //reassign the model
-     currentView = update(model);   //reassign the currentView
+     currentView = view(model);   //reassign the currentView
      node.replceChild(currentView)   //render on the page
  }
  
@@ -255,9 +255,224 @@ function view(model){
 These three lines of code will need to execute every single time one of the buttons is clicked. 
 ```js
 model = update(msg,model);    
-currentView = update(model);   
+currentView = view(model);   
 node.replceChild(currentView)   
 ```
 ![update-sequence](../update-sequence.png)
 
-Well, if we've got some code that needs to be called repitedly, we should probably put that code in a `function`. 
+Well, if we've got some code that needs to be called repitedly, we should probably put that code in a `function`. What if we wrap these lines of code in a new `function` right where they are? 
+
+```js
+import h from 'hyperscript';
+import hh from 'hyperscript-helpers'; 
+
+const { div, button } = hh(h); 
+
+const initModel = 0
+
+function view(model){
+    return div([
+        div({className: 'mv2'},`Count: ${model}`),
+        button({className: 'pv1 ph2 mr2', onclick: () => console.log('+ clicked!')},'+'),
+        button({className: 'pv1 ph2', onclick: () => console.log('- clicked!')},'-')
+    ])
+  }
+
+  function update(msg, model){           
+    switch(msg){
+        case 'plus':
+        return model + 1;
+     
+        case 'minus':
+        return model - 1;
+ 
+        default: 
+        return model; 
+    }
+ }
+
+ //impure code below
+
+ function app(initModel, update, view, node){
+     let model = initModel;
+     let currentView = view(model);
+     node.appendChild(currentView);
+     
+     function dispatch(){             //wrap into a dispatch function
+     model = update(msg,model);
+     currentView = view(model);
+     node.replaceChild(currentView)
+     }
+ }
+ 
+
+  const rootNode = document.getElementById('app');
+  app(initModel, update, view, rootNode)
+ // rootNode.appendChild(view(update('minus', initModel)))
+ ```
+
+ So, we've got a `function` inside a `function`, but nothing actually calls the `dispatch function` yet. Where would we have the `dispathced` function called from? Before to answer that, let's review the purpose of the `dispatch function`. Dispatch should handle the `update sequense` we outlined earlier. So, when should the `update sequense` happen? Answer - any time when there an interaction with the `app` happens. 
+
+ What if we call the `dispatch function` from `onclick handlers` of each of the button? Currently `onclick handlers` don't have access to the `dispatch function`, because the `dispatch function` is scoped (isolated) whithin the `app function`. 
+
+ ```js
+import h from 'hyperscript';
+import hh from 'hyperscript-helpers'; 
+
+const { div, button } = hh(h); 
+
+const initModel = 0
+
+function view(model){
+    return div([
+        div({className: 'mv2'},`Count: ${model}`),
+        button({className: 'pv1 ph2 mr2', onclick: () => dispatch()},'+'),  // call dispatch here
+        button({className: 'pv1 ph2', onclick: () => dispatch()},'-')      // call dispatch here
+    ])
+  }
+
+  function update(msg, model){           
+    switch(msg){
+        case 'plus':
+        return model + 1;
+     
+        case 'minus':
+        return model - 1;
+ 
+        default: 
+        return model; 
+    }
+ }
+
+ //impure code below
+
+ function app(initModel, update, view, node){
+     let model = initModel;
+     let currentView = view(model);
+     node.appendChild(currentView);
+     
+     function dispatch(){             
+     model = update(msg,model);
+     currentView = view(model);
+     node.replaceChild(currentView)
+     }
+ }
+ 
+
+  const rootNode = document.getElementById('app');
+  app(initModel, update, view, rootNode)
+ // rootNode.appendChild(view(update('minus', initModel)))
+ ```
+
+What if we pass the `dispatch function` as a parameter to the `view function`? Now, `onclick handlers` have access to the `dispatch function`. Well, also our `update function` somehow needs to get a `message` about what happened when we clicked the button. And the two `messages` the `update function` knows how to deal with are: "plus" and "minus" messages. Let's pass "plus" string and "minus" string into the `dispatch function`. Also we need to add the `message` to the `dispatch function`.
+
+```js
+import h from 'hyperscript';
+import hh from 'hyperscript-helpers'; 
+
+const { div, button } = hh(h); 
+
+const initModel = 0
+
+function view(dispatch, model){      
+    return div([
+        div({className: 'mv2'},`Count: ${model}`),
+        button({className: 'pv1 ph2 mr2', onclick: () => dispatch('plus')},'+'),  //pass plus string
+        button({className: 'pv1 ph2', onclick: () => dispatch('minus')},'-')     //pass minus string
+    ])
+  }
+
+  function update(msg, model){           
+    switch(msg){
+        case 'plus':
+        return model + 1;
+     
+        case 'minus':
+        return model - 1;
+ 
+        default: 
+        return model; 
+    }
+ }
+
+ //impure code below
+
+ function app(initModel, update, view, node){
+     let model = initModel;
+     let currentView = view(dispatch, model);    
+     node.appendChild(currentView);
+     
+     function dispatch(msg){           //pass message to the dispatch        
+     model = update(msg,model);
+     currentView = view(dispatch, model);     
+     node.replaceChild(currentView)
+     }
+ }
+ 
+
+  const rootNode = document.getElementById('app');
+  app(initModel, update, view, rootNode)
+ // rootNode.appendChild(view(update('minus', initModel)))
+ ```
+
+ Part of the code in the `dispatch function` is not exactly correct. 
+
+ ```js
+currentView = view(dispatch, model);     
+node.replaceChild(currentView)
+```
+Calling `replaceChild()` actually takes two parameters: the `newView or node` (newChild) as a first parameter, and the `old node` as the second parameter. 
+
+![replace-child](../replace-child.png)
+
+So, let's correct our code a bit. Instead of updating `currentView` (`currentView = view(dispatch, model);`), we'll create a new constant named `updatedView`, setting it to what's returned by `view function`. And in the call of `replaceChild` we'll pass `updatedView` as the first parameter, and the `currentView` as the second parameter. In the last line we;ll reassign `currentView` to the value stored in the `updatedView` variable. 
+
+```js
+import h from 'hyperscript';
+import hh from 'hyperscript-helpers'; 
+
+const { div, button } = hh(h); 
+
+const initModel = 0
+
+function view(dispatch, model){      
+    return div([
+        div({className: 'mv2'},`Count: ${model}`),
+        button({className: 'pv1 ph2 mr2', onclick: () => dispatch('plus')},'+'),  
+        button({className: 'pv1 ph2', onclick: () => dispatch('minus')},'-')     
+    ])
+  }
+
+  function update(msg, model){           
+    switch(msg){
+        case 'plus':
+        return model + 1;
+     
+        case 'minus':
+        return model - 1;
+ 
+        default: 
+        return model; 
+    }
+ }
+
+ //impure code below
+
+ function app(initModel, update, view, node){
+     let model = initModel;
+     let currentView = view(dispatch, model);    
+     node.appendChild(currentView);
+     
+     function dispatch(msg){                  
+     model = update(msg,model);
+     const updatedView = view(dispatch, model);     //create updatedView constant 
+     node.replaceChild(updatedView, currentView);    //pass updatedView as the second parameter
+     currentView = updatedView;       //reassign currentView
+     }
+ }
+ 
+
+  const rootNode = document.getElementById('app');
+  app(initModel, update, view, rootNode)
+ // rootNode.appendChild(view(update('minus', initModel)))
+ ```
