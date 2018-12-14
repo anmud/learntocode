@@ -1,6 +1,6 @@
 # Adding a Virtual DOM
 
-We gonna use [`Matt Esch's virtual DOM library`](https://github.com/Matt-Esch/virtual-dom). 
+We gonna use [Matt Esch's virtual DOM library](https://github.com/Matt-Esch/virtual-dom). 
 Let's install it - `npm install virtual-dom --save-dev`. 
 
 There are few `functions` that we need to pull into our `index.js` file. Unpack `functions` from the virtual DOM library via distructuring. 
