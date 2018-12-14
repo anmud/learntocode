@@ -26,6 +26,7 @@ model = {
 ```
 Then in our `app` we have a `add meal `button. 
 ![add-meal-button](../add-meal-button.png)
+
 Clicking this button will cause a `form` to show, which allows us to add new meals to the list. 
 ![meal-form](../meal-form.png)
 
