@@ -6,7 +6,7 @@ What `view functions` do we need to transform our `data model` into `html` and `
 
 ![view-function](../view-function.png)
 
-2. Next we;ll have the `formView` function that will either show the `add meal button` or the `form`. 
+2. Next we'll have the `formView` function that will either show the `add meal button` or the `form`. 
 
 ![button-function](../button-function.png)
 ![form-function](../form-function.png)
