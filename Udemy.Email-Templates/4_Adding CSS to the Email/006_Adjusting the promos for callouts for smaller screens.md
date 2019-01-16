@@ -140,3 +140,34 @@ We gonna position the `icons` so they  being assigned to the `background propert
 ### Callouts small
 ![callouts-small](../callouts-small.png)
 
+One thing more to do is the `anchor links`, they are up to the `content` now, we turned off the `break` tag display and since the `anchor tag` has a display of `inline`, it wraps up next to the `content`.  So,t to fix this we need to go to our `html body` code, find our `callouts` and  add a `class` to a second `break tag` we were using to space out our `content` inside of the `calouts`. We'll add a class of `spacer` to all of the callouts. 
+
+### HTML
+```html
+<tr><!--callouts row-->
+						<td valign="top" bgcolor="#55315d" class="callout" style="background-color: #55315d; 
+						 padding: 30px; border-right: 1px solid #dbc064;  
+						border-bottom: 1px solid #dbc064; border-left: 1px solid #dbc064;">
+                           <table class="callout_1" width="135" align="left" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td valign="top" width="135" style="padding-left: 10px; padding-right: 10px; font-family:Arial, Helvetica, sans-serif; font-size:13px; line-height: 16px; color: #ffffff;">
+									<img src="images/icon_grapes.gif" width="75" height="75"><br>
+									Lorem ipsum dolor sit amet conctetur adipi eiu smod incid amet idun.
+									<br><br class="spacer"> <!--add a spacer class here -->
+									<a href="#" style="color: #efe1b0">Learn more</a>
+								</td>
+							</tr>
+                        </table>
+            <!--.......-->
+```
+
+In the `media screens` for the smaller screens let's target these `break` tags - `td.callout table br.spacer {display: inline;}`. 
+Now the second `break tag` is reassigned to be displayed inline, pushing the `anchor links` to the next line. 
+
+### Callouts without break
+![callouts-no-break](../callouts-no-break.png)
+
+### Callouts with final break adjustments
+
+![callouts-break](../callouts-break.png)
+
