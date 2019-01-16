@@ -171,3 +171,4 @@ Now the second `break tag` is reassigned to be displayed inline, pushing the `an
 
 ![callouts-break](../callouts-break.png)
 
+As one more final detail we need let's to get rid of the `extra space` on the right and left sides. Some `email cliens` will offer the CSS applied to the `body tag`. Before our first `media query` let's create the rule to target the `body` element. This way the design on small screens will go edge to edge on the browser. 
