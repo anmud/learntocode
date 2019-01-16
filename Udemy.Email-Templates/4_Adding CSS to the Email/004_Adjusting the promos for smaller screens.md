@@ -89,7 +89,7 @@ Next, let's add some rules for the smaller screens. Here in the rules we'll use 
     </head>	
 ```
 
-```
+
 ### Promos large
 ![promos-large](../promos-large.png)
 
