@@ -86,3 +86,12 @@ These properties gonna be picked up for the small screen; let's add some more sm
 		</style>
     </head>	
 ```
+
+### Banner & Headline large
+![banner-headline-large](../banner-headline-large.png)
+
+### Banner & Headline medium
+![banner-headline-medium](../banner-headline-medium.png)
+
+### Banner & Headline small
+![banner-headline-medium](../banner-headline-small.png)

@@ -73,3 +73,20 @@ Next, let's add some rules for the `smaller size screens`. We gonna target the `
     </head>	
 ```
 
+### Content large
+![content-large](../content-large.png)
+
+### Content medium
+![content-medium](../content-medium.png)
+
+### Content small
+![content-medium](../content-small.png)
+
+### Footer large
+![footer-large](../footer-large.png)
+
+### Footer medium
+![footer-medium](../footer-medium.png)
+
+### Footer small
+![footer-medium](../footer-small.png)

@@ -88,3 +88,13 @@ Next, let's add some rules for the smaller screens. Here in the rules we'll use 
 		</style>
     </head>	
 ```
+
+```
+### Promos large
+![promos-large](../promos-large.png)
+
+### Promos medium
+![promos-medium](../promos-medium.png)
+
+### Promos small
+![promos-small](../promos-small.png)

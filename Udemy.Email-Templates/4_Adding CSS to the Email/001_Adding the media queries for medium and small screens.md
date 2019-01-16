@@ -93,3 +93,12 @@ Inside the smaller screen area we don't need to turn the `logo` off because we a
 		</style>
     </head>
 ``` 
+
+### Logo large
+![logo-large](../logo-large.png)
+
+### Logo medium
+![logo-medium](../logo-medium.png)
+
+### Logo small
+![logo-medium](../logo-small.png)
