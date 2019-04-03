@@ -28,7 +28,7 @@ console.log(x, y, a, b); // -> 10, 'abc', 10, 'abc'
 ```
 Both `a` and `x` now contain `10`. Both `b` and `y` now contain `'abc'`. They’re separate, as the `values` themselves were copied.
 
-![java-script-primitives2](../java-script-primitives2.png)
+![java-script-primitives2](./java-script-primitives2.png)
 
 Changing one does not change the other. Think of the `variables` as having no relationship to each other.
 
@@ -59,11 +59,11 @@ A representation of lines 1 and 2 above in memory is:
 
 1. 
 
-![java-script-reference-variables](../java-script-reference-variables.png)
+![java-script-reference-variables](./java-script-reference-variables.png)
 
 2. 
 
-![java-script-reference-variables2](../java-script-reference-variables2.png)
+![java-script-reference-variables2](./java-script-reference-variables2.png)
 
 Notice that the value, the address, contained by the `variable` `arr` is static. The `array` in memory is what changes. When we use `arr` to do something, such as pushing a `value`, the Javascript engine goes to the location of `arr` in memory and works with the information stored there.
 
@@ -77,7 +77,7 @@ var refCopy = reference;
 ```
 The code above looks like this in memory.
 
-![assigning-by-reference](../assigning-by-reference.png)
+![assigning-by-reference](./assigning-by-reference.png)
 
 Each `variable` now contains a `reference` to the **same array**. That means that if we alter `reference`, `refCopy` will see those changes:
 
@@ -85,9 +85,9 @@ Each `variable` now contains a `reference` to the **same array**. That means tha
 reference.push(2);
 console.log(reference, refCopy); // -> [1, 2], [1, 2]
 ```
-![assigning-by-reference2](../assigning-by-reference2.png)
+![assigning-by-reference2](./assigning-by-reference2.png)
 
 We’ve pushed `2` into the `array` in memory. When we use `reference` and `refCopy`, we’re pointing to that `same array`.
 
-[resource:](https://codeburst.io/explaining-value-vs-reference-in-javascript-647a975e12a0)
+[resource: here](https://codeburst.io/explaining-value-vs-reference-in-javascript-647a975e12a0)
 
