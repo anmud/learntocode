@@ -15,7 +15,7 @@ var z = null;
 
 `x` contains `10`. `y` contains `'abc'`. To cement this idea, we’ll maintain an image of what these `variables` and their respective values look like in memory.
 
-![java-script-primitives](../java-script-primitives.png)
+![java-script-primitives](./java-script-primitives.png)
 
 When we assign these `variables` to other variables using `=`, we copy the value to the new `variable`. They are copied `by value`.
 
