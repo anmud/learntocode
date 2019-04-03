@@ -89,5 +89,5 @@ console.log(reference, refCopy); // -> [1, 2], [1, 2]
 
 We’ve pushed `2` into the `array` in memory. When we use `reference` and `refCopy`, we’re pointing to that `same array`.
 
-[resource => here](https://codeburst.io/explaining-value-vs-reference-in-javascript-647a975e12a0)
+resourse [=> here](https://codeburst.io/explaining-value-vs-reference-in-javascript-647a975e12a0)
 
