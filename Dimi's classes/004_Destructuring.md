@@ -97,9 +97,89 @@ const updatedTotal = {
 const {dinner, ...mealWithoutDinner} = meal  //rest
 ```
 
+### More `spread` examples
+
+1. 
+```js
+const movies = ["Leon", "Love Actually", "Lord of the Rings"];
+
+console.log(...movies)
+//result - "Leon", "Love Actually", "Lord of the Rings"
+
+//combine two arrays together 
+const shapes = ["triangle", "square", "circle"];
+const objects = ["pencil", "notebook", "eraser"];
+
+const chaos = [...shapes, ...objects]
+
+console.log(chaos)
+//result -  ["triangle", "square", "circle", "pencil", "notebook", "eraser"]
+
+```
+2. Add the elements of an existing array into the new array
+
+```js
+const certsToAdd = ['Algorithms and Data Structures', 'Font End Libraries'];
+const certifications = ['Responsive Web Design', ...certsToAdd, 'Data Visualisation', 'APIs and Microservices', 'Quality Assurance and Information Security'];
+
+console.log(certifications)
+//result - ["Responsive Web Design", "Algorithms and Data Structures", "Font End Libraries", "Data Visualisation", "APIs and Microservices", "Quality Assurance and Information Security"]
+```
+
+3. Pass elements of an array as arguments into a function
+
+```js
+
+function addThreeNumbers(x,y,z){
+console.log(x+y+z)
+}
+
+const args = [0,1,2]
+addThreeNumbers(...args)
+
+//result - 3
+```
+
+4. Copy arrays
+
+```js
+const arr = [1,2,3]
+const arr2 = [...arr]
+arr2.push(4)
+
+console.log(arr, arr2)
+//result - (3) [1, 2, 3]  (4) [1, 2, 3, 4]
+```
+
+
+### More `rest` examples
+1. 
+```js
+const movie = ["Life of Brain", 8.1, 1979, "Graham Chapman", "John Cleese", "Michael Palin"]
+
+const [title, rating, year, ...actors] = movie
+
+//Thanks to the rest parameter, actors gets assigned the remaining values of the movie array, in form of an array.
+
+console.log(title,rating,year,actors)
+//result - Life of Brain 8.1 1979 (3) ["Graham Chapman", "John Cleese", "Michael Palin"]
+```
+2.  In the `function` we gonna pass in two arguments: multiplier and the argument that has the rest operator (where actually we can pass as many arguments as we want), well the firts argument is `multiplier` and the rest we pass in will be condenced into the array called `theArgs`. Since it is an array we can use array methods like `map`. Now its gonna multiply each element in theArgs by the multiplier. So, in our example `const arr = multiply(2,1,2,3);` - 2 is the multiplier and the rest elements are the array. 
+```js
+function multiply(multiplier, ...theArgs){
+  return theArgs.map(function(element){
+    return multiplier * element;
+  });
+}
+const arr = multiply(2,1,2,3);
+console.log(arr)
+//result - [2,4,6]
+```
+
+
 ## A `data model`
 
-A `model` defines e.g an object, an array or simple data types) that a user can see and interact through a user interface. 
+A `model` defines e.g an object, an array or simple data types that a user can see and interact through a user interface. 
 ```js
 const dataModel = [
 {name: "Anastasia", city: {"Berlin"}, countryCode: 49},
