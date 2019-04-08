@@ -95,5 +95,39 @@ console.log(
 //result - {name: "Dimitri"}
 ```
 
+### Example
+
+```js
+// race is in the global scope, and can be accessed/modified by any functions
+const race = "100m Dash"
+const winners = ["Hunter Gath", "Singa Song", "Imda Bos"];
 
 
+// in parens (winner , i, array) are called parameters
+const make = (winner, i, array) => ({name: winner, race: race, place: i + 1})
+
+//const win = winners.map(make) - behind the scenes
+// const win = winners.map(make(winner[0], 0))
+// const win = winners.map(make(winner[1], 1))
+// const win = winners.map(make(winner[2], 2))
+const win = winners.map(make)
+// win function is impure
+
+
+const pureWin = (winners, race)=> {
+  const result = winners.map((winner, i) => ({name: winner, race: race, place: i +1}))
+  return result
+}
+
+const result = pureWin(winners, race)
+
+console.log(
+  win,
+  result,
+)
+
+//result [{...}, {...},{...}]
+//0: {name: "Hunter Gath", race: "100m Dash", place: 1}
+//1: {name: "Singa Song", race: "100m Dash", place: 2}
+//2: {name: "Imda Bos", race: "100m Dash", place: 3}
+```

@@ -17,3 +17,20 @@ Why is it called a complex data type? A complex data type is a container for pri
 - Array [1,2,3,4,5] - container for numbers
 - Object {a: "string", b: "string"} - container for strings
 - Date
+
+
+What is a `data structure`?
+
+It is a `compositition of other data` types e.g. object or array is also a data structure
+
+```js
+var dataStructure = {
+  key: [1, 2, 4, 6, 6],
+  names: {
+    first: "Dimitri",
+    last: "Tarasowski"
+  },
+  phone: 134534534534534 
+}
+```
+  
