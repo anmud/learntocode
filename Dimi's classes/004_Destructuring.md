@@ -150,6 +150,27 @@ arr2.push(4)
 console.log(arr, arr2)
 //result - (3) [1, 2, 3]  (4) [1, 2, 3, 4]
 ```
+5. Change value inside the array object
+
+```js
+const users = [
+    {name: "Anastasia", city: "Berlin", countryCode: 49, id: 1},
+    {name: "John Doe", city: "San Francisco", countryCode: 1, id: 2}
+    ]
+
+const changeCity = users => users.map(changedCity)
+const changedCity = user => {
+  const {name}  = user
+  if(name === "Anastasia"){
+    return {...user, city: "Los Angeles"}
+  } else return user
+}
+
+console.log(changeCity(users))
+// result - 
+//0: {name: "Anastasia", city: "Los Angeles", countryCode: 49, id: 1}
+//1: {name: "John Doe", city: "San Francisco", countryCode: 1, id: 2}
+```
 
 
 ### More `rest` examples
