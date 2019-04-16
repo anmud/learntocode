@@ -20,6 +20,7 @@ const f = obj => {
   return {...obj, name: "Michael"}
 }
 
+
 const f_ = obj => {
   					// this is called computed property
   					// here the value of property name gets calculated and reassigned
