@@ -186,6 +186,7 @@ console.log(title,rating,year,actors)
 //result - Life of Brain 8.1 1979 (3) ["Graham Chapman", "John Cleese", "Michael Palin"]
 ```
 2.  In the `function` we gonna pass in two arguments: multiplier and the argument that has the rest operator (where actually we can pass as many arguments as we want), well the firts argument is `multiplier` and the rest we pass in will be condenced into the array called `theArgs`. Since it is an array we can use array methods like `map`. Now its gonna multiply each element in theArgs by the multiplier. So, in our example `const arr = multiply(2,1,2,3);` - 2 is the multiplier and the rest elements are the array. 
+
 ```js
 function multiply(multiplier, ...theArgs){
   return theArgs.map(function(element){
@@ -195,6 +196,34 @@ function multiply(multiplier, ...theArgs){
 const arr = multiply(2,1,2,3);
 console.log(arr)
 //result - [2,4,6]
+```
+3. Transforming the given array and adding and removin properties from each object
+
+```js
+const songs = [
+  {id: 1, name: "Curl of the Burl", artist: "Mastodon"},
+  {id: 2, name: "Oblivion", artist: "Mastodon"},
+  {id: 3, name: "Flying Whales", artist: "Gojira"},
+  {id: 4, name: "L'Enfant Sauvage", artist: "Gojira"}
+]
+
+const mapped = songs.map(song => {
+  //first we remove the artist property
+  const {artist, ...rest } = song
+  //return a new object without artist property and with two new properties being added
+  return {
+    ...rest,
+    scrobbleCount: 0,
+    spotifyUrl: "let's just imagine these properties make sense for now",
+  }
+})
+
+console.log(mapped)
+//result : 
+// 0: {id: 1, name: "Curl of the Burl", scrobbleCount: 0, spotifyUrl: "let's just imagine these properties make sense for now"}
+// 1: {id: 2, name: "Oblivion", scrobbleCount: 0, spotifyUrl: "let's just imagine these properties make sense for now"}
+// 2: {id: 3, name: "Flying Whales", scrobbleCount: 0, spotifyUrl: "let's just imagine these properties make sense for now"}
+// 3: {id: 4, name: "L'Enfant Sauvage", scrobbleCount: 0, spotifyUrl: "let's just imagine these properties make sense for now"}
 ```
 
 
