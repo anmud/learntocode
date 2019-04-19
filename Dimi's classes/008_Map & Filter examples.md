@@ -35,7 +35,7 @@ const allSongNames = songs.map(song => song.name)
 console.log(allSongNames) // ["Curl of the Burl", "Oblivion", "Flying Whales", "L'Enfant Sauvage"]
 ```
 
-2. Transforming the given array and adding and removin properties from each object
+2. Transforming the given array and adding and removing properties from each object
 
 ```js
 const songs = [

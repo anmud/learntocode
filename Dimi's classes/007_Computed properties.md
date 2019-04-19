@@ -2,6 +2,26 @@
 
 `Computed properties` is used when we wanna to use a `variable value` as a `propery name`.
 
+We can use `square brackets` in an `object` literal. That’s called `computed properties`.
+
+For instance:
+
+```js
+let fruit = "apple";
+
+let bag = {
+  [fruit]: 5, // the name of the property is taken from the variable fruit
+};
+
+alert( bag.apple ); // 5 if fruit="apple"
+```
+
+The meaning of a `computed property` is simple: `[fruit]` means that the `property name` should be taken from `fruit` variable.
+
+So, if a visitor enters "apple", `bag` will become `{apple: 5}`.
+
+1. 
+
 ```js
 const myFruit = "fruit"
 
@@ -10,6 +30,8 @@ const iEat = {[myFruit]: 'apple', vegetable: 'carrot'}
 console.log(iEat)
 //result - {fruit: "apple", vegetable: "carrot"}
 ```
+
+2. 
 ```js
 const name = "newProperty"
 
