@@ -1,5 +1,15 @@
 # Ternary Operator
 
+A `ternary expression` is a `conditional expression` that evaluates to a `value`. It consists of a `conditional`, a truthy clause (the value to produce if the conditional evaluates to a truthy value), and a `falsy clause` (the value to produce if the conditional evaluates to a falsy value).
+
+They look like this:
+
+```js
+(conditional)
+  ? truthyClause
+  : falsyClause
+```
+
 When you remove `if statements` from your `code`. Your code becomes easy to reason about.
 
 How to remove `if statements`? We can use  a `ternary operator`.
