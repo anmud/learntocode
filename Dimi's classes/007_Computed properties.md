@@ -165,3 +165,42 @@ const handleInputChange = event => {
 
 export default EditUserForm
 ```
+
+### How to loop over an object without for loop
+
+```js
+
+const user = {
+  isAdmin: true,
+  name: "Anastasia",
+  city: "Berlin",
+  4: "Hello World!",
+  meme: "Hello Iam meme!"
+}
+
+//1) We create an array of keys from object user
+const keys = Object.keys(user) // ["isAdmin", "name", "city"]
+
+
+const mapOverKeys = (keys, user) => {
+  	const newUser = keys.map(key => {
+  		const value = user[key] // user["isAdmin"] === user.isAdmin
+  		return {[key]: value + "!!!"}
+	})
+  return newUser
+}
+
+
+console.log(
+  mapOverKeys (keys, user), 
+
+//Array(5)
+//0: {4: "Hello World!!!!"}
+//1: {isAdmin: "true!!!"}
+//2: {name: "Anastasia!!!"}
+//3: {city: "Berlin!!!"}
+//4: {meme: "Hello Iam meme!!!!"}
+
+  )
+
+
