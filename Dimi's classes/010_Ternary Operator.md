@@ -32,7 +32,7 @@ const checkAdminStatus = data => {
 console.log(user) // "user is Admin"
 ```
 
-2. `Ternary operator` always evaluates to a `value`. Variant of a `function` without `if statement`. Instead we use `ternary operator`
+2. `Ternary operator` always evaluates to a `value`. Variant of a `function` without `if statement`. Instead we use a `ternary operator`.
 
 - if true (?)
 - else (:)
@@ -73,3 +73,12 @@ console.log(
   check(user2) // "admin is not Anastasia"
 )
 ```
+
+#### Chained ternaries have several advantages over if statements:
+
+- It’s always easy to write them so that they read in a straight line, top to bottom. If you can follow a straight line, you can read a chained ternary.
+- Ternaries reduce syntax clutter. Less code = less surface area for bugs = fewer bugs.
+- Ternaries don’t need temporary variables, reducing load on working memory.
+- Ternaries have a better signal-to-noise ratio.
+- If statements encourage side effects and mutation. Ternaries encourage pure code.
+- Pure code decouples our expressions and functions from each other, so ternaries train us to be better developers.
