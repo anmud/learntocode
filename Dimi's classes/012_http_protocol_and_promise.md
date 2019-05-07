@@ -19,9 +19,9 @@ What are the `rules` for communicaiton between `computers` via `http`?
 - header: Accept: application/json, Authorization: APIKEY345345, Content-Type: application/json 
 - body: {"id": 1, "name": Anastasia"}
 
-* Accept: application/json - I accept `data` only in `JSON format`
-* Authorization: APIKEY345345 - the `key` wich gives the opportunity to request for the `data` in case of authorisation
-* Content-Type: application/json - I send you `data` in `JSON form`
+=> Accept: application/json - I accept `data` only in `JSON format`
+=> Authorization: APIKEY345345 - the `key` wich gives the opportunity to request for the `data` in case of authorisation
+=> Content-Type: application/json - I send you `data` in `JSON form`
 
 **Response:** is done by the `server`
 
@@ -29,7 +29,7 @@ What are the `rules` for communicaiton between `computers` via `http`?
 - status: 200 (ok), 400 (error) [read more here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 - body: {"id": 1, "name": "Anastasia"}
 
-* Access-Control-Allow-Origin: * - you can use all `data bases`
+=> Access-Control-Allow-Origin: * - you can use all `data bases`
 
 Wildcard `*`.
 
