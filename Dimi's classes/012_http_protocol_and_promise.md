@@ -19,9 +19,11 @@ What are the `rules` for communicaiton between `computers` via `http`?
 - header: Accept: application/json, Authorization: APIKEY345345, Content-Type: application/json 
 - body: {"id": 1, "name": Anastasia"}
 
-note 1.  Accept: application/json - I accept `data` only in `JSON format`
-note 2. Authorization: APIKEY345345 - the `key` wich gives the opportunity to request for the `data` in case of authorisation
-note 3. Content-Type: application/json - I send you `data` in `JSON form`
+*Comments:*
+
++ Accept: application/json - I accept `data` only in `JSON format`; 
++ Authorization: APIKEY345345 - the `key` wich gives the opportunity to request for the `data` in case of authorisation; 
++ Content-Type: application/json - I send you `data` in `JSON form`
 
 **Response:** is done by the `server`
 
@@ -29,7 +31,9 @@ note 3. Content-Type: application/json - I send you `data` in `JSON form`
 - status: 200 (ok), 400 (error) [read more here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 - body: {"id": 1, "name": "Anastasia"}
 
-note 1. Access-Control-Allow-Origin: * - you can use all `data bases`
+*Comments:*
+
++ Access-Control-Allow-Origin: * - you can use all `data bases`
 
 Wildcard `*`.
 
@@ -58,7 +62,7 @@ const body = {
 
 ## Promise
 
-How to make a `request` to a server? Here in the example we use `fetch` library, http protocol and a promise(`.then function`)
+How to make a `request` to a server? **Promise** - `.then() function` that runs when the `data` was got/sent to the `server`. Here in the example we use `fetch` library, http protocol and a promise(`.then function`)
 
 ```js
 const callMe = response => response.json()
