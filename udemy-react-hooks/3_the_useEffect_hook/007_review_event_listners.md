@@ -19,3 +19,6 @@ const handleClick = event => {
 }
 
 window.removeEventListner('click', handleClick)
+
+
+[official reddit discussion on the inefficiencies of subscribing with adEventListner and removeEventListner on each around](https://www.reddit.com/r/reactjs/comments/9zupzn/why_would_i_use_react_hooks_where_the_seteffect/)

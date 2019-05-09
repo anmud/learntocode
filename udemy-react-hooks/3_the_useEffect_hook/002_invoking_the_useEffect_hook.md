@@ -41,6 +41,6 @@ Every time our `component` renders or re-renders, the `function` or the `effect`
 
 So, let's see at what os going on here step by step: 
 
-- Every single time we press the `button` we invoke the `click handler` (handleIncrease/handleDecrease in our case). What that is doing - is calling the `setCount` function, that we've got from our `useState` hook, ehich updates the `value` of a `count state variable`.
+- Every single time we press the `button` we invoke the `click handler` (handleIncrease/handleDecrease in our case). What that is doing - is calling the `setCount` function, that we've got from our `useState` hook, which updates the `value` of a `count state variable`.
 - Whenever the `value` of a `state variable` is updated we force a `component` re-render.
 - Whenever the `component` re-renders the `useEffect` hook runs the `function` that we passed to it. 
