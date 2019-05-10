@@ -1,6 +1,6 @@
 # Pure functions vs procedures
 
-### A `function` maps `arguments` to results.
+### A pure function - a `function` that maps `arguments` to results.
 
 ```js
 function double(num) {
@@ -11,7 +11,7 @@ console.log(double(10))
 //result - 20
 ```
 
-### A `function` as `procedure` - `function` with side-effect.
+### An impure function - a `function` as `procedure` - `function` with side-effect.
 
 In the example below the `function` "user" reassigns a new value to "count" `variable`, that is out of the `scope` of the `function` itself.
 
