@@ -14,10 +14,7 @@
 ## Progressive Enhancement for building Web Apps
 
 1. Identify core functionality:
-..* Define the core functionality e.g. slack - display/send/receive a message More examples
-
-..* Define the lowest common denominator a baseline device (e.g. mobile, tablet, desktop, kindle, alexa)
-
-..* Define the initial data model and make it visible <pre>JSON.stringify()</pre>
-
-..* Design basic structure with <div>'s and HTML5 sematic blocks for a baseline device
+   - Define the core functionality e.g. slack - display/send/receive a message More examples
+   - Define the lowest common denominator a baseline device (e.g. mobile, tablet, desktop, kindle, alexa)
+   - Define the initial data model and make it visible `<pre>JSON.stringify()</pre>`
+   - Design basic structure with `<div>`'s and HTML5 sematic blocks for a baseline device
