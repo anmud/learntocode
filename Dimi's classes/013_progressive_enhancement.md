@@ -77,7 +77,7 @@ If we were to leave the site in this HTML-only state, I don’t think we’d be 
 3. If a browser supports some form of `local storage`, then data can be stored in a `client-side database`. Flaky network connections or unexpected power outages won’t get in the way of saving that important document. Using `Service Workers`, web developers can provide instructions on what to do when the browser (or the server) is offline. These are modern `browser features` that we should be taking full advantage of **…once we’ve made sure that we’re providing a basic experience for everyone**.
 
 ---
-...We’ve looked at some examples of applying the three-step approach to a few products and services—news, social networking, photo sharing,and word processing. You can apply this approach to many more services: making and updating items in a to-do list, managing calendar appointments, looking up directions, making reservations at nearby restaurants. Each one can be built with the same process: 
+We’ve looked at some examples of applying the three-step approach to a few products and services—news, social networking, photo sharing,and word processing. You can apply this approach to many more services: making and updating items in a to-do list, managing calendar appointments, looking up directions, making reservations at nearby restaurants. Each one can be built with the same process: 
 - Identify core functionality. 
 - Make that functionality available using the simplest possible technology. 
 - Enhance!
