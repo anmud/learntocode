@@ -157,4 +157,4 @@ function interpolate(literals, ...expressions) {
 ```
 
 
-(source)[https://flaviocopes.com/javascript-template-literals/]
+[source](https://flaviocopes.com/javascript-template-literals/)
