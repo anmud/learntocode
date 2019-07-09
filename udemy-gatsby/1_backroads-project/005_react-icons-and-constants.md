@@ -1,9 +1,9 @@
 # React Icons and Constants
 
 We'll use for the project not the Gatsby specific but react spesific plugin. 
-Install - `nmp install --save react-icons`.
+Install - `npm install --save react-icons`.
 
-[docimentation for the plugin](https://react-icons.netlify.com/#/)
+[documentation for the plugin](https://react-icons.netlify.com/#/)
 
 - The end result will be SVG by default
 - we have multiple icin libraries available

@@ -87,7 +87,7 @@ export default Navbar;
 
 Now we can start working on our logic. 
 
-For the toggling we;ll use `React hooks`. Let's import `{useState}` and setup our `toggling function`. 
+For the toggling we'll use `React hooks`. Let's import `{useState}` and setup our `toggling function`. 
 
 **Navbar**
 
