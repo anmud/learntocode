@@ -6,7 +6,7 @@
 
  How do we work with this plugin? First we'll have to add it in our `config` file as an object. In fact we can use this plugin to use for multiple sources. So, in the object we have the `propery` by the name of `resolve`- the `value`of this property needs to be the name of that particular plugin (in our case "gatsby-source-filesystem").  Then for this particular plugin we'll gonna have `options object` within which we have two more properties: **name** - the name is up to you, this is your reference to know how will you name the source that you'll be getting ; **path** - just gives the path to that particular folder where you'll gonna be looking for your sources, however since this is the node.js file they use `__dirname` - and this will return the path of the folder where the current js file is locted. 
 
-** gatsby-config.js**
+**gatsby-config.js**
 
  ```jsx
  module.exports = {

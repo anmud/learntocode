@@ -51,7 +51,7 @@ const About = () => {
 export default About;
 ```
 
-![about-image](../about-image.png)
+![about-image](./about-image.png)
 
 Then we'll add one more `article`. 
 

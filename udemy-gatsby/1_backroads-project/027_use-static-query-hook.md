@@ -128,7 +128,7 @@ const Header = () => {
 export default Header; 
 ```
 
-![site-query](../site-query.png)
+![site-query](./site-query.png)
 
 We can also do `destructuring` when we are getting the response. If we are destructuring we need to make sure that the `property` is available on the `object` that we are getting back. 
 

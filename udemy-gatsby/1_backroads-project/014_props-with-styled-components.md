@@ -54,7 +54,7 @@ const Button = styled.button`
 
 export default Button;
 ```
-![styled-button2](../styled-button2.png)
+![styled-button2](./styled-button2.png)
 
 That would be the first way how we can access the `variable` in our `template literals`. 
 
@@ -102,7 +102,7 @@ const Button = styled.button`
 export default Button;
 ```
 
-![styled-button3](../styled-button3.png)
+![styled-button3](./styled-button3.png)
 
 How we can manipulate the `value` depending on that `prop`? Let's for our first `button` add the `prop` by the name of "big". 
 
@@ -144,5 +144,5 @@ const Button = styled.button`
 
 export default Button;
 ```
-![styled-button4](../styled-button4.png)
+![styled-button4](./styled-button4.png)
 

@@ -48,5 +48,5 @@ const Tours = () => {
 
 export default Tours
 ```
-![styled-button](../styled-button.png)
+![styled-button](./styled-button.png)
 

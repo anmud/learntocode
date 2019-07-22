@@ -23,7 +23,7 @@ const Blog = (props) => {
 export default Blog;
 ```
 
-![blog-props](../blog-props.png)
+![blog-props](./blog-props.png)
 
 We are interested in one specific property, which we don't have currently on this object - we need `data` property, and the reason is that we don't run our page query.
 
