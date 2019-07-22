@@ -1,6 +1,6 @@
 # Continuous Deployment
 
-When we have our project we can create the `new repo` if it was not created earlier. The wto commant we;ll be interested in: 
+When we have our project we can create the `new repo` if it was not created earlier. The wto commant we'll be interested in: 
 - setting up the remote url 
 - pushing it to that remote url
 
