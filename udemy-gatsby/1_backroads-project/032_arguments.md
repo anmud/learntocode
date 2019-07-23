@@ -2,7 +2,7 @@
 
 The `arguments` allow us to get our respose based on smth. In our case with `allFile` we have an option whether we: filter, sort, skip or limit our response. 
 
-![arguments](../arguments.png)
+![arguments](./arguments.png)
 
 Concerning the syntax - we need to add parenthesis after the field. 
 
@@ -12,7 +12,7 @@ Concerning the syntax - we need to add parenthesis after the field.
 
 - `skip` - skips nodes from our response. Let's say we wanna skip 4 nodes - so in response we'll get just one. 
 
-![arguments-skip](../arguments-skip.png)
+![arguments-skip](./arguments-skip.png)
 
 
 - `filter` - let's say we only want the images from the `tour images` folder  -  this is the reason why we can use `filter`. With the `filter` we have more options how we can filter our response (filter based on what?). In our case we'll use `relativeDirecttory`. 
