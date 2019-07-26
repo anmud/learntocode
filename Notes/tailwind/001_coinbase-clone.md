@@ -395,3 +395,83 @@ Let's work on the next currency section. In the first part it has two `divs` and
 
 ![currency](./currency.png)
 
+Next part inside this section  - actual currency price
+
+```html
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Tailwind Example - Twitter</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+
+
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+    </head>
+    <body class="font-sans bg-gray-100">
+        <!--Navigation-->
+          ....
+
+     <div class="flex">
+            <div class="w-1/3 text-center py-6 ">
+                <div class="border-r">
+                        <div class="text-gray-600 mb-2">
+                                <span class="text-3xl align-top">CA$</span>
+                                <span class="text-5xl">21,404</span>
+                                <span class="text-3xl align-top">.74</span>
+                        </div>
+                        <div class="uppercase text-gray-500 tracking-wide">
+                            Bitcoin Price
+                        </div>        
+                </div>
+                
+            </div>
+            <div class="w-1/3 text-center py-6 ">
+                <div class="border-r">
+                        <div class="text-gray-600 mb-2">
+                                <span class="text-3xl align-top"><span class="text-green-400 align-top">+</span>CA$</span>
+                                <span class="text-5xl">12,998</span>
+                                <span class="text-3xl align-top">.48</span>
+                        </div>
+                        <div class="uppercase text-gray-500 tracking-wide">
+                            Since Last Month (CAD)
+                        </div>    
+                </div>
+        
+            </div>
+            <div class="w-1/3 text-center py-6">
+                <div >
+                        <div class="text-gray-600 mb-2">
+                                <span class="text-3xl align-top"><span class="text-green-400 align-top">+</span></span>
+                                <span class="text-5xl">154,99</span>
+                                <span class="text-3xl align-top">%</span>
+                        </div>
+                        <div class="uppercase text-gray-500 tracking-wide">
+                                Since Last Month (%)
+                        </div>    
+                </div>
+            </div>
+        
+     </div>
+
+
+ </div>
+
+</div><!--end section-->
+    
+
+
+    </body>
+</html>
+```
+
+![currency-price](./currency-price.png)
+
+Now let's do the responcive version of this. 
+
