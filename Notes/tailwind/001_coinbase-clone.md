@@ -1067,10 +1067,14 @@ And the last section.
 </div>
 
 
-
-
-
     </body>
 </html>
 ```
 
+**mobile version**
+
+![ready-mobile](./ready-mobile.png)
+
+**other screens**
+
+![ready-small](./ready-small.png)
