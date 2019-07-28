@@ -473,5 +473,119 @@ Next part inside this section  - actual currency price
 
 ![currency-price](./currency-price.png)
 
-Now let's do the responcive version of this. 
+Now let's do the responsive version of this. In our cas it would be tricky, so, maybe it'll be easier for us to create a tottaly different element for the mobile version and then just switch between them. 
+
+Firs in the `div` which holds our `buttons` : bitcoin, ethereum, litecoin - we'll add a new `div` which will hold the name "Price"; and we'll have this been hidden on screens smaller or larger. But the `div` with our `buttons` we'll make hidden by default, but showup flex for the small size screens or larger. 
+
+```html
+               <div class="sm:hidden text-blue-600 py-4">
+                    Price Charts
+                </div>
+                    <div class="hidden sm:flex">
+                        <button type="button" class="py-4 text-blue-600 border-b-2 border-blue-600 mr-4 appearance-none ">
+                            Bitcoin &middot; CA$21,380.01
+                        </button>
+                        <button type="button" class="py-4 text-gray-500 border-b-2 border-transparent hover:border-gray-500 mr-4 appearance-none ">
+                            Ethereum &middot; CA$884.80
+                        </button>
+                        <button type="button" class="py-4 text-gray-500 border-b-2 border-transparent hover:border-gray-500 mr-4 appearance-none ">
+                            Litecoin &middot; CA$356.85
+                        </button>
+                        
+                    </div>
+```
+
+**mobile version**
+
+![buttons-mobile](./buttons-mobile.png)
+
+**bigger screens**
+
+![buttons-small](./buttons-small.png)
+
+Let's make also some changes with:
+- the `text` size, 
+- and with the `container` that holds the whole `section`: 
+  - padding(for sm and up - `<div class="container mx-auto sm:px-4 pt-6 pb-8">`) 
+  - and rounded corners(for sm and up - `sm:rounded shadow`), 
+  - change the borders for the small screens - `<div class="bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow ">`. 
+
+  ```html
+  <div class="container mx-auto sm:px-4 pt-6 pb-8">
+ <div class="bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow ">
+     <div class="border-b px-6">
+            <div class="flex justify-between -mb-px">
+                <div class="sm:hidden text-blue-600 text-lg font-semibold py-4">
+                    Price Charts
+                </div>
+                    <div class="hidden sm:flex">
+                        <button type="button" class="py-4 text-blue-600 border-b-2 border-blue-600 mr-4 appearance-none ">
+                            Bitcoin &middot; CA$21,380.01
+                        </button>
+                        <button type="button" class="py-4 text-gray-500 border-b-2 border-transparent hover:border-gray-500 mr-4 appearance-none ">
+                            Ethereum &middot; CA$884.80
+                        </button>
+                        <button type="button" class="py-4 text-gray-500 border-b-2 border-transparent hover:border-gray-500 mr-4 appearance-none ">
+                            Litecoin &middot; CA$356.85
+                        </button>
+                          </div>
+```
+
+The next part with the actuall price. First we'll make it responsive. First, part with the price will by hidden for the mobile version; and we'll have another alternative one that is displayed for the mobile version. 
+
+
+```html
+       <div class="flex px-6 items-center md:hidden"> <!--alternative for the mobile version-->
+            <div class="flex-grow flex-shrink-0  py-6 ">
+                        <div class="text-gray-600 mb-2">
+                                <span class="text-3xl align-top">CA$</span>
+                                <span class="text-5xl">21,404</span>
+                                <span class="text-3xl align-top">.74</span>
+                        </div>
+                        <div class="text-green-300 text-sm flex items-center">
+                            <i class="fa fa-arrow-up mr-1 h-4 w-4" ></i>
+                            <span>CA$12,955.35(154.16%)</span>
+                        </div>
+            </div>
+            
+                <div class="flex-shrink w-32 inline-block relative">
+                          
+                                <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 rounded">
+                                        <option>BTC</option>
+                                        <option>ETH</option>
+                                        <option>LTC</option>
+                                    </select>
+                           
+                            <div class="pointer-event-none absolute top-0 right-0 flex items-center px-2 py-3 text-gray-500"> 
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg>
+                            </div>
+                </div>
+                
+            
+     </div><!--end alternative section-->
+
+     <div class="hidden md:flex">
+            <div class="w-1/3 text-center py-6 ">
+                <div class="border-r">
+                        <div class="text-gray-600 mb-2">
+                                <span class="text-3xl align-top">CA$</span>
+                                <span class="text-5xl">21,404</span>
+                                <span class="text-3xl align-top">.74</span>
+                        </div>
+                        <div class="uppercase text-gray-500 tracking-wide">
+                            Bitcoin Price
+                        </div>        
+                </div>
+                
+            </div>
+            .................
+```
+
+**mobile version**
+
+![price-mobile](./price-mobile.png)
+
+**medium and bigger screens**
+
+![price-medium](./price-medium.png)
 
