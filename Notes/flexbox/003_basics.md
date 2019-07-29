@@ -66,7 +66,7 @@ Now we'll know how to position the `items` along the `main axis` which goes from
 
 ![space-between](./space-between.png)
 
-## Pisitioning Items
+## Positioning Items
 
 How we can adjust the `position` of `single items` along the using the technique of `margin auto`, cos `justify-content` doesn't always do what you want it to do. E.g we don't want out `items` spread around the `container` but perhaps we want two items on the left-hand side and one item on the right-hand side. Let's start from the default position, and that forces us to target the item, we wanna move to the right, itself. So, we'll give the items `class names`. 
 
@@ -213,7 +213,7 @@ How to control the `conten` along the `cross axis`. By default the `items` strec
 }
 ```
 
-![100%-height](./100%-height.png)
+![full-height](./full-height.png)
 
 > Note. This only works cos we set the `100% height` of `html` and `body` as well. If we haven't done that the `html` and the `body` would just be the size whatever size the `main container` forces it to be, meaning whatever `height` the `container` needs in order to display its `content`. **So, this is a nice technique to have a `container` responsive in the height**. 
 
