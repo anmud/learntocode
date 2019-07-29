@@ -197,7 +197,7 @@ However, a more realistic use case is o have one of the `items` doing all the `f
 }
 ```
 
-![one-item-flex-2](./one-item-flex-2.png)
+![one-item-flex](./one-item-flex.png)
 
 ## Align Items
 
