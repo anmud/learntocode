@@ -85,3 +85,11 @@ query($slug:String){
 export default Template;
 ```
 
+Now let's render our images. We'll gonna use the destructuring with arrays, we would want to set up two more variables, first we gonna look for the first item in the array - first variable will be `mainImage`- and then in our destructuring we'll use rest operator - give us everithing else - all rest of the images that gonna be in this array, just collect it in the `tourImages` variable - and things that we've destructured we gonna set this equal to `images` array. 
+
+`const [mainImage, ...tourImages] = images`
+
+Now we can just loop over them and they will be displayed. And the main image we'll gonna pass in the `styledHero`.
+
+
+
