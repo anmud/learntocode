@@ -26,6 +26,44 @@ Next let's make some changes in the `site metadata` and add three properties to 
   },
 ```
 
+> There are more approaches to how we can setup SEO - [read here](https://www.gatsbyjs.org/docs/add-seo-component/)- this is a good way for the long run solution and [here](https://www.gatsbyjs.org/docs/seo/).
 
+For our project we'll do it easier. First in our `components` folder we'll create `SEO` component. 
 
+**SEO**
 
+```js
+import React from 'react'
+import {Helmet} from 'react-helmet'
+import {useStaticQuery, graphql} from 'gatsby'
+
+const SEO = () => {
+    return (
+      <div>
+          
+      </div>
+    )
+}
+
+export default SEO;
+```
+
+This `component` will accept two `props`: `title` and `description`. We have two options here: we can insert `metatags` in `helmet` element, or set as a prop.  
+
+**SEO (props variant and meta inside)**
+
+```js
+import React from 'react'
+import {Helmet} from 'react-helmet'
+import {useStaticQuery, graphql} from 'gatsby'
+
+const SEO = ({title, description}) => {
+    return (
+      <Helmet htmlAttributes={{lang: 'en'}} title={title}>
+        <meta name='description' content={description}/>
+      </Helmet>
+    )
+}
+
+export default SEO;
+```
