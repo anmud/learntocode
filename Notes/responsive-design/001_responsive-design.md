@@ -259,3 +259,147 @@ So rather than just centering our `article` within its `container`, let’s crea
 
 #### Getting negative
 
+Now we have 
+
+![date-place-2](./date-place-2.png)
+
+The comp tells us our `date` should be floated to the left, and that it occupies one `69px column`. Since the `date` sits within the `470px-wide article`, we have our `context`.
+
+![date-place](./date-place.png)
+
+Armed with that information, let’s write some quick `CSS`:
+
+```css
+.date {
+ float: left;
+ width: 14.68085106%; /* 69px / 470px */
+}
+```
+
+**But** there’s one key `component` missing: our `date` is currently floating neatly against the left edge of
+the `article`, with the `title` and `copy` floating around it.
+
+![date-place-3](./date-place-3.png)
+
+
+What we need to do is to pull that `date` out of its `container`, and move it across the `left-hand edge` of the entire `module`. **And with `negative margins`, we can do exactly that**. And we don’t have to change our approach because the `margin` is `negative`: just as before, we simply need to express that `margin` in relation to the `width` of the element’s `container`.
+
+
+If we look at the `mockup`, we can see that there are `81 pixels` from the left edge of the `date` over to the left edge of the `article`.  
+
+![date-place-4](./date-place-4.png)
+
+We want to express our `target value` — that `81px-wide margin` — as a percentage of `470px`, the `width` of the `date’s containing element`: `81 ÷ 470 = .17234042553191`. Do the decimal shift and slap a minus sign on there, and we’ve got our proportional, negative margin: 
+
+```css
+date {
+ float: left;
+ margin-left: -17.2340425531%; /* 81px / 470px */
+ width: 14.68085106%; /* 69px / 470px */
+}
+```
+
+#### Moving forward, flexibility
+
+> **we need to break our habit of translating pixels from Photoshop directly into our CSS, and focus our attention on the proportions behind our designs.**
+
+It’s about becoming *context-aware*: better understanding the `ratio-based relationships` between `element` and `container`.
+
+
+## Flexible Images
+
+What if we could write a rule that prevents `images` from exceeding the `width` of their `container`? Well, here’s the good news: that’s very easy to do.
+
+```css
+img {
+ max-width: 100%;
+}
+```
+
+>  Now, our `img element` will render at whatever `size` it wants, as long as it’s narrower than its containing `element`. But if it happens to be wider than its `container`, then the `max-width: 100% directive` forces the `image’s width` to match the `width of its container`.
+
+What’s more, modern `browsers` have evolved to the point where they resize the `images` proportionally: as our `flexible container` resizes itself, shrinking or enlarging our `image`, the image’s aspect ratio remains intact.
+
+**The max-width: 100% rule** can also apply to most `fixed-width elements`, like video and other rich media. In fact,
+we can beef up our selector to cover other media-ready elements, like so:
+
+```css
+img,
+embed,
+object,
+video {
+ max-width: 100%;
+}
+```
+
+####  Max-width in Internet Explorer
+
+The cold, hard truth is that `Internet Explorer 6` and below don’t support the `max-width` property. 
+
+`CSS-driven approach`
+
+Namely, all modern browsers get our `max-width` constraint:
+
+```css
+img,
+embed,
+object,
+video {
+ max-width: 100%;
+}
+```
+
+But in a **separate** `IE6-specific stylesheet`, I’ll include the following:
+
+```css
+img,
+embed,
+object,
+video {
+ width: 100%;
+}
+```
+
+IE6 and lower get `width: 100`%, rather than the `max-width: 100%` rule.
+
+> tread carefully here, for these are drastically different rules. Whereas `max-width: 100%` instructs our `images` to *never exceed* the width of their `containers`, `width: 100%` forces our `images` to *always match* the `width` of their `containing elements`. 
+
+Most of the time, this approach will work just fine.
+
+For example, it’s safe to assume that our oversized `robot.jpg` image will always be larger than its containing element, so the `width: 100% rule` works beautifully. But for `smaller images` like thumbnails, or most embedded
+movies, it might not be appropriate to blindly up-scale them with `CSS`. If that’s the case, then a bit more `specificity` might be warranted for `IE`:
+
+```css
+img.full,
+object.full,
+.main img,
+.main object {
+ width: 100%;
+}
+```
+
+If you don’t want the `width: 100%` rule to apply to every piece of `fixed-width media` in your page, we can simply write a list of `selectors` that target certain kinds of `images` or `video` (**img.full**), or certain areas of your `document` where you know you’ll be dealing with `oversized media` (**.main img**, **.main object**). Think of this like a whitelist: if `images` or other `media` appear on this `list`, then they’ll be `flexible`; otherwise, they’ll be `fixed` in their stodgy old pixel-y ways. So if you’re still supporting legacy versions of Internet Explorer, a carefully applied `width: 100% rule` can get those `flexible images` working beautifully. 
+
+#### FLEXIBLY TILED BACKGROUND IMAGES
+
+Let’s say our dearly esteemed designer sends over `a revised mockup` of our `blog module`. The `design` has been modified slightly, adding a `two-toned background` to the `blog entry` to provide more contrast between the left- and righthand `columns`. What’s more, there’s actually a subtle level of noise added to the `background`, adding an extra level of texture to our `design`. So: how do we actually add this `new background image` to our `template`?
+
+![background](./background.png)
+
+First, we’ll begin by taking a look at our `mockup`, to find the `transition point` in our `background` graphic, the exact `pixel` at which our white column transitions into the gray. And from the look of things, that switch happens at the `568 pixel mark`.
+
+![background-transition](./background-transition.png)
+
+First, we’ll convert that `transition point` into a `percentage-based value` relative to our `blog module’s width`. And to do so, our **target ÷ context = result** formula comes into play yet again. We have our `target` value of `568px`, and the `width` of the design—our `context` — is `900px`. And if we plug those two values into our stalwart formula:
+
+`568 ÷ 900 = 0.631111111111111`
+
+Now, let’s open up your favorite `image editor`, and create a foolishly wide document — say, one that’s `3000 pixels` across. And since we’re going to tile this `image` vertically, its height is only `160px` tall.
+In a moment, we’re going to turn this blank `document` into our `background graphic`. But why is it so large? Well, this `image` needs to be larger than we can reasonably assume the `browser` window will ever be. 
+
+To create the `columns` themselves, we’ll need to apply the `transition point percentage` (**63.1111111111111%**) to our new, wider `canvas`. So if we’re working with a graphic that’s `3000px across`, we simply need to multiply that `width` by the `percentage`, like so:
+
+`3000 x 0.631111111111111 = 1893.333333333333`
+
+![background-columns](./background-columns.png)
+
