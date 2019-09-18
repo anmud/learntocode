@@ -403,3 +403,87 @@ To create the `columns` themselves, we’ll need to apply the `transition point 
 
 ![background-columns](./background-columns.png)
 
+We’re left with `1893.333333333333` as our result. And since `Photoshop` doesn’t deal in anything less than whole `pixels`, let’s round that down to `1893 pixels`. Armed with that number, we’ll recreate our `textures` in our `blank image`, switching from white to gray at the `1893rd pixel`. 
+
+How does that help us? Well, what we’ve just done is to `proportionally scale` our `transition point` up to this new, wider `canvas`. So we can take that new `pixel value`, and use it to create our `columns`: the `white column` will be `1893px` wide, with the `gray column` filling up the remainder. So now there’s only one thing left to do: drop our newly minted graphic into our `stylesheet`.
+
+```css
+.blog {
+ background: #F8F5F2 url("blog-bg.png") repeat-y »
+ 63.1111111111111% 0; /* 568px / 900px */
+}
+```
+
+As in Dan’s original technique, we’re still positioning the `graphic` at the very top of our `blog`, and then repeating it `vertically` down the `width` of the module (repeat-y). But the `background-position value` reuses our transition point percentage (63.1111111111111% 0), keeping the `columns` firmly in place as our design resizes itself.
+
+#### Fully flexible background images?
+
+Of course, our flexible faux `column` isn’t *really* flexible: we’re simply using `percentages` to position a `background image` in such a way that the `columns` appear to resize with their `container`. The image’s dimensions haven’t changed at all. But what about a `background image` that actually does need to resize with the `layout`? Perhaps you’ve placed a `logo` on an `h1 element’s background`, or used sprites to create rollovers for your site’s navigation. Can we resize `images` that need to live in the `background`? Well, sort of. There is a `CSS3 property` called **background size**, which would allow us to create truly `flexible background images`.  **CSS3 media queries** could also be used to apply different `background images` tailored to different `resolution ranges`.
+
+
+#### NEGOTIATE THAT CONTENT
+
+But what about especially complex `graphics`? If your `image` is especially information-rich, simply scaling or cropping it might be less than desirable — in fact. If that’s the case, it might be worth investigating ways of delivering `different versions` of the same `image` to different `resolution ranges`. In other words, you could create multiple versions of your `infographic` — say, one ideal for `desktop browsers`, as well as another, more linearized version for `small-screen devices`. With those options established, a server-side solution could intelligently serve the most appropriate image for that resolution range.
+
+Creating such a solution is beyond the scope of this book, but there’s good news: a `picture element` is in the process of coming to `HTML`, one that would allow us to load `images` `responsively`, switching in different graphics depending on certain conditions in the browser — say, the width of the `viewport`:
+
+```html
+<picture>
+ <source srcset="img/large.jpg" media="(min-width: »
+ 800px)">
+ <source srcset="img/default.jpg">
+ <img srcset="img/default.jpg" alt="A gray cat looks »
+ on with anticipation">
+</picture>
+```
+In the above code, we’re using `picture` to `conditionally` serve different `images` via two `source elements` inside it: specifically, a small-screen-friendly `default.jpg` is shown unless the screen is at least `800px wide`, at which point `large.jpg` is shown instead. 
+
+Now, the `picture element` is still in the process of being standardized, with `browser` implementations expected to arrive soon, but the [Picturefill JavaScript library](http://bkaprt.com/rwd2/25/) allows you to use `picture` today.
+
+## Media Queries
+
+#### Enter the media query
+
+Realizing some of the failings of `media types`, the W3C used their work on `CSS3` to take another crack at the problem. The result was **media queries** (http://bkaprt.com/rwd2/29/), an incredibly robust mechanism for identifying not only types of media, but for actually inspecting the physical characteristics of the devices and browsers that render our content.
+
+Let’s take a look:
+```css
+@media screen and (min-width: 1024px) {
+ body {
+ font-size: 100%;
+ }
+}
+```
+
+Every `media query` — including the one above—has two components:
+
+1. Each `query` still begins with a `media type` (**screen**), drawn
+from the CSS2.1 specification’s list of approved media types
+(http://bkaprt.com/rwd2/28/).
+2. Immediately after comes the `query itself`, wrapped in parentheses: (**min-width: 1024px**). And our `query` can, in turn, be split into two components: `the name of a feature` (min-width) and a corresponding `value` (1024px).
+
+Think of a `media query` like a test for your `browser`. When a `browser` reads your `stylesheet`, the **screen and (min-width: 1024px)** query asks two questions: 
+- first, if it belongs to the `screen media type`; and if it does, 
+- if the `browser’s viewport` is at least 1024 pixels wide. 
+
+If the `browser` meets both of those criteria, then the `styles` enclosed within the `query` are rendered; if not, the `browser` happily disregards the `styles`, and continues on its merry way.
+
+#### Meet the features
+
+It’s not just about testing for `width` and `height`. There are a host of `features` listed in the `specification` our `queries` can test. But before we dive in, it’s worth noting that the language used to describe the features can be a bit...dense. Here are two quick guidelines that helped me sort it out:
+
+1. In the spec’s language, every device has a **“display area”** and **“rendering surface.”** Think of it this
+way: the `browser’s viewport` is the display area; the `entire display` is the rendering surface. So on your laptop, the display area would be your browser window; the rendering surface would be your screen. 
+2. To test `values` above or `below` a certain threshold, some `features` accept **min-** and **max-** prefixes. A fine example is `width`: you can serve `CSS` conditionally to `viewports` `above 1024 pixels` by writing (**min-width: 1024px**), or `below 1024 pixels` with (**max-width: 1024px**).
+
+What’s really exciting is that we can chain multiple `queries` together with the **and** keyword: 
+
+```css
+@media screen and (min-device-width: 480px) and »
+ (orientation: landscape) { … }
+```
+
+This allows us to test for multiple `features` in a single `query`, creating more complex `tests` for the devices viewing our designs.
+
+>  **By combining flexible layouts and media queries, we’ll finally be able to make our sites responsive.**
+
