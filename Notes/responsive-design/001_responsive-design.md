@@ -487,3 +487,216 @@ This allows us to test for multiple `features` in a single `query`, creating mor
 
 >  **By combining flexible layouts and media queries, we’ll finally be able to make our sites responsive.**
 
+We can use `media queries` to optimize the `display` of our `content` to best meet the needs of the `device`, creating `alternate layouts` tailored to different `resolution ranges`. By conditionally loading `style rules` that target these ranges, `media queries` allow us to create pages that are more sensitive to the needs of the `devices` that render them. In other words, by combining `flexible layouts` and `media queries`, we’ll finally be able to make our sites responsive.
+
+#### A room with a viewport
+
+When Apple launched the iPhone in 2007, they created a new attribute value for Mobile Safari’s meta element: **viewport**. Why? Well, the dimensions of the iPhone’s display is 320×480, but Mobile Safari actually displays web pages at a width of 980 pixels. Using the `viewport tag` allows us to control the size of that `canvas`, and override that default behavior: we can dictate exactly how wide the `browser’s viewport` should be. For example, we could set our pages at a fixed width of 320px:
+
+```html
+<meta name="viewport" content="width=320" />
+```
+
+Mobile `browser` makers have adopted the `viewport` mechanic, creating something of a *de facto* standard. So let’s incorporate it into our soon-to-be `responsive design`. 
+
+In the head of our HTML, let’s drop in this meta element:
+
+```html
+<meta name="viewport" content="initial-scale=1.0, 
+ width=device-width" />
+```
+
+The initial-scale property sets the `zoom level` of the page to 1.0, or 100%, and helps ensure some consistency across `smallscreen`, `viewport-aware browsers`. How scaling works on different displays, look [Mozilla’s
+explanation](https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag#Viewport_basics).
+
+The important bit for us is the **width=device-width** setting, which makes the `width` of the `browser’s viewport` equal to the `width` of the `device’s screen`. 
+With this `value` in place, we can use `max-width` and `min-width` to look for resolution ranges below or above certain resolution thresholds, and conditionally load in `CSS` designed for those ranges. What’s more, this allows all `query-aware browsers` to take advantage of our `media queries`, making the design `responsive` for all users — whether they’re using `phones`, `tablets`, `desktop` computers, or `laptops`.
+
+#### Media Queries in Action
+
+First, we’ll create an **@media** block somewhere after our initial **.main-title** rule, one that queries for a narrower resolution range: 
+
+```css
+@media screen and (max-width: 768px) { … }
+```
+
+In this `query`, we’ve asked that the `browser` render the enclosed `CSS` only if its `viewport` is no wider than `768 pixels`. Why `768px`? Well, `media query-aware phones`, as well as most recent `tablets`, fall well beneath this threshold. Or at least, they do when held a certain way: for example, the iPad’s resolution is **768px** across when held in `portrait mode`, but **1024px** when held in `landscape mode`.
+
+But since we’re using **max-width**, not **max-device-width**, narrower `browser` windows on your `desktop` or `laptop` will apply this `small-screen-friendly` range as well. (Remember: `width` and `height` measure the `viewport` or `browser window`, whereas `device-width` and `device-height` measure the dimensions of the entire `screen`.)
+
+With this `query` in place, we can start targeting the `elements` of our `design` that don’t scale down that well.  To do so, we’ll place a **.main-title** rule inside our `media query` overwriting the `CSS properties` that are causing us headaches:
+
+```css
+@media screen and (max-width: 768px) {
+ .main-title {
+ font: normal 1.5em Calibri, Candara, Segoe, »
+ "Segoe UI", Optima, Arial, Helvetica, »
+ sans-serif; /* 24px / 16px */
+ }
+}
+```
+Our first **.main-title** rule is still applied by all `browsers` reading our `CSS`. But for narrower `browser` windows and `devices` — specifically, those no wider than `768 pixels` — the `second rule` is applied as well, overriding its predecessor.
+
+We’ve made two changes of note here: 
+
+- first, we’ve set a smaller font size on the **.main-title** element, changing it from `3.625em (roughly 58px)` to a much smaller` 1.5em, or 24px`, that feels more appropriate on smaller `displays`.
+- Secondly, the `typeface` we were initially using for our headlines — our beloved League Gothic — doesn’t scale down very well to that size. So I’ve decided to change the fontfamily stack itself (Calibri, Candara, Segoe, "Segoe UI",
+Optima, Arial, Helvetica, sans-serif), which feels a bit more readable.
+
+We didn’t have to rewrite the other `properties` from the first **.main-title** rule. As a result, the black background color, all-caps text-transform, and white color still apply to our miniaturized headlines. **Our query only overwrites the features we don’t want**.
+
+![heading-media-query](./heading-media-query.png)
+
+#### Thinking in miniature
+
+In fact, let’s begin by building on our new `media query`, and make a slight change to our `page’s layout`. 
+
+```css
+.page {
+ margin: 36px auto;
+ width: 90%;
+}
+```
+
+Our `container`’s currently set to` 90%` of the `browser window`, and centered horizontally (`margin: 36px auto`). Works great, but let’s add a rule inside our existing `media query` to tweak its behavior once we start falling below our initial resolution:
+
+```css
+@media screen and (max-width: 768px) {
+ .page {
+ position: relative;
+ margin: 20px;
+ width: auto;
+ }
+}
+```
+
+Below **768px**, we’re instructing the **.page** element to occupy the full `width` of the `browser` window, save for a fixed `20px-wide margin` around its edges. A minor change, but this will afford us a bit more space at smaller screen resolutions. With our container sorted, we can turn our attention to the content area.
+
+```css
+@media screen and (max-width: 768px) {
+ .page {
+ margin: 20px;
+ width: auto;
+ }
+ .welcome,
+ .blog,
+ .gallery {
+ margin: 0 0 30px;
+ width: auto;
+ }
+}
+```
+
+This new rule selects the three top-level `content modules` — our introduction (`.welcome`), the blog (`.blog`), and photo gallery (`.gallery`) — and disables their `horizontal margins`, making them occupy the full `width` of **.page**.
+
+![page-media-query](./page-media-query.png)
+
+* *further steps look in the book* **pages 89-97**
+....
+
+#### This layout goes to eleven
+
+
+We’ll begin by introducing another media query to do just that:
+
+```css
+@media screen and (max-width: 768px) {
+ …
+}
+@media screen and (max-width: 520px) {
+ …
+}
+@media screen and (min-width: 1200px) {
+ …
+}
+```
+Our first` media query` set a resolution ceiling of `768 pixels`: in other words, devices and browser windows wider than that **max-width limit** would simply ignore the enclosed `CSS`. We quickly followed that up with another `query` for an even narrower range of `520px`, once again using **max-width** to do so. For our next `query`, we’re instead using **min-width** to set `1200px` as a baseline width requirement for all incoming browsers and devices. If they’re wider than `1200 pixels`, then they’ll apply the enclosed styles; otherwise, they’ll simply ignore the `CSS`, and go blithely about their business.
+
+```css
+@media screen and (min-width: 1200px) {
+ .welcome,
+ .blog,
+ .gallery {
+ width: 49.375%;
+ }
+ .welcome,
+ .gallery {
+ float: right;
+ margin: 0 0 40px;
+ }
+ .blog {
+ float: left;
+ margin: 0 0 20px;
+ }
+}
+```
+In the live Robot site (http://responsivewebdesign.com/robot/), see a bunch of other changes that occur on this `widescreen layout`. But these three rules are really the critical ones. We’re taking our three main content modules (`.welcome, .blog, and .gallery`), and setting them to roughly half (`49.375%`) the `width` of the `entire page.` Then, we’re floating the `.welcome` and `.gallery` modules off to the right, and the `blog` to the left. The result? A design that’s perfectly primed for reading on larger displays.
+
+![wide-screen-query](./wide-screen-query.png)
+
+#### A Note about Compatibility
+
+So things are far from perfect. But that doesn’t mean that `responsive layouts` are a pipe dream. First and foremost, there are a number of `JavaScript-based solutions` that patch `older browsers`’ lack of support. Personally, I’ve been using a script called **respond.js** (http://bkaprt.com/rwd2/39/), a nimble little library developed by Scott Jehl. Where **css3-mediaqueries. js** is incredibly feature-rich, almost exhaustively so. Respond simply patches support for `min-width and max-width queries` in older `browsers`. And that works perfectly for most of the `queries` I write these days. In fact, by dropping the **respond.js library** into the `head` of our `page`, we’ve now got a `responsive layout` working beautifully in older, `query-blind browsers` like Internet Explorer 7.
+
+> but there’s simply no guarantee that a user will have `JavaScript` available in their browser. Their `desktop` or `laptop` might be locked down by draconian `IT security measures`. And once we start looking beyond the `desktop`, to `mobile phones`, popular proxy browsers, and other devices, `JavaScript` support is notoriously scant, bordering on nonexistent in many devices. 
+
+## A MATTER OF CONTEXT
+
+Relying upon all-too-convenient terms like `“mobile”` and `“desktop”` is no substitute for conducting the proper research into how your `audience` accesses your site: not only the devices and browsers they use, but how, where, and why they use them.
+
+How do you know if `responsive design` is right for you? 
+
+- know thy users’ goals
+- mobile first
+
+It’s all too easy to fill a `desktop browser window` with social media toolbars, links to related articles, battalions of RSS links, and tag clouds galore. (This process is called “adding value,” I believe.) But when we’re forced to work with a screen that’s 80% smaller than our usual canvas, nonessential content and cruft quickly fall away, `allowing us to focus on the truly critical aspects of our designs`. In other words, designing for mobile devices first can enrich the experience for all users, by providing the element often missing from modern web design: **focus**. 
+
+- responsive workflow
+- iterative, collaborative design
+
+
+#### “Mobile first” meets media queries
+
+Speaking broadly, `responsive design` is about starting from a reference resolution, and using `media queries` to adapt it to other `contexts`. **A more responsible approach to responsive design would mean building our stylesheet with “mobile first” in mind, rather than defaulting to a desktop layout.** So we’d begin by defining a `layout` appropriate to `smaller screens`, and then use `media queries` to progressively enhance our design as the resolution increases.
+
+In fact, we took this approach on the responsive site for The Boston Globe (http://www.bostonglobe.com/). By default, the `content` is arranged in a very `linear manner`, one friendly to `mobile devices` and `narrow browser windows` (fig 5.12) . 
+
+
+![mobile-first-1](./mobile-first-1.png)
+
+But as the `viewport` widens, the `grid` becomes more complex (fig 5.13).
+
+![mobile-first-2](./mobile-first-2.png)
+
+ And at the highest end of the spectrum, the “full” design finally reveals itself: the `layout` becomes even more complex, making for a truly `widescreen display` (fig 5.14).
+
+![mobile-first-3](./mobile-first-3.png)
+
+
+The `design` is still `responsive`, using all of the techniques we’ve discussed thus far in this book: 
+- the `layout` is based on a `fluid grid`, and 
+- the `images` still work well within that `flexible context`. 
+- But in contrast to the Robot or Not site, we’re applying `min-width media queries` to scale our design up through the resolution spectrum. 
+
+The basic `structure` of the `stylesheet` looks something like this:
+
+```css
+/* Default, linear layout */
+.page {
+ margin: 0 auto;
+ max-width: 700px;
+ background: #fff;
+ position: relative;
+}
+/* Small screen! */
+@media screen and (min-width: 480px) { … }
+@media screen and (min-width: 620px) { … }
+@media screen and (min-width: 810px) { … }
+@media screen and (min-width: 1400px) { … }
+```
+
+The bulk of the `stylesheet` contains little else but color- and type-related rules, providing a basic (but hopefully still attractive) design to all users. In other words: **outside of the media queries, the stylesheet begins with a linear, small-screen-friendly design by default**, one that doesn’t have much of a layout to speak of. But then, breakpoints are set in a series of `min-width media queries`, for `minimum viewport widths` of `480px, 620px, 810px, and 1400px`. And as the `viewport` scales up beyond those thresholds, the appropriate layout rules are applied. The benefit to this approach? If a `browser` without `media query` support accesses the Globe, they’re given an attractive, single-column layout if our JavaScript patch isn’t available to them (fig 5.15).
+
+## REVISITING PROGRESSIVE ENHANCEMENT
+
+
