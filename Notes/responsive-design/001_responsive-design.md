@@ -594,6 +594,7 @@ This new rule selects the three top-level `content modules` — our introduction
 * *further steps look in the book* **pages 89-97**
 ....
 
+
 #### This layout goes to eleven
 
 
@@ -697,6 +698,6 @@ The basic `structure` of the `stylesheet` looks something like this:
 
 The bulk of the `stylesheet` contains little else but color- and type-related rules, providing a basic (but hopefully still attractive) design to all users. In other words: **outside of the media queries, the stylesheet begins with a linear, small-screen-friendly design by default**, one that doesn’t have much of a layout to speak of. But then, breakpoints are set in a series of `min-width media queries`, for `minimum viewport widths` of `480px, 620px, 810px, and 1400px`. And as the `viewport` scales up beyond those thresholds, the appropriate layout rules are applied. The benefit to this approach? If a `browser` without `media query` support accesses the Globe, they’re given an attractive, single-column layout if our JavaScript patch isn’t available to them (fig 5.15).
 
-## REVISITING PROGRESSIVE ENHANCEMENT
 
+resourse - Ethan Marcotte 'Responsive Web Design'
 

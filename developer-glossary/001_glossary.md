@@ -29,6 +29,10 @@ ALT is an abbreviation for “alternative descriptive text” that is added to t
 
 Also known as an app, these are programs designed to perform functions. This includes mobile apps.
 
+**Assistive Technologies**
+
+AT is any device, software, or equipment that helps people work around challenges so they can learn, communicate, and function better. A wheelchair is an example of AT. So is software that reads aloud text from a computer. Or a keyboard for someone struggling with handwriting.
+
 ## B
 
 **Back-End Development (Application Engineers)**
@@ -37,6 +41,9 @@ Also known as an app, these are programs designed to perform functions. This inc
 
 **Backup**
 A saved version of your site that you can restore.
+
+**Backward Compatibility**
+Backward compatible refers to a hardware or software system that can use the interface of an older version of the same product. A new standard product or model is considered backward compatible when it is able to read, write or view older formats. 
 
 **Bounce Rate**
 Bounce Rate is the percentage of visitors who arrive on a specific page and leave without visiting a second page.
@@ -66,6 +73,9 @@ Ratio of clicks on an element to the number of impressions. An impression is cou
 
 **CMS**
 “Content Management System.” The program that you use to create and maintain your website’s content. These are usually designed for non-developers for ease-of-use.
+
+**Cross-platform** 
+...
 
 **CSS**
 “Cascading Style Sheet.” Code that tells browsers how to display a webpage for the end user. This programming formats fonts, colors, and other visual elements. 
@@ -205,6 +215,11 @@ Modules or software that can be added (“plugged in”) to a system for added f
 
 **Progressive Enhancement**
 is a strategy for web design that emphasizes core webpage content first. This strategy then progressively adds more nuanced and technically rigorous layers of presentation and features on top of the content as the end-user's browser/internet connection allow. The proposed benefits of this strategy are that it allows everyone to access the basic content and functionality of a web page, using any browser or Internet connection, while also providing an enhanced version of the page to those with more advanced browser software or greater bandwidth.
+
+The concept of progressive enhancement advocates starting with **functional**, **meaningful HTML** and then unobtrusively layering **presentation (CSS)** and **behavior (JS)** on top for a richer, more dynamic user experience.
+
+**Progressive disclosure**
+A term for showing content on demand. The idea behind progressive disclosure is simple: hide portions of content, but provide interface cues so that users can view it when they wish.
 
 **Proxy Server**
 A server that acts as a middle man in a connection between two computers. A proxy server can be used to improve performance by saving the results of various requests, and consequently loading such data faster when it is requested again. A proxy server can also be used to filter out content by checking what information is requested, and potentially blocking that information from reaching the user who requests it.
