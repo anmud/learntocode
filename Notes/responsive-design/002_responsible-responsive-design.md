@@ -155,7 +155,25 @@ In Filament Group’s book *Designing with Progressive Enhancement*, we describe
 
 ![x-ray-perspective](./x-ray-perspective.png)
 
-> *The x-ray perspective is a methodology we’ve developed to evaluate a complex site design, break it down to its most basic modular parts, and build it back up in such a way that a single coded page will work for modern browsers with full functional capabilities as well as other browsers and devices that may understand only basic HTML. *
+> *The x-ray perspective is a methodology we’ve developed to evaluate a complex site design, break it down to its most basic modular parts, and build it back up in such a way that a single coded page will work for modern browsers with full functional capabilities as well as other browsers and devices that may understand only basic HTML.*
 
-The process of `x-raying` a design’s parts may require a certain amount of `creative thinking`; it depends on how closely a custom control resembles a native equivalent. Some are fairly transparent: say, a `button` that acts as a `checkbox input`. In this case, a bit of `CSS` alone could render some `label` and input markup.
+The process of `x-raying` a design’s parts may require a certain amount of `creative thinking`; it depends on how closely a custom control resembles a native equivalent. Some are fairly transparent: say, a `button` that acts as a `checkbox input`. In this case, a bit of `CSS` alone could render some `label` and input `markup` from a `standard text` and box presentation into the `button-like`
+component shown below.
+
+![progressive-button](./progressive-button.png)
+
+```html
+<label class="check">
+ <input type="checkbox">Bold
+</label>
+```
+
+A `CSS-alone` approach has triple benefits. It’s simple, lightweight, and, most important, using `native HTML form elements` almost guarantees that the control will be accessible to `users` with disabilities. In other words, `assistive technology` like
+Apple’s `built-in VoiceOver screen reader` will read the `native control` aloud as if the visual enhancements aren’t even there: “bold, unchecked checkbox” by default and “bold, checked checkbox” when checked.
+Easy, right? However, it can be difficult to maintain this level of accessibility with more complex custom `components`. => 
+
+#### Responsibly enhance a complex control (pages 35-40)
+
+#### Make data visualizations accessible (pages 40-44)
+
 
