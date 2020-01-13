@@ -137,7 +137,7 @@ One way to think about headings on a web page is like headings in a book..
 The `<h1>`, like the book title, introduces the topic that the web page is all about.
 The `<h2>`, like book chapters, describe the main topics covered on the web page
 
-Smaller headers like the <h3> to <h6> serve as other sub-headings that can be used within each section, just like a book chapter can be as a book chapter may be split up by multiple sub-topics.
+Smaller headers like the `<h3>` to `<h6>` serve as other sub-headings that can be used within each section, just like a book chapter can be as a book chapter may be split up by multiple sub-topics.
 
 Headings are ordered from the biggest to the smallest size. There are 6 levels of headings available, ranging from `<h1>` to `<h6>`, 1 being the most important one.
 
@@ -385,7 +385,7 @@ Once the file has a body, many different types of content – including text, im
 
 HTML is organized as a collection of family tree relationships. As you saw in the last exercise, we placed `<p>` tags within `<body>` tags. When an element is contained inside another element, it is considered the child of that element. The child element is said to be nested inside of the parent element.
 
-``html
+```html
 <body>
   <p>This paragraph is a child of the body</p>
 </body>

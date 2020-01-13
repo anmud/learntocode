@@ -28,9 +28,9 @@ At the highest level CSS Grid excels at creating layouts for a webpage, while Fl
 
 For more information on CSS Grid and Flexbox together see the articles below:
 
-- (Beginner’s Guide to choosing between CSS Grid and Flexbox)[https://medium.com/youstart-labs/beginners-guide-to-choose-between-css-grid-and-flexbox-783005dd2412]
-- (The Ultimate CSS Battle: Grid vs. Flexbox)[https://hackernoon.com/the-ultimate-css-battle-grid-vs-flexbox-d40da0449faf]
-- (Does CSS Grid Replace Flexbox?)[https://css-tricks.com/css-grid-replace-flexbox/]
+- [Beginner’s Guide to choosing between CSS Grid and Flexbox](https://medium.com/youstart-labs/beginners-guide-to-choose-between-css-grid-and-flexbox-783005dd2412)
+- [The Ultimate CSS Battle: Grid vs. Flexbox](https://hackernoon.com/the-ultimate-css-battle-grid-vs-flexbox-d40da0449faf)
+- [Does CSS Grid Replace Flexbox?](https://css-tricks.com/css-grid-replace-flexbox/)
 
 ## Rows and Columns
 
@@ -67,7 +67,7 @@ The layout of a grid is defined using `grid-template-columns` and `grid-template
 
 **Further Research**
 
-To explore grid setup deeper, you can check out this cool (grid visualizer and generator)[https://cssgrid-generator.netlify.com/].
+To explore grid setup deeper, you can check out this cool [grid visualizer and generator](https://cssgrid-generator.netlify.com/).
 
 ## Grid Areas
 
@@ -118,7 +118,7 @@ In the example above the element with the class header will stretch across the e
 
 **Further Research**
 
-There is so much flexibility with CSS grid! To learn even more about what you can do with grid-areas see the (Complete Guide to Grid, from CSS-Tricks here)[https://css-tricks.com/snippets/css/complete-guide-grid/].
+There is so much flexibility with CSS grid! To learn even more about what you can do with grid-areas see the [Complete Guide to Grid, from CSS-Tricks here](https://css-tricks.com/snippets/css/complete-guide-grid/).
 
 ## Advanced Grid
 

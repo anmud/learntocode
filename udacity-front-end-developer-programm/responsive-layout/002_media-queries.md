@@ -5,12 +5,13 @@ Media Queries are expressions we can add to our code that modify our website bas
 While media queries can be used for a variety of things and in a number of ways, we are going to focus on what are called breakpoints, which are the viewport width at which we want our design to change. We then write the code inside that media query, with a set breakpoint, that we want to go into effect only when the viewport width that the app is being viewed on is at least the breakpoint width. Only the CSS that we want to change needs to go here - the original CSS rules will all still apply, and only the new CSS rules written inside the media query will override any pre-existing rules.
 
 Key Term
-viewport - the area of the window in which web content can be seen. We use the dimensions of the viewport (usually the width, but sometimes the height) as the basis of our media queries.
+
+**viewport** - the area of the window in which web content can be seen. We use the dimensions of the viewport (usually the width, but sometimes the height) as the basis of our media queries.
 
 **For more information about viewport see**
 
-- (What is a viewport?)[https://developer.mozilla.org/en-US/docs/Web/CSS/Viewport_concepts#What_is_a_viewport]
-- (Using the viewport meta tag to control layout on mobile browsers)[https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag]
+- [What is a viewport?](https://developer.mozilla.org/en-US/docs/Web/CSS/Viewport_concepts#What_is_a_viewport)
+- [Using the viewport meta tag to control layout on mobile browsers](https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag)
 
 ## Adding Media Queries in Code
 
