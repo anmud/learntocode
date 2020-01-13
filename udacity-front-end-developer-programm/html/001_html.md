@@ -134,29 +134,28 @@ There are six distinct headings or heading components in HTML. Headings can be u
 
 One way to think about headings on a web page is like headings in a book..
 
-The <h1>, like the book title, introduces the topic that the web page is all about.
-
-The <h2>, like book chapters, describe the main topics covered on the web page
+The `<h1>`, like the book title, introduces the topic that the web page is all about.
+The `<h2>`, like book chapters, describe the main topics covered on the web page
 
 Smaller headers like the <h3> to <h6> serve as other sub-headings that can be used within each section, just like a book chapter can be as a book chapter may be split up by multiple sub-topics.
 
-Headings are ordered from the biggest to the smallest size. There are 6 levels of headings available, ranging from <h1> to <h6>, 1 being the most important one.
+Headings are ordered from the biggest to the smallest size. There are 6 levels of headings available, ranging from `<h1>` to `<h6>`, 1 being the most important one.
 
-H1 is used for the primary headings. For subheadings, all other lower headings are used.
+`H1` is used for the primary headings. For subheadings, all other lower headings are used.
 
 **Accessibility with Headers**
 
-For people who are blind or visually impaired, screen reading software is used to parse through text on a web page. A common technique these folks will use to navigate the page is to jump from heading to heading to determine the overall content of the page more easily. That's why it's best practice to not skip one or more heading levels. If you did skip headings and went from <h1> to <h3>, you may cause confusion since the user has to deal with a missing heading. Don't bum out any of your users - structure your headings properly.
+For people who are blind or visually impaired, screen reading software is used to parse through text on a web page. A common technique these folks will use to navigate the page is to jump from heading to heading to determine the overall content of the page more easily. That's why it's best practice to not skip one or more heading levels. If you did skip headings and went from `<h1>` to `<h3>`, you may cause confusion since the user has to deal with a missing heading. Don't bum out any of your users - structure your headings properly.
 
 **Paragraphs**
 
-Paragraphs <p> are the most used HTML element, as they act as the default block-level element and are quick to write.
+Paragraphs `<p>` are the most used HTML element, as they act as the default block-level element and are quick to write.
 
 Below is the HTML code, as well as the “paragraphs” of text - note that there is nothing particularly special with the formatting of these.
 
 **Spans**
 
-The HTML <span> element is like a generic wrapper that is used to group text, mostly for styling purposes. Consider the following code:
+The HTML `<span>` element is like a generic wrapper that is used to group text, mostly for styling purposes. Consider the following code:
 
 ```html
 <style>
@@ -287,7 +286,7 @@ Links are essential in HTML, as the Web was initially designed to be an informat
 
 The “HyperText” part of HTML defines what kind of links we use: hypertext links, a.k.a hyperlinks.
 
-In HTML, links are inline elements written with the <a> tag. The href attribute (hypertext reference) is used to define the destination of the link (where you navigate to when you click).
+In HTML, links are inline elements written with the `<a>` tag. The href attribute (hypertext reference) is used to define the destination of the link (where you navigate to when you click).
 
 There are 3 types of destinations you can define:
 
@@ -384,14 +383,14 @@ Once the file has a body, many different types of content – including text, im
 
 **Hierarchy**
 
-HTML is organized as a collection of family tree relationships. As you saw in the last exercise, we placed <p> tags within <body> tags. When an element is contained inside another element, it is considered the child of that element. The child element is said to be nested inside of the parent element.
+HTML is organized as a collection of family tree relationships. As you saw in the last exercise, we placed `<p>` tags within `<body>` tags. When an element is contained inside another element, it is considered the child of that element. The child element is said to be nested inside of the parent element.
 
 ``html
 <body>
   <p>This paragraph is a child of the body</p>
 </body>
 ```
-In the example above, the <p> element is nested inside the <body>element. The <p> element is considered a child of the <body> element, and the <body> element is considered the parent. You can also see that we’ve added two spaces of indentation (using the space bar) for better readability.
+In the example above, the `<p>` element is nested inside the `<body>` element. The `<p>` element is considered a child of the `<body>` element, and the `<body>` element is considered the parent. You can also see that we’ve added two spaces of indentation (using the space bar) for better readability.
 
 Since there can be multiple levels of nesting, this analogy can be extended to grandchildren, great-grandchildren, and beyond. The relationship between elements and their ancestor and descendent elements is known as hierarchy.
 
@@ -406,7 +405,7 @@ Let’s consider a more complicated example that uses some new tags:
 </body>
 ```
 
-In this example, the <body> element is the parent of the <div> element. Both the <h1> and <p> elements are children of the <div> element. Because the <h1> and <p> elements are at the same level, they are considered siblings and are both grandchildren of the <body> element.
+In this example, the `<body>` element is the parent of the <div> element. Both the `<h1>` and `<p>` elements are children of the `<div>` element. Because the `<h1>` and <p> elements are at the same level, they are considered siblings and are both grandchildren of the `<body>` element.
 
 Again, understanding HTML hierarchy is important because child elements can inherit behavior and styling from their parent element. You’ll learn more about webpage hierarchy when you start digging into CSS.
 
@@ -428,9 +427,9 @@ Here’s what a typical webpage could include:
 
 Forms are a part of everyday life. When we use a physical form in real life, we write down information and give it to someone to process. Think of the times you’ve had to fill out information for various applications like a job, or a bank account, or dropped off a completed suggestion card — each instance is a form!
 
-Just like a physical form, an HTML <form> element is responsible for collecting information to send somewhere else. Every time we browse the internet we come into contact with many forms and we might not even realize it. There’s a good chance that if you’re typing into a text field or providing an input, the field that you’re typing into is part of a <form>!
+Just like a physical form, an HTML `<form>` element is responsible for collecting information to send somewhere else. Every time we browse the internet we come into contact with many forms and we might not even realize it. There’s a good chance that if you’re typing into a text field or providing an input, the field that you’re typing into is part of a `<form>`!
 
-In this lesson, we’ll go over the structure and syntax of a <form> and the many elements that populate it.
+In this lesson, we’ll go over the structure and syntax of a `<form>` and the many elements that populate it.
 
 HTML form elements let you collect input from your website’s visitors. Mailing lists, contact forms, and blog post comments are common examples for small websites, but in organizations that rely on their website for revenue, forms are sacred and revered.
 
