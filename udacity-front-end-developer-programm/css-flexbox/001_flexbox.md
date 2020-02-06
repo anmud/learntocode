@@ -58,7 +58,7 @@ There are three ways to explicitly set the order in which items will appear in a
 2. Appending `-reverse` to `row` or `column` will reverse the order in the specified `row` or `column`
 3. Using the `order` property of the individual items inside the grid
 
-The `order` CSS property is cpecifically for Flex items. That is HTML elements that are inside of another HTML element that has the display Flex. That's the Flex container inside it are the flex items. Flex items have a CSS property called `order`, tha can set the order that they can appear in your browser. 
+The `order` CSS property is cpecifically for Flex items. That is HTML elements that are inside of another HTML element that has the display Flex. That's the Flex container inside it are the flex items. Flex items have a CSS property called `order`, that can set the order that they can appear in your browser. 
 
 ## Aligning Items and Justyfying Content with Flexbox
 

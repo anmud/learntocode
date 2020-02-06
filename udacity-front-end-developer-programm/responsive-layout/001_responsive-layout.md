@@ -158,6 +158,6 @@ Separate pages within a web app can be stored in the same folder and linked to e
 
 For more on Grid Layouts, see the below articles.
 
-[Creating complex Grid layouts](https://rachelandrew.co.uk/archives/2015/02/04/css-grid-layout-creating-complex-grids/)
-[Nesting & overlapping of Grid items](https://gridbyexample.com/examples/example21/)
+- [Creating complex Grid layouts](https://rachelandrew.co.uk/archives/2015/02/04/css-grid-layout-creating-complex-grids/)
+- [Nesting & overlapping of Grid items](https://gridbyexample.com/examples/example21/)
 
