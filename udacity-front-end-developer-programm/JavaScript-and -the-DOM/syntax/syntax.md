@@ -589,10 +589,188 @@ for (const digit of digits) {
 }
 ```
 
-> **Prints:**
-> 1
-> 3
-> 5
-> 7
-> 9
+> **Prints:** 1 3 5 7 9
+
+And you don’t have to worry about adding new properties to objects. The **for...of loop** will only loop over the values in the object.
+
+```js
+Array.prototype.decimalfy = function() {
+  for (i = 0; i < this.length; i++) {
+    this[i] = this[i].toFixed(2);
+  }
+};
+
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+for (const digit of digits) {
+  console.log(digit);
+}
+```
+
+> **Prints:** 0 1 2 3 4 5 6 7 8 9
+
+This time, the properties were not printed out to the console, like we saw on the prior page.
+
+**QUIZ:**
+
+*Directions:*
+
+Write a z that:
+
+- loops through each day in the days array
+- capitalizes the first letter of the day
+- and prints the day out to the console
+
+answer: 
+
+```js
+const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+
+// your code goes here
+
+for (const day of days) {
+    var upperDay = day.charAt(0).toUpperCase() + day.slice(1);
+  console.log(upperDay);
+}
+```
+
+> **Prints:** Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+
+## Spread Operator
+
+
+The **spread operator**, written with three consecutive dots ( `...` ), is new in ES6 and gives you the ability to expand, or *spread*, iterable objects into multiple elements.
+
+Let’s take a look at a few examples to see how it works.
+
+```js
+const books = ["Don Quixote", "The Hobbit", "Alice in Wonderland", "Tale of Two Cities"];
+console.log(...books);
+```
+
+> **Prints:** Don Quixote The Hobbit Alice in Wonderland Tale of Two Cities
+
+```js
+const primes = new Set([2, 3, 5, 7, 11, 13, 17, 19, 23, 29]);
+console.log(...primes);
+```
+
+> **Prints:** 2 3 5 7 11 13 17 19 23 29
+
+If you look at the output from the examples, notice that both the array and set have been expanded into their individual elements. So how is this useful?
+
+> **NOTE:** `Sets` are a new built-in object in ES6 that we’ll cover in more detail in a future lesson.
+
+**Combining arrays with concat**
+
+One example of when the spread operator can be useful is when combining arrays.
+
+If you’ve ever needed to combine multiple arrays, prior to the spread operator, you were forced to use the Array’s `concat()` method.
+
+```js
+const fruits = ["apples", "bananas", "pears"];
+const vegetables = ["corn", "potatoes", "carrots"];
+const produce = fruits.concat(vegetables);
+console.log(produce);
+```
+
+> **Prints:** ["apples", "bananas", "pears", "corn", "potatoes", "carrots"]
+
+This isn’t terrible, but wouldn’t it be nice if there was a shorthand way to write this code?
+
+For example, something like…
+
+```js
+const produce = [fruits, vegetables];
+console.log(produce);
+```
+
+> **Prints:** [Array[3], Array[3]]
+
+Unfortunately, that doesn’t work.
+
+Instead of combining both arrays, this code actually adds the `fruits` array at the first index and the `vegetables` array at the second index of the `produce` array.
+
+How about trying the spread operator?
+
+```js
+const fruits = ["apples", "bananas", "pears"];
+const vegetables = ["corn", "potatoes", "carrots"];
+
+const produce = [...fruits,...vegetables];
+
+console.log(produce);
+```
+
+> **Prints:** [ 'apples', 'bananas', 'pears', 'corn', 'potatoes', 'carrots' ]
+
+## Rest Parameter
+
+The **rest parameter**, also written with three consecutive dots ( `...` ), allows you to represent an indefinite number of elements as an array. This can be helpful in a couple of different situations.
+
+One situation is when assigning the values of an array to variables. For example,
+
+```js
+const order = [20.17, 18.67, 1.50, "cheese", "eggs", "milk", "bread"];
+const [total, subtotal, tax, ...items] = order;
+console.log(total, subtotal, tax, items);
+```
+
+> **Prints:** 20.17 18.67 1.5 ["cheese", "eggs", "milk", "bread"]
+
+This code takes the values of the `order` array and assigns them to individual variables using destructuring (as you saw in the Destructuring section earlier in this lesson). `total`, `subtotal`, and `tax` are assigned the first three values in the array, however, items is where you want to pay the most attention.
+
+By using the rest parameter, `items` is assigned the *rest* of the values in the array (as an array).
+
+## Variadic functions
+
+Another use case for the rest parameter is when you’re working with **variadic functions**. **Variadic functions** are functions that take an indefinite number of arguments.
+
+For example, let’s say we have a function called `sum()` which calculates the sum of an indefinite amount of numbers. How might the `sum()` function be called during execution?
+
+```js
+sum(1, 2);
+sum(10, 36, 7, 84, 90, 110);
+sum(-23, 3000, 575000);
+```
+
+There’s literally an endless number of ways the `sum()` function could be called. Regardless of the amount of numbers passed to the function, it should always return the total sum of the numbers.
+
+**Using the arguments object**
+
+In previous versions of JavaScript, this type of function would be handled using the [arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments). The **arguments object** is an array-like object that is available as a local variable inside all functions. It contains a value for each argument being passed to the function starting at 0 for the first argument, 1 for the second argument, and so on.
+
+If we look at the implementation of our `sum()` function, then you’ll see how the arguments object could be used to handle the variable amount of numbers being passed to it.
+
+```js
+function sum() {
+  let total = 0;  
+  for(const argument of arguments) {
+    total += argument;
+  }
+  return total;
+}
+```
+
+Now this works fine, but it does have its issues:
+
+1. If you look at the definition for the `sum()` function, it doesn’t have any parameters.
+  - This is misleading because we know the `sum()` function can handle an indefinite amount of arguments.
+2. It can be hard to understand.
+  - If you’ve never used the arguments object before, then you would most likely look at this code and wonder where the arguments object is even coming from. Did it appear out of thin air? It certainly looks that way.
+
+**Using the rest parameter**
+
+Fortunately, with the addition of the rest parameter, you can rewrite the `sum()` function to read more clearly.
+
+```js
+function sum(...nums) {
+  let total = 0;  
+  for(const num of nums) {
+    total += num;
+  }
+  return total;
+}
+```
+This version of the `sum()` function is both **more concise** and is **easier to read**. Also, notice the for...in loop has been replaced with the new for...of loop.
 
