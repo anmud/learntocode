@@ -421,7 +421,7 @@ In this section, we'll be looking at controlling page and element styling using 
 
 Put these in the correct order of CSS specificity. Put the least-specific option at the top and the most-specific option at the bottom.
 
-*answer: *
+*answer:*
 
 | LEVEL OF SPECIFICITY |              CSS RULE           |
 |:--------------------:|:-------------------------------:|
@@ -440,6 +440,234 @@ Put these in the correct order of CSS specificity. Put the least-specific option
 > Basically, **the closer the style rule is to an element, the more specific it is**. For example, a rule in a style attribute on an element will override a style rule for that element in a CSS stylesheet. There is also the specificity of the type of selector being used. An _ID_ is more specific than a class.
 
 > If you'd like to learn more about CSS Specificity, check out the following links:
+- [Specificity on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
+- [Article: CSS Specificity: Things You Should Know](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/)
+
+**Modifying an Element's Style Attribute**
+
+Let's jump back to your knowledge of CSS. When trying to style an element, the most-specific rules that you can write for an element are written in that element's style attribute. Lucky for us, we can access an element's style attribute using the .style property!
+
+```js
+const mainHeading = document.querySelector('h1');
+
+mainHeading.style.color = 'red';
+```
+
+Now, I want to point out that when using the `.style` property, you can only modify *one CSS* style at a time. That's why the previous code has `.style.color = 'red'` and not just `.style = 'red'`.
+
+Check out the documentation page for more information: [style docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)
+
+
+**Adding Multiple Styles At Once**
+
+We've seen how the `.style.<property>` syntax will let us change just one piece of styling for an element. So if we wanted to set an element's color, background color, and font size, we'd have to use three separate lines of code:
+
+```js
+const mainHeading = document.querySelector('h1');
+
+mainHeading.style.color = 'blue';
+mainHeading.style.backgroundColor = 'orange';
+mainHeading.style.fontSize = '3.5em';
+```
+
+...and that's just for setting *three* styles. Imagine if we needed 15 or 20 different styles! So the `.style.property` syntax is perfect for setting one style at a time, but it's not great for controlling multiple styles.
+
+Fortunately, we can use the `.style.cssText` property to set multiple CSS styles at once!
+
+```js
+const mainHeading = document.querySelector('h1');
+
+mainHeading.style.cssText = 'color: blue; background-color: orange; font-size: 3.5em';
+```
+
+> **Notice** that when using the `.style.cssText` property, you write the CSS styles just *as you would in a stylesheet*; so you write **font-size** rather than **fontSize**. This is different than using the individual `.style.<property>` way.
+
+---
+QUESTION:
+
+```html
+<p id="quizzing-quizzes" style="color: orange;">Howdy</p>
+```
+
+For the element above, which of the following styles will be applied after running this code?
+
+```js
+document.querySelector('#quizzing-quizzes').style.cssText = 'width: 30px; textDecoration: underline;';
+```
+
+OPTIONS: 
+- color
+- text-decoration
+- width
+- none
+
+*answer:* "width"
+
+Only the width styling will be in the element's style attribute. The `.style.cssText` will **overwrite** anything that's already in the `.style` attribute (which removes the `color` styling). The `textDecoration` rule is misspelled and should be text-decoration, so it gets dropped.
+
+---
+
+
+**Setting An Element's Attributes**
+
+Another way to set styles for an element is to bypass the `.style.<property>` and `.style.cssText` properties altogether and use the `.setAttribute()` method:
+
+```js
+const mainHeading = document.querySelector('h1');
+
+mainHeading.setAttribute('style', 'color: blue; background-color: orange; font-size: 3.5em;');
+```
+
+> Check out the documentation page for more information: [style docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)
+
+
+**`.setAttribute()` Is Not Just For Styling**
+
+The `setAttribute()` method is not *just* for styling page elements. You can use this method to set *any* attribute for an element. If you want to give an element an ID, you can do that!:
+
+```js
+const mainHeading = document.querySelector('h1');
+
+// add an ID to the heading's sibling element
+mainHeading.nextElementSibling.setAttribute('id', 'heading-sibling');
+
+// use the newly added ID to access that element
+document.querySelector('#heading-sibling').style.backgroundColor = 'red';
+```
+
+The last two lines could've been combined into one to bypass setting an ID and just styling the element directly:
+
+```js
+mainHeading.nextElementSibling.style.backgroundColor = 'red';
+```
+
+...but this was just to demonstrate that it's possible to set an attribute with JavaScript that affects the DOM which then can be used immediately.
+
+
+**Accessing an Element's Classes**
+
+The first element property we'll look at is the `.className` property. This property returns a string of all of the element's classes. If an element has the following HTML:
+
+```html
+<h1 id="main-heading" class="ank-student jpk-modal">Learn Web Development at Udacity</h1>
+```
+
+We could use `.className` to access the *list of classes*:
+
+```js
+const mainHeading = document.querySelector('#main-heading');
+
+// store the list of classes in a variable
+const listOfClasses = mainHeading.className;
+
+// logs out the string "ank-student jpk-modal"
+console.log(listOfClasses);
+```
+
+The `.className` property returns a space-separated string of the classes. This isn't the most ideal format, unfortunately. We can, however, convert this space-separated string into an array using the JavaScript string method, `.split()`:
+
+```js
+const arrayOfClasses = listOfClasses.split(' ');
+
+// logs out the array of strings ["ank-student", "jpk-modal"]
+console.log(arrayOfClasses);
+```
+
+Now that we have an *array* of classes, we can do any data-intensive calculations:
+
+- use a `for` loop to loop through the list of class names
+- use `.push()` to add an item to the list
+- use `.pop()` to remove an item from the list
+
+`.className` is a property, so we can set its `value` just by assigning a `string` to the property:
+
+```js
+mainHeading.className = "im-the-new-class";
+```
+
+The above code **erases** any classes that were originally in the element's class attribute and **replaces** it with the single class `im-the-new-class`.
+
+Since `.className` returns a `string`, it makes it hard to add or remove individual classes. As I mentioned earlier, we can convert the `string` to an `array` and then use different `Array Methods` to search for a class remove it from the list, and then update the `.className` with the remaining classes. However, we don't want to do all of that work! Let's use the newer `.classList` property.
+
+
+**The `.classList` Property**
+
+The `.classList` property is newer than the `.className` property, but is much nicer,
+
+```html
+<h1 id="main-heading" class="ank-student jpk-modal">Learn Web Development at Udacity</h1>
+```
+
+```js
+const mainHeading = document.querySelector('#main-heading');
+
+// store the list of classes in a variable
+const listOfClasses = mainHeading.classList;
+
+// logs out ["ank-student", "jpk-modal"]
+console.log(listOfClasses);
+```
+
+Check out the documentation page on MDN: [classList docs](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)
+
+> **Note:** data structure does the `.classList` property returns a `DOMTokenList` representing the contents of the element's class attribute.
+
+The `.classList` property has a number of properties of its own. Some of the most popularly used ones are:
+
+- `.add()` - to add a class to the list
+- `.remove()` - to remove a class from the list
+- `.toggle()` - to add the class if it doesn't exists or remove it from the list if it does already exist
+- `.contains()` - returns returns a boolean based on if the class exists in the list or not
+
+---
+QUESTION:
+
+What happens if you try to toggle a `nonexistent` class? For example, if you had this HTML:
+
+```js
+<h1 id="main-heading" class="ank-student jpk-modal">Learn Web Development at Udacity</h1>
+```
+
+...what would happen after running the following JavaScript:
+
+```js
+const mainHeading = document.querySelector('#main-heading');
+
+mainHeading.classList.toggle('richard');
+```
+
+OPTIONS:
+
+- the richard class is added to the list of classes
+- the richard class is not added to the list; the existing list of classes remains the same
+- the richard class replaces the other classes
+- an error happens
+
+ANSWER:
+
+Toggling a non-existent class will add the new class to the list of classes.
+
+---
+
+**Style Page Content Recap**
+
+We learned a ton of content in this section! We looked at:
+
+- modifying individual styles with `.style.<prop>`
+- updating multiple styles at once with `.style.cssText`
+- getting/setting a list of classes with `.className`
+- getting/setting/toggling CSS classes with `.classList`
+
+My recommendation to you is that, out of the list of techniques you learned in this section, to use the `.classList` property more than any other. `.classList` is by far the most helpful property of the bunch, and it helps to keep your CSS styling out of your JavaScript code.
+
+**Further Research**
+
+- [style on MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)
+- [Article: Using dynamic styling information](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Using_dynamic_styling_information)
+- [DOM methods to control styling](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference#DOM-CSS_CSSOM)
+- [nextElementSibling on MDN](https://developer.mozilla.org/en-US/docs/Web/API/NonDocumentTypeChildNode/nextElementSibling)
+- [className on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)
+- [classList on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)
 - [Specificity on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
 - [Article: CSS Specificity: Things You Should Know](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/)
 
