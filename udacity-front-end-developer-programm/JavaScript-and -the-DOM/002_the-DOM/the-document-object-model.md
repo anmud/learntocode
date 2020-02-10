@@ -191,7 +191,7 @@ If we wanna to see where each one of these `pre` tags are in the DOM, we can rig
 
 ![see-tags-in-the-dom](./see-tags-in-the-dom.png)
 
-And then from the correct location in the elements panel we can right-click and choose *"Scroll intoview"*  - and that will scroll the page into view to show us that element. 
+And then from the correct location in the elements panel we can right-click and choose *"Scroll into view"*  - and that will scroll the page into view to show us that element. 
 
 ![find-tag-on-the-page](./find-tag-on-the-page.png)
 
