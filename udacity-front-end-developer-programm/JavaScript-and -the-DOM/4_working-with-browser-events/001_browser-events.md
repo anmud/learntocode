@@ -369,3 +369,509 @@ And they actually follow the order above; first, it's *capturing*, then *at targ
 Let's dig into these phases to see how they affect when events fire and the order they fire in!
 
 ![event-phases](./event-phases.png)
+
+So of the three phases in an event, which one does the `.addEventListener()` method actually use? And, how can we change it?
+
+Up until this point, we've only seen the `.addEventListener()` method called with two arguments, the:
+
+- event type
+- and the listener
+
+```js
+document.addEventListener('click', function () {
+   console.log('The document was clicked');
+});
+```
+
+There's actually a third argument to the `.addEventListener()` method; the *useCapture* argument. From it's name, you'd think that if this argument were left out, `.addEventListener()` would default to using the *capturing* phase. This is an incorrect assumption! **By default, when `.addEventListener()` is called with only two arguments, the method defaults to using the bubbling phase.**
+
+The code below uses `.addEventListener()` with only two arguments, so it will invoke the listener during the **bubbling** phase:
+
+```js
+document.addEventListener('click', function () {
+   console.log('The document was clicked');
+});
+```
+
+However, in this code, `.addEventListener()` is called with three arguments with the third argument being `true` (*meaning it should invoke the listener earlier, during the capturing phase!*).
+
+```js
+document.addEventListener('click', function () {
+   console.log('The document was clicked');
+}, true);
+```
+
+Let's take a look at `event handlers` setup for the different `event phases`:
+
+1. We'll set a `capture event listner` to the paragraph
+
+![capture-event-listener](./capture-event-listener.png)
+
+2. `a bubble event listener` to the body
+
+![bubble-event-listener](./bubble-event-listener.png)
+
+3. and `a bubble event listener` to the button
+
+![bubble-event-listener-2](./bubble-event-listener-2.png)
+
+
+The important distinction is that the paragraph is set to the **capturing phase**
+
+![capturing-phase](./capturing-phase.png)
+
+while the body and the button are, by default, set to the bubbling phase. 
+
+![bubbling-phase](./bubbling-phase.png)
+
+- So, when the button is clicked it starts at the top again and works its way down (**capturing phase**). 
+
+![phases-step-1](./phases-step-1.png)
+
+- When it gets to the body element, it doesn't run the function because we are still in the **capturing phase**.
+
+![phases-step-2](./phases-step-2.png)
+
+- However, when it reaches the paragraph, it will run the `listener function`. 
+
+![phases-step-3](./phases-step-3.png)
+
+And it does this because this was set up to run in the capturing phase. 
+
+![phases-step-3.1](./phases-step-3.1.png)
+
+- Then it moves to the button. It switches from capturing to **at target** to **bubbling**, 
+
+![phases-step-4](./phases-step-4.png)
+
+Then fires the `listener` and it does this because this event uses the *default setting* of running during the **bubbling phase**. 
+
+![phases-step-4.1](./phases-step-4.1.png)
+
+- Then it works its way back up the HTML chain. 
+
+1. 
+
+![phases-step-5](./phases-step-5.png)
+
+2. 
+
+![phases-step-5.1](./phases-step-5.1.png)
+
+3. And when it reaches the body, it runs its listener function. 
+
+![phases-step-5.2](./phases-step-5.2.png)
+
+4. Then it moves to the HTML element and finishes. 
+
+---
+QUESTION:
+
+Which of the phases is the following code set up for?
+
+```js
+const items = document.querySelectorAll('.quizzing-quizzes');
+const el = items[1];
+
+el.addEventListener('click', function () {
+    console.log('You clicked on the 2nd quizzing-quizzes item!');
+}, false);
+```
+
+OPTIONS:
+- the capturing phase
+- the at target phase
+- the bubbling phase
+
+ANSWER: "the bubbling phase". Remember that the `third argument` of the `.addEventListener()` method is the `boolean` for the capturing phase. Since it's `false`, that means the event listener should not run during the `capturing phase`...therefore it will run in the (default) `bubble phase`.
+
+---
+
+**The Event Object**
+
+Now that you know that event listeners fire in a specific order *and* how to interpret and control that order, it's time to shift focus to the details of the event itself.
+
+When an event occurs, the browser includes an **event object**. This is just a regular JavaScript object that includes a ton of information about the event itself. According to MDN, the `.addEventListener()`'s *listener* function receives:
+
+> *a notification (an object that implements the Event interface) when an event of the specified type occurs*
+
+Up until this point, I've been writing all of the *listener* functions without any parameter to store this event object. Let's add a parameter so we *can* store this important information:
+
+```js
+document.addEventListener('click', function (event) {  // ← the `event` parameter is new!
+   console.log('The document was clicked');
+});
+```
+
+Notice the new `event` parameter that's been added to the listener function. Now when the listener function is called, it is able to store the event data that's passed to it!
+
+> 💡 **An "event" is an "evt" is an "e"** 💡
+> Remember that a function's parameter is just like a regular variable. In the following example, I'm using a parameter with the name `event`.
+
+```js
+const items = document.querySelectorAll('.quizzing-quizzes');
+const el = items[1];
+
+el.addEventListener('keypress', function (event) {
+    console.log('You clicked on the 2nd quizzing-quizzes item!');
+});
+```
+
+Instead of `event`, the parameter's name could just as easily be:
+
+- `evt`
+- `e`
+- `theEvent`
+- `horse`
+
+The name `event` or `evt` does not provide any inherent meaning or special capabilities; there is nothing special to the name... it's just the name of the parameter. Feel free to give it any name that's informative/descriptive!
+
+**The Default Action**
+
+As we just looked at, `the event object` stores a lot of information, and we can use this data to do all sorts of things. However, one incredibly common reason that professionals use the `event object` for, is to prevent the default action from happening. That sounds like an odd thing to do, but let's explore this.
+
+Think about `an anchor link` on a webpage. There are probably a couple dozen links on this page! What if you wanted to run some code and display some output when you click on one of these links. If you click on the link, it will automatically navigate you to the location listed in its `href` attribute: that's what it does by default.
+
+What about `a form element`? When you submit a `form`, by default, it will send the `data` to the location in its `action attribute`. What if we wanted to validate the data before sending it, though?
+
+Without the `event object`, we're stuck with the default actions. However, the `event object` has a `.preventDefault()` method on it that a `handler` can call to prevent the default action from occurring!
+
+```js
+const links = document.querySelectorAll('a');
+const thirdLink = links[2];
+
+thirdLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    console.log("Look, ma! We didn't navigate to a new page!");
+});
+```
+
+**Recap**
+
+We covered a number of important aspects of `events` and `event listeners` in this section! We looked at:
+
+- the phases of an event:
+  - the `capturing` phase
+  - the `at target` phase
+  - the `bubbling` phase
+- the `event object`
+- prevent the default action with `.preventDefault()`
+
+
+**Further Research**
+
+- [Event dispatch and DOM event flow](https://www.w3.org/TR/DOM-Level-3-Events/#event-flow) on W3C
+  - [capture phase](https://www.w3.org/TR/DOM-Level-3-Events/#capture-phase) on W3C
+  - [target phase](https://www.w3.org/TR/DOM-Level-3-Events/#target-phase) on W3C
+  - [bubble phase](https://www.w3.org/TR/DOM-Level-3-Events/#bubble-phase) on W3C
+- [Event](https://developer.mozilla.org/en-US/docs/Web/API/Event) on MDN
+- [Event reference](https://developer.mozilla.org/en-US/docs/Web/Events) on MDN
+- [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) on MDN
+
+# Avoid Too Many Events
+
+QUESTION:
+
+How many event listeners are created with this code?
+
+```js
+const myCustomDiv = document.createElement('div');
+
+for (let i = 1; i <= 200; i++) {
+    const newElement = document.createElement('p');
+    newElement.textContent = 'This is paragraph number ' + i;
+
+    newElement.addEventListener('click', function respondToTheClick(evt) {
+        console.log('A paragraph was clicked.');
+    });
+
+    myCustomDiv.appendChild(newElement);
+}
+
+document.body.appendChild(myCustomDiv);
+```
+
+ANSWER: 200. The `event listener` is evoked inside the `for loop`. 
+
+Actually, each of the paragraph will have the same event listner. 
+
+![event-in-a-loop](./event-in-a-loop.png)
+
+---
+
+**Refactoring The Number of Event Listeners**
+
+Let's look at the code another time:
+
+```js
+const myCustomDiv = document.createElement('div');
+
+for (let i = 1; i <= 200; i++) {
+    const newElement = document.createElement('p');
+    newElement.textContent = 'This is paragraph number ' + i;
+
+    newElement.addEventListener('click', function respondToTheClick() {
+        console.log('A paragraph was clicked.');
+    });
+
+    myCustomDiv.appendChild(newElement);
+}
+
+document.body.appendChild(myCustomDiv);
+```
+
+We're creating a `<div>`element, attaching two hundred paragraph elements and attaching an `event listener` with a `respondToTheClick` function to each paragraph as we create it. There are a number of ways we could refactor this code. For example, as of right now, we're creating two hundred different `respondToTheClick` functions (that all actually do the exact same thing!). We could extract this `function` and just *reference* the function instead of creating two hundred different functions:
+
+```js
+const myCustomDiv = document.createElement('div');
+
+function respondToTheClick() {
+    console.log('A paragraph was clicked.');
+}
+
+for (let i = 1; i <= 200; i++) {
+    const newElement = document.createElement('p');
+    newElement.textContent = 'This is paragraph number ' + i;
+
+    newElement.addEventListener('click', respondToTheClick);
+
+    myCustomDiv.appendChild(newElement);
+}
+
+document.body.appendChild(myCustomDiv);
+```
+
+![event-in-a-loop-2](./event-in-a-loop-2.png)
+
+This is a great step in the right direction!
+
+However, we still have two hundred event listeners. They're all pointing to the same listener function, but there are still two hundred *different* event listeners.
+
+What if we moved all of the listeners to the `<div>` instead?
+
+
+![event-in-a-loop-3](./event-in-a-loop-3.png)
+
+
+The code for this would look like:
+
+```js
+const myCustomDiv = document.createElement('div');
+
+function respondToTheClick() {
+    console.log('A paragraph was clicked.');
+}
+
+for (let i = 1; i <= 200; i++) {
+    const newElement = document.createElement('p');
+    newElement.textContent = 'This is paragraph number ' + i;
+
+    myCustomDiv.appendChild(newElement);
+}
+
+myCustomDiv.addEventListener('click', respondToTheClick);
+
+document.body.appendChild(myCustomDiv);
+```
+
+Now there is only:
+
+- a single event listener
+- a single listener function
+
+Now the browser doesn't have to store in memory two hundred different event listeners and two hundred different listener functions. That's a great for performance!
+
+However, if you test the code above, you'll notice that we've lost access to the individual paragraphs. There's no way for us to target a specific paragraph element.So how _do_ we combine this efficient code with the access to the individual paragraph items that we did before?
+
+We use a process called **event delegation**.
+
+**Event Delegation**
+
+Remember the event object that we looked at in the previous section? That's our ticket to getting back the original functionality!
+
+The event object has a `.target` property. This property references the *target* of the event. Remember the capturing, at target, and bubbling phases?...these are coming back into play here, too!
+
+Let's say that you click on a paragraph element. Here's roughly the process that happens:
+
+1. a paragraph element is clicked
+2. the event goes through the capturing phase
+3. it reaches the target
+4. it switches to the bubbling phase and starts going up the DOM tree
+5. when it hits the `<div>` element, it runs the listener function
+6. inside the listener function, `event.target` is the element that was clicked
+
+So `event.target` gives us direct access to the paragraph element that was clicked. Because we have access to the element directly,we can access its `.textContent`, modify its styles, update the classes it has - we can do anything we want to it!
+
+```js
+const myCustomDiv = document.createElement('div');
+
+function respondToTheClick(evt) {
+    console.log('A paragraph was clicked: ' + evt.target.textContent);
+}
+
+for (let i = 1; i <= 200; i++) {
+    const newElement = document.createElement('p');
+    newElement.textContent = 'This is paragraph number ' + i;
+
+    myCustomDiv.appendChild(newElement);
+}
+
+document.body.appendChild(myCustomDiv);
+
+myCustomDiv.addEventListener('click', respondToTheClick);
+```
+
+**Checking the Node Type in Event Delegation**
+
+In the code snippet we used above, we added the event listener directly to the `<div>` element. The listener function logs a message saying that a paragraph element was clicked (and then the text of the target element). This works perfectly! However, there is nothing to ensure that it was actually a `<p>` tag that was clicked before running that message. In this snippet, the `<p>` tags were direct children of the `<div>` element, but what happens if we had the following HTML:
+
+```html
+<article id="content">
+  <p>
+  Brownie lollipop <span>carrot cake</span> gummies lemon drops sweet roll dessert tiramisu. Pudding muffin <span>cotton candy</span> croissant fruitcake tootsie roll. Jelly jujubes brownie. Marshmallow jujubes topping sugar plum jelly jujubes chocolate.
+  </p>
+
+  <p>
+  Tart bonbon soufflé gummi bears. Donut marshmallow <span>gingerbread cupcake</span> macaroon jujubes muffin. Soufflé candy caramels tootsie roll powder sweet roll brownie <span>apple pie</span> gummies. Fruitcake danish chocolate tootsie roll macaroon.
+  </p>
+</article>
+```
+
+In this filler text, notice that there are some `<span>` tags. If we want to listen to the `<article>` for a click on a `<span>`, you *might* think that this could would work:
+
+```js
+document.querySelector('#content').addEventListener('click', function (evt) {
+    console.log('A span was clicked with text ' + evt.target.textContent);
+});
+```
+
+This will work, but there's a major flaw. The listener function will still fire when either one of the paragraph elements is clicked, too! In other words, this listener function is not verifying that the target of the event is *actually a `<span>` element*. Let's add in this check:
+
+```js
+document.querySelector('#content').addEventListener('click', function (evt) {
+    if (evt.target.nodeName === 'SPAN') {  // ← verifies target is desired element
+        console.log('A span was clicked with text ' + evt.target.textContent);
+    }
+});
+```
+
+Remember that every element inherits properties from [the Node Interface](https://developer.mozilla.org/en-US/docs/Web/API/Node). One of the properties of the Node Interface that is inherited is `.nodeName`. We can use this property to verify that the target element is actually the element we're looking for. When a `<span>` element is clicked, it will have a `.nodeName` property of `"SPAN"`, so the check will pass and the message will be logged. However, if a `<p>` element is clicked, it will have a `.nodeName` property of `"P"`, so the check will fail and the message will *not* be logged.
+
+> *⚠️ **The nodeName's Capitalization** ⚠️*
+
+> The `.nodeName` property will return a *capital string*, not a *lowercase* one. So when you perform your check make sure to either:
+
+> - check for capital letters
+> - convert the `.nodeName` to lowercase
+
+```js
+// check using capital letters
+if (evt.target.nodeName === 'SPAN') {
+    console.log('A span was clicked with text ' + evt.target.textContent);
+}
+
+> // convert nodeName to lowercase
+if (evt.target.nodeName.toLowerCase() === 'span') {
+    console.log('A span was clicked with text ' + evt.target.textContent);
+}
+```
+
+**Recap**
+
+In this section, we looked at `Event Delegation`. **Event Delegation** is the process of delegating to a `parent element` the ability to manage events for `child elements`. We were able to do this by making use of:
+
+- the event object and its `.target` property
+- the different phases of an event
+
+**Further Research**
+- [Article: Event delegation](https://javascript.info/event-delegation)
+- [Article: How JavaScript Event Delegation Works](https://davidwalsh.name/event-delegate)
+
+# Know Whwn The DOM Is Ready
+
+A key thing to point out is that when the HTML is received and converted into tokens and built into the document object model, is that this is a sequential process. When the parser gets to a `<script>` tag, it must wait to download the script file and execute that JavaScript code. **This is the important part and the key to why the placement of the JavaScript file matters!**
+
+Let's look at some code to show (more or less) what's happening. Take a look at this initial part of an HTML file:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script>
+    document.querySelector('footer').style.backgroundColor = 'purple';
+  </script>
+
+```
+
+This isn't the full HTML file...BUT, it's all that's been parsed so far. Notice at the bottom of the code that we have so far is a `<script>` file. This is using inline JavaScript rather than pointing to an external file. The inline file will execute faster because the browser doesn't have to make another network request to fetch the JavaScript file. But the outcome will be exactly the same for both this inline version and if the HTML had linked to an external JavaScript file.
+
+Do you see the JavaScript/DOM code in the `<script>` tags? Take a second and read it again:
+
+```js
+document.querySelector('footer').style.backgroundColor = 'purple';
+```
+
+Does anything jump out at you about this code? Anything at all? This code is completely error-free...unfortunately, when it runs it will still cause an error. Any ideas why?
+
+The problem is with the `.querySelector()` method. When it runs...there's no `<footer>` element to select from the constructed `document object model` yet! So instead of returning a `DOM` element, it will return `null`. This causes an error because it would be like running the following code:
+
+```js
+null.style.backgroundColor = 'purple';
+```
+
+`null` doesn't have a `.style` property, so thus our error is born.
+
+Now, we've already used one solution to this issue. Remember that we moved the JavaScript file `down to the bottom of the page`. Think about why this would make things work. Well, if the `DOM` is built *sequentially*, _if_ the JavaScript code is moved to the very bottom of the page, then by the time the JavaScript code is run, all `DOM elements` will already exist!
+
+However, an *alternative* solution would be to use browser events! 
+
+**The Content Is Loaded Event**
+
+When the document object model has been fully loaded, the browser will fire an event. This event is called the `DOMContentLoaded` event, and we can listen for it the same way we listen to any other events:
+
+```js
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('the DOM is ready to be interacted with!');
+});
+```
+
+![dom-content-loaded-event](./dom-content-loaded-event.png)
+
+The *target* of the `DOMContentLoaded` event is the `document` object. We should listen for the DOMContentLoaded event on the `document` object.
+
+**Using the DOMContentLoaded Event**
+
+Because we now know about the `DOMContentLoaded` event, we can use it to keep our JS code in the `<head>`.
+
+Let's update the previous HTML code to include this event:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          document.querySelector('footer').style.backgroundColor = 'purple';
+      });
+    </script>
+```
+
+Pretty cool, right?!? We have the JavaScript code in the `<head>` element, but it is now wrapped in an event listener for the `DOMContentLoaded` event. This will prevent the DOM-styling code from running when the browser gets to it. Then, when the DOM has been constructed, the event will fire and this code will run.
+
+If you're looking at somebody else's code, you may see that their code listens for the `load` event being used instead (e.g. `document.onload(...)`). `load` fires later than `DOMContentLoaded` -- `load` waits until all of the images, stylesheets, etc. have been loaded (everything referenced by the HTML.) Many older developers use `load` in place of `DOMContentLoaded` as the latter wasn't supported by the very earliest browsers. But if you need to detect when your code can run, `DOMContentLoaded` is generally the better choice.
+
+However, just because you *can* use the `DOMContentLoaded` event to write JavaScript code in the `<head>` that doesn't mean you *should* do this. Doing it this way, we have to write *more* code (all of the event listening stuff) and more code is usually not always the best way to do something. Instead, it would be better to move the code to the bottom of the HTML file just before the closing `</body>` tag.
+
+So when would you want to use this technique? Well, JavaScript code in the `<head>` will run before JavaScript code in the `<body>`, so if you do have JavaScript code that needs to run as soon as possible, then you could put that code in the `<head>` and wrap it in a `DOMContentLoaded` event listener. This way it will run as early as possible, but not too early that the DOM isn't ready for it.
+
+**Recap**
+
+In this section, we learned about the helpful `DOMContentLoaded` event.
+
+Along the way, we reviewed how the HTML code is parsed incrementally and how this affects JavaScript/DOM code. We also looked at why writing DOM-manipulation code in the `<head>` can cause errors.
+
+**Further Research**
+[DOMContentLoaded Event docs on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event)
+
