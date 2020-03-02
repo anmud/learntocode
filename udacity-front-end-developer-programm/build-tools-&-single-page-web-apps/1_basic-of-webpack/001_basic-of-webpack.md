@@ -261,12 +261,12 @@ In order to build any map like that Webpack gonna need a starting place that we 
 
 **our project starting files** 
 
-![our project starting files](./our project starting files.png)
+![our-project-starting-files](./our-project-starting-files.png)
 
 2. First in our `client` folder let's create `webpack.config.js` file. 
 
 
-![our project starting files-2](./our project starting files-2.png)
+![our-project-starting-files-2](./our-project-starting-files-2.png)
 
 With this file we'll actually be able to override all those `default values`. 
 2. Let's add some necessary `require statements` and `module.exports` to `config` file. 
