@@ -331,5 +331,66 @@ At work, a project requires the use of a technology that is completely new to yo
 
 ---
 
-# Webpack Entry
+# Webpack Entry Point
 
+`The Entry Point` is a first major concept of Webpack, and what it's gonna do is to give us a starting place for Webpack to begin to build its dependancy tree.
+
+So, what we need to do is setup that `entry point` for Webpack in our `webpack.config.js` file. 
+
+Now we need to add an `NPM script` that allows us to run Webpack. To do this we need to go to our `package.json` file and add ` "build": "webpack"` in the scripts. This `script` is just goingg to run the `webpack command`. Nom, we gonna add more to the actual command later. 
+
+**package.json**
+
+```js
+{
+  "name": "example-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server/index.js",
+    "build": "webpack", // add here
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.17.1",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  }
+}
+
+```
+
+Now, in our `webpack.config.js` file we are going to add `an enrty`. Webpack in Version 4, has a default entry, but in our case we need a custom entry. 
+
+`Webpack` is going to make a map of our `app assets` and all of their `dependencies`, but it needs somewhere to start. *The default location* for the webpack entry point is `./src/index.js` - but because we are already set up with `express` and have a slightly different file structure, that file doesn't exist! Instead, we need to tell `webpack` to use a *custom entry point*. For us, that will be:
+
+`’./src/client/index.js’`
+
+**webpack.config.js**
+
+```js
+const path = require('path')
+const webpack = require('webpack')
+
+module.exports = {
+    entry: './src/client/index.js',  //add enrty here 
+}
+```
+
+That is gonna be the starting poing where `webpack` will begin to buid our tree from. Now, that we have this `enrty point` declaired, we can go and run webpack in the terminal - `npm run build`. 
+
+When we do that we'll see the error, but in this case the error is a good error. And we are getting this error cos we can't resolve `src`. 
+
+`ERROR in Entry module not found: Error: Can't resolve './src' in '/Users/anastasia/Desktop/coding/fend-webpack-content'`
+
+Really, what this is telling us in a not so great way, is that the `client/index.js` file *doesnt't exist* and we need to create it. 
+
+Let's create a new file called `index.js` inside the `src/client` filder.  
+
+[webpack-enrty-point](./webpack-enrty-point.png)
+
+Once we have that we'll be able to run webpack and successfully see ti bult. 
