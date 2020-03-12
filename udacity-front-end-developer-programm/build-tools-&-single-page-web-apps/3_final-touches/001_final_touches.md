@@ -165,4 +165,284 @@ export { handleSubmit }
 We have been using the `webpack-dev-server` in development, which is an awesome tool because we don't have to restart our `browser` every time that we make a style change. We get to watch that update happen in live time in our browser. 
 BUT when we use this in production, we can't use the `webpack-dev-server`. So, we need to make sure that our `Express server` is setup correctly so that we can use it in `production`. 
 
-Actually we have been using `webpack-dev-server` that *doesn't rebuld* our `main.js`. So the `main.js` file in the `dist folder` that we are looking at is the same that we've built right before we added the `webpack-dev-server`. 
+Actually we have been using `webpack-dev-server` that *doesn't rebuld* our `main.js`. So the `main.js` file in the `dist folder` that we are looking at is the same that we've built right before we added the `webpack-dev-server`. So, some work needs to be done here. 
+
+In our `formHandler` function we were doing a fetch request. This is a good example of `fetch request` that you can put into the code of your app that could reference a local file, and could also go to an external third party API. And it's here as a reference for you, so that you can make references to an API for your project. 
+
+**formHandler.js**
+
+```js
+function handleSubmit(event) {
+    event.preventDefault()
+
+    // check what text was put into the form field
+    let formText = document.getElementById('name').value
+    
+    checkForName(formText)
+
+    console.log("::: Form Submitted :::")
+    fetch('http://localhost:8080/test')
+    .then(res => res.json())
+    .then(function(res) {
+        document.getElementById('results').innerHTML = res.message
+    })
+}
+
+export { handleSubmit }
+```
+
+But right now we are looking for a file at `port 8080` called `test`. This points out one thing about the `webpack-dev-server` which is *only good for `single-page-apps`*. If you need to start working with multiple pages, like if we were trying to look for a `test page on the 8080 port of the dev server`, it wouldn't work. We would have to do some extra configuration or you might have to handle your own solution if you want the `dev server` to do that. 
+
+So, this `fetch request` simulates the fetch request you might make to another API. BUT if we go and look at our `server/index.js` file, we can see that the way we had set up at the beginning was to use `port 8080` which conflicts with our `dev server` that's also running on port 8080. And you can't run two apps on the same `port` at the same time. So that forces us to change it to be `port 8081`.
+
+**server/index.js**
+
+```js
+var path = require('path')
+const express = require('express')
+const mockAPIResponse = require('./mockAPI.js')
+
+const app = express()
+
+app.use(express.static('dist'))
+
+console.log(__dirname)
+
+app.get('/', function (req, res) {
+    res.sendFile('dist/index.html')
+})
+
+
+app.listen(8081, function () {                           //change the port here         
+    console.log('Example app listening on port 8081!')  
+})
+
+app.get('/test', function (req, res) {
+    res.send(mockAPIResponse)
+})
+```
+
+Now we can run this `server` at the same time as we run our `webpack server`. 
+
+---
+
+**Interview Question**
+
+Explain scope in javascript. It might be easier if you choose an example to walk through.
+
+**answer:**
+
+Scope is the accessibility of variables, functions, and objects in some particular part of your code during runtime. Scope provides some level of security to your code. 
+
+In the JavaScript language there are two types of scopes:
+
+- Global Scope
+
+```js
+var x = 'global!';
+
+//inside a function
+function encapsulate(){
+
+z = 'global here, too!';
+
+}
+```
+
+- Local Scope
+
+```js
+var func = function(){
+  var local = true;
+};
+
+console.log(local); //this is outside of the scope and it will give us an error, cos there is no global variable there
+```
+
+Variables defined inside a function are in local scope while variables defined outside of a function are in the global scope. Global variables can be accessed anywhere in your application.
+
+> This question is likely to come up in some form or another in a javascript interview. Even if they never ask about scope directly, they will most likely ask a question that revolves around your knowledge of scope. But it is a frustratingly abstract and difficult concept to answer point blank. The simplest answer is to say that scope is where a variable can be seen. But you need to go into better detail than that, so most people choose an allegory or code examples. No one expects your answer to be perfect, so just try your best to get the point across. This is also a great interview question to show off your communication skills. A big part of being a developer is being able to clearly explain complex and technical topics, especially to non-technical people.
+
+[read detailed here](https://scotch.io/tutorials/understanding-scope-in-javascript)
+
+---
+
+# Webpack for Production
+
+Now we have a usable and fairly well set up `development environment` for `webpack` with `express`. But though our `development environment` has gotten a lot of attention lately, we haven’t done much with our `production config`. So we’ll give it some love in this section. Thankfully, just by setting mode as `“production”` webpack knows to do some optimizations. For instance, have you noticed that the `main.js` file is not minified in `development`, but is minified for `production`? That’s webpack automatically knowing what we want, just because we specified the mode.
+
+When we bundle assets for production, I like to think of it like your app is going on a camping trip and you have to pack the bag. Everything your app needs to run has to be there, but you have to make it as small and light as possible, or else your app won’t do very well on its trip.
+
+Every `front-end developer` is concerned of how fast their `website` is going to run for `users`, and the biggest contributers to slow website are lots of styles, lots of JS and either large or many images. 
+
+To make a website run faster, we have to make it smaller. The smaller the webpages, the fewer bytes are being sent over the internet to the user; therefore the faster that the website should be able to run. 
+When it comes to making a webpage smaller, we only have *two options*. We can either making a web page smaller by taking away JS or styles or images, or we can make it smaller by *compressing* both assets into a smaller format. And our `webpack config` can actually do a lot of that minifying for us. 
+
+**A Better Production Config:** 
+
+The biggest contributers to slow sites are: 
+- JS
+- Styles
+- Big images
+
+- for a better production build, minify all JS and styles
+- webpack minifies JS by default in production mode
+- all of our styles are currently inline - inline styles are slow
+- add the `mini CSS Extract plugin`
+
+Right now in the `webpack dev server` it takes all of our syules and puts them into the `main.js`  and then adds them into our `HTML` via `inline styles`. The problem is that inline styles are slow, and to be most efficient, *we need to take all our styles and move them into a CSS file that can be minified*. 
+
+So, we are going to add a `mini CSS Extract` plugin that's going to do that staeps for us. So, first we install in via npm `npm install --save-dev mini-css-extract-plugin`. And include it in our `webpack.prod.js` file. And then instantiate it in our plugins list. 
+
+**webpack.prod.js**
+
+```js
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebPackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')  //include plugin
+
+module.exports = {
+    entry: './src/client/index.js',
+    mode: 'production',
+    module: {
+        rules: [
+            {
+                test: '/\.js$/',
+                exclude: /node_modules/,
+                loader: "babel-loader"
+            }
+        ]
+    },
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: "./src/client/views/index.html",
+            filename: "./index.html",
+        }),
+        new MiniCssExtractPlugin({filename: '[name].css'})  //instantiate here
+    ]
+}
+```
+
+One of the unique things about the `mini CSS extract plugin` is that gives us a loader that we can use much like we did with the `saas` and `CSS loaders` in the previous lesson in our `dev config`. So, we are going to add a *new set of rules* that will handle all our style sheets for `production`. 
+
+**webpack.prod.js**
+
+```js
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebPackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')  
+
+module.exports = {
+    entry: './src/client/index.js',
+    mode: 'production',
+    module: {
+        rules: [
+            {
+                test: '/\.js$/',
+                exclude: /node_modules/,
+                loader: "babel-loader"
+            }, 
+            {
+                test: /\.scss$/,            //new rules
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
+            }
+        ]
+    },
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: "./src/client/views/index.html",
+            filename: "./index.html",
+        }),
+        new MiniCssExtractPlugin({filename: '[name].css'})  
+    ]
+}
+```
+
+Here you can see that we are again looking for a `scss file extention`, but instead of the `css style-loader` that we used in the `dev config`. We actually wanna extract all of our CSS to its own file that's going to be added to the `dist folder`. Now we can run `npm build-prod` command. Now we should see a new file in our `dist folder` - which is `main.css`. 
+
+![mini-css](./mini-css.png)
+
+When you look at this css file it has all of the styles from all of our style sheets concatenated together. This is easily human-readable, which means it hasn't been minified yet. All we are doing at this point is extracting this CSS that would normally go to our `main.js` file if we were running the `webpack dev server`, but now we've brought it out into our own `main.css`. 
+
+Now, this is a file, that we're going to minify to make the file size smaller for our end users. To do that last minification step, we gonna ad a new piece to our `webpack.prod.js file`. This is the `optimisation attribute`  - and what it's gonna do is allow us to run minimizing actions on certain files. In this case we ganna use two new plugins to do our optimization work. The first one is - the `Terser` plugin and the second is `OptimizeCSSAssetsPlugin`. 
+
+First we install all the plugins that we need:
+
+- `$ npm install terser-webpack-plugin --save-dev`
+- `npm i -D optimize-css-assets-webpack-plugin`
+
+And we need to add the `requred statement` for both of them.
+
+**webpack.prod.js**
+
+```js
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebPackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') //require plugin
+const TerserPlugin = require('terser-webpack-plugin')   //require plugin
+
+module.exports = {
+    entry: './src/client/index.js',
+    mode: 'production',
+    optimization: {            //optimisation attribute
+     minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})]
+    },
+    module: {
+        rules: [
+            {
+                test: '/\.js$/',
+                exclude: /node_modules/,
+                loader: "babel-loader"
+            },
+            {
+                test: /\.scss$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
+            }
+        ]
+    },
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: "./src/client/views/index.html",
+            filename: "./index.html",
+        }),
+        new MiniCssExtractPlugin({filename: '[name].css'})
+    ]
+}
+```
+
+The cool thing about this plugins that we are initializing them in the `optimizer attribute` and not in the `plugins list`. Now we can rerun our `npm run build-prod` and see the modified CSS file on the other side. 
+
+---
+
+**Interview Question**
+
+What is the purpose of a `.map` file?
+
+The `.map` files are for js and css (and now ts too) files that have been minified. They are called `SourceMaps`. When you minify a file, like the `index.js` file, it takes thousands of lines of pretty code and turns it into only a few lines of ugly code. Hopefully, when you are shipping your code to `production`, you are using the minified code instead of the full, unminified version. When your app is in production, and has an error, the sourcemap will help take your ugly file, and will allow you to see the original version of the code. If you didn't have the sourcemap, then any error would seem cryptic at best.
+
+Same for `CSS` files. Once you take a `SASS` or `LESS` file and compile it to `CSS`, it looks nothing like it's original form. If you enable sourcemaps, then you can see the original state of the file, instead of the modified state.
+
+- What is it for? : To de-reference uglified code
+- How can a developer use it? : You use it for debugging a production app. In development mode you can use the full version of Angular. In production, you would use the minified version.
+- Should I care about creating a `js.map` file?:  If you care about being able to debug production code easier, then yes, you should do it.
+- How does it get created? : It is created at build time. There are build tools that can build your .map file for you as it does other files. [read](https://github.com/gruntjs/grunt-contrib-uglify/issues/71)
+
+So, Map files keep track of which source files the code in your bundled file comes from. This is incredibbly handy when debugging. Without a map file, you would get an error that says it is coming from like 1783 of bundle.js - which isn’t very helpful, but with a source map turned on it would tell you the file name and line where the error is occuring. Much better!
+
+---
+
+**A real life example**
+
+Just as a bit of extra for how knowing all of this about `production` builds can be useful, take this example. Imagine you just took on a new client, and want to give them a report of their current site before starting on any `development` work (that is a great thing to do for all your clients, by the way). `Minimizing assets` can be an easy win. You might be able to bump a client's page speed considerably, just by minimizing their `stylesheets`, if they aren't being minimized already. You can also check if styles are being loaded that are never used on the page.
+
+`Webpack` allows us to do some really powerful optimizations for `production`, and we have only scratched the surface here, but we have done probably the most important tasks. If you want to delve more into production optimizations, webpack has its [own documentation](https://webpack.js.org/guides/production/) for this and reading `plugin documentation` like Terser’s will have lots of ways to help you.
+
+> If you feel comfortable with `webpack` and what we've done so far, you might have noticed that our `webpack config` files don't exactly follow the `DRY principle`. There is definitely going to be some overlap between our `prod` and `dev` configs. `Webpack` recognizes this and has actually created a `webpack merge plugin` that allows you to create a `webpack config file` that is generic across all your `configs`, that can be merged with another `config` to contain exactly the settings you need. Create a new branch on your repo, then see if you can get it working.
+
+# What are Service Workers
+
+
