@@ -445,4 +445,56 @@ Just as a bit of extra for how knowing all of this about `production` builds can
 
 # What are Service Workers
 
+`Service Wokers` is a piece of JS that runs between our app and the Internet, and runs in the background to allow us to do some really cool things like `push notifications` or even offline content. 
+
+`Google Workbox` makes working with basic `Service Workers` incredibly convenient. We are going to follow their setup instructions, the steps are going to feel very familiar by now, because `Google Workbox` created a `webpack plugin` for us.
+
+So, we do our three steps:
+
+- Install the plugin: `npm install workbox-webpack-plugin --save-dev`
+- Require the plugin in `prod`: `const WorkboxPlugin = require('workbox-webpack-plugin');`
+- Add the plugin: `new WorkboxPlugin.GenerateSW()`
+
+We are going to add `service workers` to `prod`, because to **allow offline access**, what the `service workers` actually do is create a `cached version` of your website that they can supply if the `server` can’t be reached. But we don’t want that caching around our `dev` site, so we won’t add this to our `dev config` at all.
+
+Like we’ve learned with most `plugins`, when we call the generate `service workers function`, we have the ability to pass in some `options`. There are lots of cool `options` you can choose from, to do things like `cache images` at runtime, limit the max size of your `cache`, etc. For now, we are going to stick with the default settings.
+
+If you follow along with the documentation, there’s one more step. *We need to register a Service Worker with our app*. To do this, we will add a `script` to our `html file` and call the `register service worker function` if the `browser` supports `service workers`.
+
+Add this code to the bottom of your html file, just above the closing body tag.
+
+```html
+<script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js');
+        });
+    }
+</script>
+```
+
+[Google Workbox PWA tutorial](https://codelabs.developers.google.com/codelabs/workbox-lab/#0). Your knowledge of webpack and service workers will put you in a good place to get started.
+
+
+> to turn off the server in the terminal  use Control+C or "Close App" below, or else your app window will close.
+
+If you want some more advanced webpack topics to research next, might I suggest these:
+
+- [Code splitting/lazy loading](https://webpack.js.org/guides/code-splitting/) (spoiler - they're the same thing in webpack)
+- [Tree shaking or dead code elimination](https://webpack.js.org/guides/tree-shaking/)
+- [A list of plugins and tutorials for more webpack fun](https://github.com/markerikson/react-redux-links/blob/master/webpack-advanced-techniques.md)
+- If you want to hear someone who works for Webpack explain webpack, [here’s a video](https://www.netlify.com/blog/2017/01/03/4-key-concepts-of-webpack/)
+
+---
+
+**Interview Question**
+
+- What excites or interests you about coding? Tell us about what you've build recently and why you enjoyed it.
+- What is a recent technical challenge you experienced and how did you solve it?
+
+---
+
+
 
